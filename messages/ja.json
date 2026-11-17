@@ -1,0 +1,11 @@
+{
+  "Metadata": {
+    "title": "AnyThingISee — Windows 向けローカル逆アセンブラー・逆コンパイラー",
+    "description": "x64 PE・ELF ファイルを C 疑似コードとアセンブリで並べて確認し、名前やメモを残し、パッチを書き出せる無料の解析ツール。"
+  },
+  "Home": {
+    "title": "AnyThingISee",
+    "tagline": "Windows 向けのローカル逆アセンブラー・逆コンパイラー。C 疑似コードとアセンブリを並べて解析できます。",
+    "version": "Free Edition 0.1.0 Preview"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "Metadata": {
+    "title": "AnyThingISee — Windows용 로컬 디스어셈블러·디컴파일러",
+    "description": "x64 PE·ELF 파일을 C 의사코드와 어셈블리로 함께 보고, 이름·메모를 남기고, 패치를 내보내는 무료 분석 도구."
+  },
+  "Home": {
+    "title": "AnyThingISee",
+    "tagline": "Windows용 로컬 디스어셈블러·디컴파일러. C 의사코드와 어셈블리를 나란히 보며 분석합니다.",
+    "version": "Free Edition 0.1.0 Preview"
+  }
+}

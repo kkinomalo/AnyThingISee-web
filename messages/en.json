@@ -1,0 +1,11 @@
+{
+  "Metadata": {
+    "title": "AnyThingISee — Local disassembler and decompiler for Windows",
+    "description": "A free analysis tool to read x64 PE and ELF files as linked C pseudocode and assembly, keep names and notes, and export patches."
+  },
+  "Home": {
+    "title": "AnyThingISee",
+    "tagline": "A local disassembler and decompiler for Windows. Analyze with C pseudocode and assembly side by side.",
+    "version": "Free Edition 0.1.0 Preview"
+  }
+}
