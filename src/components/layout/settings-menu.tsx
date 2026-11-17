@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState, useTransition } from "react";
-import { Check, ChevronDown } from "@/components/icons";
+import { Check, Globe } from "@/components/icons";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 
@@ -77,10 +77,9 @@ export function SettingsMenu({ variant = "popover" }: { variant?: "popover" | "i
         aria-expanded={open}
         aria-controls={`${id}-panel`}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 py-2 text-muted hover:text-ink"
+        className="rounded-lg p-2.5 hover:bg-ink/5"
       >
-        <span lang={locale}>{LANGUAGE_NAMES[locale]}</span>
-        <ChevronDown width={14} height={14} />
+        <Globe width={22} height={22} />
       </button>
       <div
         id={`${id}-panel`}
