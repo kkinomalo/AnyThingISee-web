@@ -54,7 +54,7 @@ export function CodeDemo() {
         className="rule-top grid border-b border-border font-mono text-[14px] leading-[28px] md:grid-cols-2 [&>*]:min-w-0"
       >
         <div className="overflow-x-auto py-6 md:pr-8">
-          <p className="mb-3 font-sans text-[13px] text-muted">{t("c")}</p>
+          <p className="mb-4 font-sans text-[16px] font-semibold text-ink">{t("c")}</p>
           <ol>
             {cLines.map((line, i) => {
               const on = i === active;
@@ -84,14 +84,14 @@ export function CodeDemo() {
         </div>
 
         <div className="overflow-x-auto border-t border-border py-6 md:border-l md:border-t-0 md:pl-8">
-          <p className="mb-3 font-sans text-[13px] text-muted">{t("asm")}</p>
+          <p className="mb-4 font-sans text-[16px] font-semibold text-ink">{t("asm")}</p>
           <ol aria-hidden>
             {asmLines.map(([addr, op, arg], i) => {
               const on = linked.has(i);
               return (
                 <li
                   key={addr}
-                  className={`-mx-2 whitespace-pre rounded px-2 transition-colors motion-reduce:transition-none ${on ? "bg-tint text-on-tint" : ""}`}
+                  className={`-ml-2 whitespace-pre rounded px-2 transition-colors motion-reduce:transition-none ${on ? "bg-tint text-on-tint" : ""}`}
                 >
                   <span className={on ? "" : "text-faint"}>{addr}</span>
                   {"  "}

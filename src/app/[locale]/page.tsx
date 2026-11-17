@@ -51,12 +51,16 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <div className="-mt-[70px] px-1.5 sm:-mt-[74px] sm:px-2.5 lg:-mt-[80px]">
         <section className="dot-grid mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-border">
           <div className="mx-auto max-w-[1200px] px-5 pb-16 pt-[120px] sm:px-8 lg:pb-24 lg:pt-[184px]">
-            <h1 className="max-w-[17em]">{t("hero.title")}</h1>
+            <h1 className="max-w-[17em]">
+              {t.rich("hero.title", {
+                u: (chunks) => <span className="underline decoration-[0.06em] underline-offset-[0.12em]">{chunks}</span>,
+              })}
+            </h1>
             <p className="mt-7 max-w-[40rem] text-lg">{t("hero.body")}</p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
               <Link
                 href="/download"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent-hover px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-[#743410]"
               >
                 {t("hero.goDownload")}
                 <ArrowRight width={18} height={18} />
@@ -81,12 +85,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               fill
               sizes="(min-width: 1440px) 1440px, 100vw"
               placeholder="blur"
-              className="-z-20 object-cover object-[50%_44%] brightness-[0.8]"
+              className="-z-20 object-cover object-[50%_44%] brightness-[0.88]"
             />
             {/* 레퍼런스와 같은 방향: 왼쪽 단색 → 42% 지점 → 오른쪽으로 옅어짐. 흰 글자 대비를 위해 끝까지 완전히 투명하게는 두지 않는다 */}
             <div
               aria-hidden
-              className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(150,80,46,1)_0%,rgba(132,68,38,0.96)_42.31%,rgba(120,60,34,0.62)_100%)]"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(176,96,56,1)_0%,rgba(170,92,54,0.92)_42.31%,rgba(160,86,50,0.5)_100%)]"
             />
             <div className="mx-auto grid max-w-[1200px] gap-x-16 gap-y-8 px-5 py-12 text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.25)] sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-14">
               <div>

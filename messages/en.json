@@ -6,7 +6,7 @@
   "Home": {
     "hero": {
       "eyebrow": "Local disassembler and decompiler for Windows",
-      "title": "Disassemble, decompile and patch with AnyThingISee",
+      "title": "Disassemble, decompile and patch with <u>AnyThingISee</u>",
       "body": "AnyThingISee is a local binary analysis tool that runs right on Windows. Read C pseudocode and assembly side by side, line by line, for x64 PE and ELF files, and handle names, notes and instruction patches in one view. The Ghidra native decompiler core is built in, so there's no Ghidra or Java to install, and your files never leave your PC.",
       "download": "Free download for Windows",
       "meta": "Windows 10/11 x64 · {size} · {version}",

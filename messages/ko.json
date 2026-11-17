@@ -6,7 +6,7 @@
   "Home": {
     "hero": {
       "eyebrow": "Windows용 로컬 디스어셈블러·디컴파일러",
-      "title": "디스어셈블, 디컴파일, 패치까지 AnyThingISee 하나로",
+      "title": "디스어셈블, 디컴파일, 패치까지 <u>AnyThingISee</u> 하나로",
       "body": "AnyThingISee는 Windows에서 바로 쓰는 로컬 바이너리 분석 도구입니다. x64 PE·ELF 파일의 C 의사코드와 어셈블리를 한 줄씩 맞춰 읽고, 이름 · 메모 · 명령어 패치까지 한 화면에서 끝내세요. Ghidra 네이티브 디컴파일러 코어가 들어 있어 Ghidra나 Java를 따로 설치하지 않아도 되고, 파일은 내 PC 밖으로 나가지 않습니다.",
       "download": "Windows용 무료 다운로드",
       "meta": "Windows 10/11 x64 · {size} · {version}",
