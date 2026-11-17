@@ -52,22 +52,19 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <h1 className="max-w-[17em]">{t("hero.title")}</h1>
             <p className="mt-7 max-w-[40rem] text-lg">{t("hero.body")}</p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
-              {installer && (
-                <DownloadCta
-                  href={installer.url}
-                  label={t("hero.downloadNow")}
-                  macLabel={t("hero.mac")}
-                  windowsLinkLabel={t("hero.windowsLink")}
-                />
-              )}
+              <Link
+                href="/download"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+              >
+                {t("hero.goDownload")}
+                <ArrowRight width={18} height={18} />
+              </Link>
               <a href="#features" className="inline-flex items-center gap-2 font-semibold underline underline-offset-4 hover:text-accent">
                 {t("hero.explore")}
                 <ArrowRight width={18} height={18} />
               </a>
             </div>
             <p className="mt-6 text-sm text-muted">
-              <span className="font-mono">{meta}</span>
-              <span aria-hidden className="mx-2">·</span>
               <Link href="/download#verify" className="underline underline-offset-4 hover:text-accent">
                 {t("hero.warning")}
               </Link>

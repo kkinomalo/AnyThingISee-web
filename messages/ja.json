@@ -16,7 +16,8 @@
       "mac": "macOS 版は開発中 — GitHub で通知を受け取る",
       "windowsLink": "Windows 版インストーラーを入手",
       "downloadNow": "今すぐダウンロード",
-      "explore": "機能を見る"
+      "explore": "機能を見る",
+      "goDownload": "ダウンロードページへ"
     },
     "demo": {
       "title": "C コードとアセンブリが連動します",

@@ -16,7 +16,8 @@
       "mac": "macOS 버전 준비 중 — GitHub에서 알림 받기",
       "windowsLink": "Windows용 설치 파일 받기",
       "downloadNow": "지금 다운로드",
-      "explore": "기능 살펴보기"
+      "explore": "기능 살펴보기",
+      "goDownload": "다운로드하러 가기"
     },
     "demo": {
       "title": "C 코드와 어셈블리가 함께 움직입니다",
