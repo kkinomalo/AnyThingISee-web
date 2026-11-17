@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { alternates } from "@/lib/seo";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { CopyButton } from "@/components/copy-button";
 import { DownloadButton } from "@/components/download-button";
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/download">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Download" });
-  return { title: t("title"), description: t("metaDescription") };
+  return { title: t("title"), description: t("metaDescription"), alternates: alternates(locale, "/download") };
 }
 
 export default async function DownloadPage({ params }: PageProps<"/[locale]/download">) {

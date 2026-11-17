@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { alternates } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, Download, ExternalArrow } from "@/components/icons";
@@ -15,10 +16,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/releases/[tag]">): Promise<Metadata> {
-  const { tag } = await params;
+  const { locale, tag } = await params;
   const { releases } = await getReleases();
   const release = releases.find((r) => r.tag === tag);
-  return release ? { title: release.title } : {};
+  return release ? { title: release.title, alternates: alternates(locale, `/releases/${tag}`) } : {};
 }
 
 export default async function ReleasePage({ params }: PageProps<"/[locale]/releases/[tag]">) {
