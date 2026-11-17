@@ -7,5 +7,65 @@
     "title": "AnyThingISee",
     "tagline": "Windows 向けのローカル逆アセンブラー・逆コンパイラー。C 疑似コードとアセンブリを並べて解析できます。",
     "version": "Free Edition 0.1.0 Preview"
+  },
+  "Nav": {
+    "label": "メインメニュー",
+    "skip": "本文へスキップ",
+    "home": "AnyThingISee ホーム",
+    "openMenu": "メニューを開く",
+    "closeMenu": "メニューを閉じる",
+    "download": "ダウンロード",
+    "external": "新しいタブで開きます",
+    "groups": {
+      "product": "製品",
+      "resources": "リソース",
+      "license": "利用規約"
+    },
+    "items": {
+      "overview": {
+        "title": "紹介",
+        "desc": "AnyThingISee でできることをひと目で確認できます。"
+      },
+      "compare": {
+        "title": "性能比較",
+        "desc": "他の逆アセンブラー・逆コンパイラーと実測した結果です。"
+      },
+      "download": {
+        "title": "ダウンロード",
+        "desc": "Windows x64 インストーラーと整合性の確認方法です。"
+      },
+      "releases": {
+        "title": "リリースノート",
+        "desc": "バージョンごとの変更点と既知の制限です。"
+      },
+      "guide": {
+        "title": "使い方",
+        "desc": "ファイルを開いてからパッチを書き出すまでの手順です。"
+      },
+      "issues": {
+        "title": "不具合の報告",
+        "desc": "GitHub Issues でお知らせください。"
+      },
+      "license": {
+        "title": "利用規約",
+        "desc": "Free Edition 利用規約の概要と全文です。"
+      },
+      "thirdParty": {
+        "title": "サードパーティー通知",
+        "desc": "Ghidra など同梱コンポーネントのライセンスです。"
+      }
+    }
+  },
+  "Footer": {
+    "tagline": "Windows 向けローカル逆アセンブラー・逆コンパイラー",
+    "free": "個人・法人を問わず無料で使えます。",
+    "copyright": "© {year} AnyThingISee",
+    "github": "GitHub 配布リポジトリ",
+    "toTop": "ページの先頭へ"
+  },
+  "NotFound": {
+    "title": "ページが見つかりません",
+    "body": "アドレスが変わったか、まだ準備中のページです。",
+    "home": "トップへ"
   }
 }

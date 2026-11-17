@@ -7,5 +7,65 @@
     "title": "AnyThingISee",
     "tagline": "A local disassembler and decompiler for Windows. Analyze with C pseudocode and assembly side by side.",
     "version": "Free Edition 0.1.0 Preview"
+  },
+  "Nav": {
+    "label": "Main",
+    "skip": "Skip to content",
+    "home": "AnyThingISee home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "download": "Download",
+    "external": "Opens in a new tab",
+    "groups": {
+      "product": "Product",
+      "resources": "Resources",
+      "license": "License"
+    },
+    "items": {
+      "overview": {
+        "title": "Overview",
+        "desc": "See what AnyThingISee does at a glance."
+      },
+      "compare": {
+        "title": "Benchmarks",
+        "desc": "Measured results against other disassemblers and decompilers."
+      },
+      "download": {
+        "title": "Download",
+        "desc": "The Windows x64 installer and how to verify it."
+      },
+      "releases": {
+        "title": "Release notes",
+        "desc": "Changes and known limitations by version."
+      },
+      "guide": {
+        "title": "User guide",
+        "desc": "From opening a file to exporting a patch."
+      },
+      "issues": {
+        "title": "Report an issue",
+        "desc": "Tell us about problems on GitHub Issues."
+      },
+      "license": {
+        "title": "License",
+        "desc": "Free Edition license summary and full text."
+      },
+      "thirdParty": {
+        "title": "Third-party notices",
+        "desc": "Licenses for bundled components such as Ghidra."
+      }
+    }
+  },
+  "Footer": {
+    "tagline": "A local disassembler and decompiler for Windows",
+    "free": "Free for personal and commercial use.",
+    "copyright": "© {year} AnyThingISee",
+    "github": "GitHub release repository",
+    "toTop": "Back to top"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The address has changed or the page is not ready yet.",
+    "home": "Go home"
   }
 }
