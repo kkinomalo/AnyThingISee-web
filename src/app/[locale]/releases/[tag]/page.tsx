@@ -47,7 +47,7 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
           <Markdown>{release.body}</Markdown>
         </article>
 
-        <aside className="card h-fit space-y-4 p-6 lg:sticky lg:top-28">
+        <aside className="rule-top h-fit space-y-4 pt-5 lg:sticky lg:top-24">
           <h2 className="font-bold">{t("assets")}</h2>
           <ul className="space-y-4">
             {release.assets.map((a) => (

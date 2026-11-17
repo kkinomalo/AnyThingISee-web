@@ -53,7 +53,7 @@ export default async function LocaleLayout({
           <NextIntlClientProvider>
             <SkipLink />
             <SiteHeader />
-            <main id="main" tabIndex={-1} className="flex flex-1 flex-col pt-[104px] outline-none">
+            <main id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">
               {children}
             </main>
             <SiteFooter />

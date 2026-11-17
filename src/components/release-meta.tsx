@@ -6,7 +6,7 @@ export async function ReleaseBadges({ release, latest }: { release: Release; lat
   const format = await getFormatter();
   return (
     <div className="flex flex-wrap items-center gap-2 text-sm">
-      {latest && <span className="rounded-full bg-ink px-2.5 py-0.5 text-xs font-bold text-on-ink">{t("latest")}</span>}
+      {latest && <span className="rounded-full border border-accent px-2.5 py-0.5 text-xs font-bold text-accent">{t("latest")}</span>}
       {release.prerelease && (
         <span className="rounded-full border border-foreground/20 px-2.5 py-0.5 text-xs font-semibold">{t("prerelease")}</span>
       )}

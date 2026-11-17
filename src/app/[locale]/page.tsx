@@ -1,8 +1,7 @@
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { CodeDemo } from "@/components/home/code-demo";
 import { DownloadCta } from "@/components/home/download-cta";
-import { featureIcons } from "@/components/home/feature-icons";
-import { ArrowRight, ExternalArrow, Plus } from "@/components/icons";
+import { ArrowRight } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
 import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
@@ -11,7 +10,8 @@ import { external } from "@/lib/links";
 type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
 
-// 섹션 순서: 히어로(+데모) → 기능 → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
+// 시안 #28: 카드 · 어두운 블록 없이 여백 · 선 · 번호 · 큰 글자로 구성
+// 순서: 히어로(+코드 데모) → 기능 → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -44,131 +44,128 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   return (
     <div className="mx-auto w-full max-w-[1200px] px-6">
       {/* 히어로 */}
-      <section className="grid items-center gap-12 pb-24 pt-10 lg:grid-cols-[1fr_1.05fr] lg:pt-16 [&>*]:min-w-0">
-        <div>
-          <Link
-            href={`/releases/${release.tag}`}
-            className="inline-flex flex-wrap items-center gap-x-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm hover:border-muted"
-          >
-            <span className="font-semibold">{t("hero.badge", { version: release.version, date })}</span>
-            <span aria-hidden className="text-muted">·</span>
-            <span className="inline-flex items-center gap-1 text-accent">
-              {t("hero.notes")}
-              <ArrowRight width={14} height={14} />
-            </span>
+      <section className="pt-20 lg:pt-28">
+        <p className="text-[15px] text-muted">
+          <Link href={`/releases/${release.tag}`} className="text-ink hover:text-accent">
+            {t("hero.badge", { version: release.version, date })}
           </Link>
-          <p className="mt-8 text-sm font-semibold text-muted">{t("hero.eyebrow")}</p>
-          <h1 className="mt-3 whitespace-pre-line">{t("hero.title")}</h1>
-          <p className="mt-6 max-w-[34rem] text-muted">{t("hero.body")}</p>
-          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <span aria-hidden className="mx-2">
+            —
+          </span>
+          <Link href={`/releases/${release.tag}`} className="text-link">
+            {t("hero.notes")}
+          </Link>
+        </p>
+        <h1 className="mt-7 max-w-[13em]">{t("hero.title")}</h1>
+        <div className="mt-10 grid items-end gap-x-16 gap-y-8 lg:grid-cols-2">
+          <p className="max-w-[34rem] text-lg text-muted">{t("hero.body")}</p>
+          <div>
             {cta}
-            <Link href="/download#verify" className="text-link text-sm">
+            <p className="mt-3.5 font-mono text-sm text-muted">{meta}</p>
+            <Link href="/download#verify" className="text-link mt-1.5 inline-block text-[15px]">
               {t("hero.warning")}
             </Link>
           </div>
-          <p className="mt-4 font-mono text-sm text-muted">{meta}</p>
         </div>
 
-        {/* 데모 (실제 앱 화면을 받으면 같은 자리에 스크린샷 · 짧은 영상 추가) */}
-        <div>
+        <div className="mt-20">
           <h2 className="sr-only">{t("demo.title")}</h2>
           <CodeDemo />
-          <p className="mt-3 text-sm text-muted">{t("demo.body")}</p>
-          <p className="mt-1 text-xs text-muted">{t("demo.note")}</p>
+          <p className="mt-3 text-sm text-muted">
+            {t("demo.body")} {t("demo.note")}
+          </p>
         </div>
       </section>
 
-      {/* 기능 */}
-      <section aria-labelledby="features-title" className="border-t border-border py-24">
-        <h2 id="features-title">{t("features.title")}</h2>
-        <p className="mt-4 max-w-2xl text-muted">{t("features.body")}</p>
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((f, i) => {
-            const Icon = featureIcons[i];
-            return (
-              <li key={f.title} className="card p-7">
-                {Icon && <Icon className="text-ink" />}
-                <h3 className="mt-6">{f.title}</h3>
-                <p className="mt-2 text-muted">{f.body}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-
-      {/* 처음 쓰는 순서 */}
-      <section aria-labelledby="flow-title" className="border-t border-border py-24">
-        <h2 id="flow-title">{t("flow.title")}</h2>
-        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s, i) => (
-            <li key={s.title} className="card flex flex-col p-7">
-              <span className="font-mono text-sm font-semibold text-muted">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-4">{s.title}</h3>
-              <p className="mt-2 text-muted">{s.body}</p>
+      {/* 기능: 왼쪽 제목 · 오른쪽 번호 목록 */}
+      <section
+        id="features"
+        aria-labelledby="features-title"
+        className="grid scroll-mt-24 gap-x-20 gap-y-12 pt-40 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
+      >
+        <div>
+          <h2 id="features-title">{t("features.title")}</h2>
+          <p className="mt-5 max-w-sm text-muted">{t("features.body")}</p>
+        </div>
+        <ol className="rule-top">
+          {features.map((f, i) => (
+            <li key={f.title} className="grid grid-cols-[3.5rem_1fr] gap-2 border-b border-border py-6">
+              <span className="pt-0.5 font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{f.title}</h3>
+                <p className="mt-1 text-muted">{f.body}</p>
+              </div>
             </li>
           ))}
         </ol>
       </section>
 
-      {/* 성능 비교 (데이터 공개 전) */}
-      <section className="grid items-center gap-8 rounded-2xl bg-ink p-8 text-on-ink sm:p-12 lg:grid-cols-[1fr_auto]">
-        <div className="max-w-2xl">
-          <h2>{t("compare.title")}</h2>
-          <p className="mt-4 text-on-ink-muted">{t("compare.body")}</p>
-        </div>
-        <Link
-          href="/compare"
-          className="inline-flex w-fit items-center gap-2 rounded-lg border border-on-ink/40 px-6 py-3 font-semibold text-on-ink transition-colors hover:bg-on-ink/10"
-        >
-          {t("compare.cta")}
-          <ArrowRight width={18} height={18} />
-        </Link>
+      {/* 처음 쓰는 순서: 가로 단계 */}
+      <section aria-labelledby="flow-title" className="pt-40">
+        <h2 id="flow-title">{t("flow.title")}</h2>
+        <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s, i) => {
+            const last = i === steps.length - 1;
+            return (
+              <li key={s.title} className={`border-t-2 pt-5 ${last ? "border-accent" : "border-ink"}`}>
+                <span className={`font-mono text-sm ${last ? "text-accent" : "text-muted"}`}>STEP {i + 1}</span>
+                <h3 className="mt-2.5">{s.title}</h3>
+                <p className="mt-2 text-muted">{s.body}</p>
+              </li>
+            );
+          })}
+        </ol>
       </section>
 
-      {/* FAQ */}
-      <section aria-labelledby="faq-title" className="py-24">
+      {/* 성능 비교 (데이터 공개 전) */}
+      <section className="rule-top mt-40 grid gap-x-20 gap-y-6 pt-10 lg:grid-cols-2">
+        <h2>{t.rich("compare.title", { em: (chunks) => <span className="text-accent">{chunks}</span> })}</h2>
+        <div>
+          <p className="text-muted">{t("compare.body")}</p>
+          <Link href="/compare" className="text-link mt-4 inline-flex items-center gap-1.5">
+            {t("compare.cta")}
+            <ArrowRight width={16} height={16} />
+          </Link>
+        </div>
+      </section>
+
+      {/* FAQ: 2단, 선만 */}
+      <section aria-labelledby="faq-title" className="grid gap-x-20 gap-y-8 pt-40 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
         <h2 id="faq-title">{t("faq.title")}</h2>
-        <div className="mt-10 divide-y divide-border border-y border-border">
-          {faqs.map((f) => (
-            <details key={f.q} className="group">
+        <div className="rule-top">
+          {faqs.map((f, i) => (
+            <details key={f.q} className="group border-b border-border" open={i === 0}>
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
                 {f.q}
-                <span className="grid size-9 shrink-0 place-items-center rounded-md border border-border">
-                  <Plus width={18} height={18} className="transition-transform group-open:rotate-45 motion-reduce:transition-none" />
+                <span aria-hidden className="text-2xl font-normal leading-none text-muted transition-transform group-open:rotate-45 motion-reduce:transition-none">
+                  +
                 </span>
               </summary>
-              <p className="max-w-3xl pb-6 text-muted">{f.a}</p>
+              <p className="max-w-2xl pb-6 text-muted">{f.a}</p>
             </details>
           ))}
         </div>
       </section>
 
-      {/* 다운로드 */}
-      <section className="card flex flex-col items-center px-6 py-16 text-center">
-        <h2>{t("download.title")}</h2>
-        <p className="mt-4 max-w-xl text-muted">{t("download.body")}</p>
-        <div className="mt-8">{cta}</div>
-        <p className="mt-4 font-mono text-sm text-muted">{meta}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a
-            href={external.issues}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-ink/70 px-6 py-3 font-semibold transition-colors hover:bg-ink/5"
-          >
-            {t("download.issues")}
-            <ExternalArrow width={16} height={16} />
+      {/* 다운로드: 큰 문장 */}
+      <section className="flex flex-col items-center pb-8 pt-44 text-center">
+        <h2 className="max-w-[12em] text-[clamp(2.25rem,1.4rem+3.4vw,4rem)] leading-[1.1] tracking-[-0.03em]">
+          {t("download.title")}
+        </h2>
+        <p className="mt-5 text-muted">{t("download.body")}</p>
+        <div className="mt-9">{cta}</div>
+        <p className="mt-3.5 font-mono text-sm text-muted">{meta}</p>
+        <p className="mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3 text-[15px]">
+          <a href={external.issues} target="_blank" rel="noopener noreferrer" className="text-link">
+            {t("download.issues")} ↗
           </a>
-          <a
-            href={external.guide}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-ink/70 px-6 py-3 font-semibold transition-colors hover:bg-ink/5"
-          >
-            {t("download.guide")}
-            <ExternalArrow width={16} height={16} />
+          <a href={external.guide} target="_blank" rel="noopener noreferrer" className="text-link">
+            {t("download.guide")} ↗
           </a>
-        </div>
+          <a href={`${external.repo}/releases`} target="_blank" rel="noopener noreferrer" className="text-link">
+            {t("download.mac")} ↗
+          </a>
+        </p>
       </section>
     </div>
   );

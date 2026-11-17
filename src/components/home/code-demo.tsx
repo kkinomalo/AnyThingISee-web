@@ -41,25 +41,20 @@ const asmLines = [
 
 const DEFAULT_LINE = 3;
 
+// 시안 #28: 어두운 창 대신 위아래 선 사이 두 단, 강조는 옅은 강조색 바탕
 export function CodeDemo() {
   const t = useTranslations("Home.demo");
   const [active, setActive] = useState(DEFAULT_LINE);
   const linked = new Set(cLines[active].asm);
 
   return (
-    <figure aria-label={t("label")} className="overflow-hidden rounded-xl bg-ink text-[13px] leading-6 text-on-ink shadow-float">
-      <div className="flex items-center gap-1.5 border-b border-on-ink/10 px-4 py-3">
-        <span className="size-2.5 rounded-full bg-on-ink/20" />
-        <span className="size-2.5 rounded-full bg-on-ink/20" />
-        <span className="size-2.5 rounded-full bg-on-ink/20" />
-        <span translate="no" className="ml-3 font-mono text-xs text-on-ink-muted">
-          check_key · 140001020
-        </span>
-      </div>
-
-      <div translate="no" className="grid font-mono md:grid-cols-[1fr_1.05fr] [&>*]:min-w-0">
-        <div className="overflow-x-auto border-on-ink/10 p-3 md:border-r">
-          <p className="px-2 pb-2 font-sans text-xs font-semibold text-on-ink-muted">{t("c")}</p>
+    <figure aria-label={t("label")} className="m-0">
+      <div
+        translate="no"
+        className="rule-top grid border-b border-border font-mono text-[14px] leading-[28px] md:grid-cols-2 [&>*]:min-w-0"
+      >
+        <div className="overflow-x-auto py-6 md:pr-8">
+          <p className="mb-3 font-sans text-[13px] text-muted">{t("c")}</p>
           <ol>
             {cLines.map((line, i) => {
               const on = i === active;
@@ -73,11 +68,13 @@ export function CodeDemo() {
                     onMouseEnter={() => usable && setActive(i)}
                     onFocus={() => usable && setActive(i)}
                     onClick={() => usable && setActive(i)}
-                    className={`block w-full whitespace-pre rounded px-2 text-left transition-colors focus-visible:outline-offset-0 ${
-                      on ? "bg-accent text-on-accent" : usable ? "hover:bg-on-ink/10" : "cursor-default"
+                    className={`-mx-2 block w-[calc(100%+1rem)] whitespace-pre rounded px-2 text-left transition-colors motion-reduce:transition-none ${
+                      on ? "bg-tint text-on-tint" : usable ? "hover:bg-ink/5" : "cursor-default"
                     }`}
                   >
-                    <span className="mr-3 inline-block w-4 select-none text-right opacity-50">{i + 1}</span>
+                    <span className={`mr-3 inline-block w-5 select-none text-right ${on ? "" : "text-faint"}`}>
+                      {i + 1}
+                    </span>
                     {line.text}
                   </button>
                 </li>
@@ -86,19 +83,23 @@ export function CodeDemo() {
           </ol>
         </div>
 
-        <div className="overflow-x-auto border-t border-on-ink/10 p-3 md:border-t-0">
-          <p className="px-2 pb-2 font-sans text-xs font-semibold text-on-ink-muted">{t("asm")}</p>
+        <div className="overflow-x-auto border-t border-border py-6 md:border-l md:border-t-0 md:pl-8">
+          <p className="mb-3 font-sans text-[13px] text-muted">{t("asm")}</p>
           <ol aria-hidden>
-            {asmLines.map(([addr, op, arg], i) => (
-              <li
-                key={addr}
-                className={`whitespace-pre rounded px-2 transition-colors ${linked.has(i) ? "bg-accent text-on-accent" : ""}`}
-              >
-                <span className={linked.has(i) ? "" : "text-on-ink-muted"}>{addr}</span>{" "}
-                <span className="inline-block w-12">{op}</span>
-                {arg}
-              </li>
-            ))}
+            {asmLines.map(([addr, op, arg], i) => {
+              const on = linked.has(i);
+              return (
+                <li
+                  key={addr}
+                  className={`-mx-2 whitespace-pre rounded px-2 transition-colors motion-reduce:transition-none ${on ? "bg-tint text-on-tint" : ""}`}
+                >
+                  <span className={on ? "" : "text-faint"}>{addr}</span>
+                  {"  "}
+                  <span className="inline-block w-12">{op}</span>
+                  {arg}
+                </li>
+              );
+            })}
           </ol>
         </div>
       </div>

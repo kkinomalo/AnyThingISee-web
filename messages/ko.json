@@ -8,7 +8,7 @@
       "eyebrow": "Windows용 로컬 디스어셈블러·디컴파일러",
       "title": "어셈블리 너머의 코드를,\n내 PC에서 바로 읽습니다",
       "body": "x64 PE·ELF 파일을 열면 C 의사코드와 어셈블리가 나란히 연결됩니다. 이름과 메모를 남기고, 명령어를 고쳐 별도 파일로 내보내세요. Ghidra 네이티브 디컴파일러 코어가 들어 있어 Ghidra나 Java를 따로 설치하지 않아도 됩니다.",
-      "download": "무료 다운로드",
+      "download": "Windows용 무료 다운로드",
       "meta": "Windows 10/11 x64 · {size} · {version}",
       "warning": "설치 시 경고가 나오나요? · SHA-256 확인",
       "badge": "{version} · {date}",
@@ -77,9 +77,9 @@
       ]
     },
     "compare": {
-      "title": "성능 비교는 준비 중입니다",
+      "title": "성능 비교는 <em>준비 중</em>입니다",
       "body": "Ghidra, IDA Free, Binary Ninja Free, Cutter와 같은 조건에서 측정한 뒤 측정 환경·버전·측정일·샘플 바이너리를 함께 공개합니다.",
-      "cta": "측정 방법 보기 · 결과 준비 중"
+      "cta": "측정 방법 보기"
     },
     "faq": {
       "title": "자주 묻는 질문",
@@ -111,10 +111,11 @@
       ]
     },
     "download": {
-      "title": "지금 바로 열어 보세요",
+      "title": "지금 바로 첫 파일을 열어 보세요",
       "body": "설치 파일 하나로 시작합니다. 개인·기업 모두 무료입니다.",
       "issues": "이슈 남기기",
-      "guide": "사용 안내"
+      "guide": "사용 안내",
+      "mac": "macOS 알림 받기"
     }
   },
   "Nav": {
@@ -131,6 +132,10 @@
       "license": "사용권"
     },
     "items": {
+      "features": {
+        "title": "기능",
+        "desc": "AnyThingISee가 무엇을 하는지 한눈에 봅니다."
+      },
       "overview": {
         "title": "소개",
         "desc": "AnyThingISee가 무엇을 하는지 한눈에 봅니다."

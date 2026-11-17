@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState, useTransition } from "react";
-import { Check, Gear } from "@/components/icons";
+import { Check, ChevronDown } from "@/components/icons";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 
@@ -73,20 +73,21 @@ export function SettingsMenu({ variant = "popover" }: { variant?: "popover" | "i
       <button
         ref={buttonRef}
         type="button"
-        aria-label={t("open")}
+        aria-label={`${t("language")}: ${LANGUAGE_NAMES[locale]}`}
         aria-expanded={open}
         aria-controls={`${id}-panel`}
         onClick={() => setOpen((v) => !v)}
-        className="rounded-md p-3 hover:bg-foreground/5"
+        className="inline-flex items-center gap-1 py-2 text-muted hover:text-ink"
       >
-        <Gear />
+        <span lang={locale}>{LANGUAGE_NAMES[locale]}</span>
+        <ChevronDown width={14} height={14} />
       </button>
       <div
         id={`${id}-panel`}
         role="dialog"
         aria-label={t("title")}
         hidden={!open}
-        className="absolute right-0 top-full mt-3 w-72 rounded-lg border border-border bg-header p-4 shadow-float"
+        className="absolute right-0 top-full mt-3 w-60 rounded-lg border border-border bg-surface p-3 shadow-float"
       >
         {panel}
       </div>
@@ -111,7 +112,7 @@ function Choice({
     <label
       lang={lang}
       className={`flex cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent ${
-        checked ? "border-foreground bg-foreground/5" : "border-transparent hover:bg-foreground/5"
+        checked ? "border-transparent bg-tint text-on-tint" : "border-transparent hover:bg-ink/5"
       } justify-between`}
     >
       <input type="radio" name={name} checked={checked} onChange={onChange} className="sr-only" />

@@ -11,7 +11,7 @@ export default function NotFound() {
       <p className="text-muted">{t("body")}</p>
       <Link
         href="/"
-        className="inline-flex items-center gap-2 rounded-lg bg-cta px-6 py-3 font-semibold text-cta-foreground hover:opacity-90"
+        className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-on-accent hover:opacity-90"
       >
         {t("home")}
         <ArrowRight width={18} height={18} />

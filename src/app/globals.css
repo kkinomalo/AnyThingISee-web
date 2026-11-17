@@ -21,6 +21,11 @@
   --accent: #a04914;
   --accent-hover: #8a3e10;
   --on-accent: #fffdf7;
+  /* 코드 강조: 강조색 12% 바탕 + 진한 강조 글자 (5.78:1) */
+  --tint: #eddfcf;
+  --on-tint: #8a3e10;
+  /* 줄 번호 · 주소 (5.10:1) */
+  --faint: #6f6656;
 
   --float-shadow: 0 0 4px rgb(31 27 22 / 0.04), 0 8px 16px rgb(31 27 22 / 0.08);
 }
@@ -37,6 +42,9 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-on-accent: var(--on-accent);
+  --color-tint: var(--tint);
+  --color-on-tint: var(--on-tint);
+  --color-faint: var(--faint);
   /* 예전 이름 호환 (헤더·푸터·설정 메뉴) */
   --color-header: var(--surface);
   --color-cta: var(--accent);
@@ -58,8 +66,8 @@
   h1 {
     font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
     font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
   h2 {
@@ -91,7 +99,7 @@ summary {
 }
 
 html {
-  scroll-padding-top: 104px; /* 고정 헤더 높이만큼 */
+  scroll-padding-top: 88px; /* 고정 헤더 높이만큼 */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -105,11 +113,9 @@ html {
   outline-offset: 2px;
 }
 
-/* 카드 — 표면색 + 1px 선 */
-@utility card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+/* 카드 대신 쓰는 구획 — 위 굵은 선 (시안 #28) */
+@utility rule-top {
+  border-top: 1px solid var(--ink);
 }
 
 /* 본문 안 링크 */

@@ -35,8 +35,8 @@ export default async function LicensePage({ params }: PageProps<"/[locale]/licen
       <h1>{t("title")}</h1>
       <p className="mt-5 max-w-3xl text-lg text-muted">{t("lead")}</p>
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-        <section aria-labelledby="summary-title" className="card p-6 sm:p-8">
+      <div className="mt-12 grid gap-x-16 gap-y-12 lg:grid-cols-[1.4fr_1fr]">
+        <section aria-labelledby="summary-title" className="rule-top pt-6">
           <h2 id="summary-title">
             {t("summary.title")}
           </h2>
@@ -51,7 +51,7 @@ export default async function LicensePage({ params }: PageProps<"/[locale]/licen
           <p className="mt-6 text-sm text-muted">{t("notice")}</p>
         </section>
 
-        <section aria-labelledby="originals-title" className="card h-fit p-6 sm:p-8">
+        <section aria-labelledby="originals-title" className="rule-top h-fit pt-6">
           <h2 id="originals-title">
             {t("originals.title")}
           </h2>
@@ -79,21 +79,21 @@ export default async function LicensePage({ params }: PageProps<"/[locale]/licen
           {t("third.title")}
         </h2>
         <p className="mt-3 max-w-3xl text-muted">{t("third.lead")}</p>
-        <div className="card mt-8 overflow-x-auto">
+        <div className="rule-top mt-8 overflow-x-auto">
           <table className="w-full min-w-[520px] text-left">
             <thead className="text-sm text-muted">
               <tr className="border-b border-border">
-                <th className="px-6 py-4 font-semibold">{t("third.component")}</th>
-                <th className="px-6 py-4 font-semibold">{t("third.license")}</th>
+                <th className="py-4 pr-6 font-semibold">{t("third.component")}</th>
+                <th className="py-4 pr-6 font-semibold">{t("third.license")}</th>
               </tr>
             </thead>
             <tbody>
               {components.map((c) => (
                 <tr key={c.name} className="border-b border-border last:border-0">
-                  <td translate="no" className="px-6 py-4">
+                  <td translate="no" className="py-4 pr-6">
                     {c.name}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="py-4 pr-6">
                     <a
                       href={`${BLOB}/licenses/${c.file}`}
                       target="_blank"

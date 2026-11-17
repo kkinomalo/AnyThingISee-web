@@ -26,12 +26,12 @@ export default async function ReleasesPage({ params }: PageProps<"/[locale]/rele
       {releases.length === 0 ? (
         <p className="mt-12 text-muted">{t("empty")}</p>
       ) : (
-        <ul className="mt-12 space-y-4">
+        <ul className="rule-top mt-12">
           {releases.map((r, i) => (
             <li key={r.tag}>
               <Link
                 href={`/releases/${r.tag}`}
-                className="group card flex flex-col gap-3 p-7 sm:flex-row sm:items-center sm:justify-between"
+                className="group flex flex-col gap-3 border-b border-border py-7 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
                   <h2 className="text-xl font-bold">{r.title}</h2>
