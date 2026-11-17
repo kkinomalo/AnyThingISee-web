@@ -120,8 +120,8 @@ html {
 
 /* 히어로 박스 바탕 — 옅은 점 무늬 (#32) */
 @utility dot-grid {
-  background-color: var(--surface);
-  background-image: radial-gradient(rgb(31 27 22 / 0.09) 1px, transparent 1.4px);
+  background-color: #fff;
+  background-image: radial-gradient(rgb(31 27 22 / 0.07) 1px, transparent 1.4px);
   background-size: 12px 12px;
 }
 

@@ -16,7 +16,8 @@
       "mac": "macOS version in development — get notified on GitHub",
       "windowsLink": "Get the Windows installer",
       "downloadNow": "Download now",
-      "explore": "Explore the features"
+      "explore": "Explore the features",
+      "goDownload": "Go to download"
     },
     "demo": {
       "title": "C and assembly move together",
