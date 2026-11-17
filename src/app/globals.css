@@ -8,10 +8,10 @@
   --ink-soft: #332d27;
   --accent: #f2c350; /* 로고 동공, 소량만 사용 */
 
-  --background: #fbf8ee;
+  --background: var(--ivory);
   --surface: var(--ivory-light);
   --foreground: var(--ink);
-  --muted: #6b6356;
+  --muted: #5f574a;
   --border: #e2d9b8;
   --brand: var(--ivory);
   --brand-foreground: var(--ink);

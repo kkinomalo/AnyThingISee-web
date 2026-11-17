@@ -15,7 +15,7 @@ export default function HomePage({ params }: PageProps<"/[locale]">) {
       <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{t("title")}</h1>
       <p className="max-w-xl text-lg text-muted">{t("tagline")}</p>
       <div className="flex flex-wrap items-center gap-3">
-        <span className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-brand-foreground">
+        <span className="rounded-full bg-header px-4 py-2 text-sm font-semibold shadow-float">
           {t("version")}
         </span>
         <code className="font-mono text-sm text-muted">Windows 10/11 x64</code>
