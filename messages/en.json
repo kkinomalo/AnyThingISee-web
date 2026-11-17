@@ -4,9 +4,148 @@
     "description": "A free analysis tool to read x64 PE and ELF files as linked C pseudocode and assembly, keep names and notes, and export patches."
   },
   "Home": {
-    "title": "AnyThingISee",
-    "tagline": "A local disassembler and decompiler for Windows. Analyze with C pseudocode and assembly side by side.",
-    "version": "Free Edition 0.1.0 Preview"
+    "hero": {
+      "eyebrow": "Local disassembler and decompiler for Windows",
+      "title": "Read what's behind the assembly,\nright on your PC",
+      "body": "Open an x64 PE or ELF and get C pseudocode linked line by line to assembly. Keep names and notes, patch instructions and export them to a separate file. No separate Ghidra or Java install needed.",
+      "download": "Free download",
+      "downloadMeta": "Windows 10/11 x64 · {version}",
+      "compare": "See benchmarks",
+      "visualLabel": "Example of C pseudocode shown side by side with assembly"
+    },
+    "release": {
+      "badge": "Latest",
+      "title": "Free Edition 0.1.0 Preview",
+      "body": "Our first public preview. Check important conditions, types and return values against the original assembly.",
+      "items": [
+        "Built-in C decompiler with assembly, graph and data views",
+        "Function and data navigation, project notes",
+        "Instruction patching with separate-file export",
+        "English, Korean and Japanese interface"
+      ],
+      "notes": "Release notes"
+    },
+    "features": {
+      "title": "Every view you need, in one window",
+      "body": "Open a file, pick a function, and the views move together.",
+      "items": [
+        {
+          "title": "C pseudocode ↔ assembly",
+          "body": "Select a C line to see the instructions at the linked addresses."
+        },
+        {
+          "title": "Graph, data and byte views",
+          "body": "Inspect the flow graph, data and file bytes for the same function."
+        },
+        {
+          "title": "Function and data navigation",
+          "body": "Double-click a function name to jump to it, or a data name to see its bytes."
+        },
+        {
+          "title": "Project names and notes",
+          "body": "Rename variables and functions and keep notes in a project."
+        },
+        {
+          "title": "Instruction patching",
+          "body": "Edit instructions, review the changes and export them to a separate file."
+        },
+        {
+          "title": "EN · KO · JA interface",
+          "body": "Switch language and display options in Settings; find shortcuts in Help."
+        }
+      ]
+    },
+    "flow": {
+      "title": "Getting started",
+      "steps": [
+        {
+          "title": "Open a file",
+          "body": "Choose a file or drop it onto the window. Opening a file never runs it."
+        },
+        {
+          "title": "Pick a function",
+          "body": "Select a function on the left and read C and assembly together."
+        },
+        {
+          "title": "Keep names and notes",
+          "body": "Create a project to keep renames and notes. Press F2 to rename."
+        },
+        {
+          "title": "Export a patch",
+          "body": "Edit instructions and export the result to a separate file."
+        }
+      ]
+    },
+    "setup": {
+      "title": "One install and you're done",
+      "body": "No separate Ghidra or Java install. Everything it needs ships in the installer.",
+      "rows": [
+        {
+          "label": "OS",
+          "value": "Windows 10/11 x64"
+        },
+        {
+          "label": "Targets",
+          "value": "x64 PE · ELF"
+        },
+        {
+          "label": "Interface",
+          "value": "English · 한국어 · 日本語"
+        },
+        {
+          "label": "Runtimes",
+          "value": ".NET Framework 4.6.2+, Microsoft Edge WebView2 Runtime"
+        },
+        {
+          "label": "Ghidra · Java",
+          "value": "Not required"
+        },
+        {
+          "label": "macOS",
+          "value": "In development"
+        }
+      ]
+    },
+    "compare": {
+      "title": "See how it compares",
+      "body": "We measure analysis time, memory and install size against Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions, and publish the results.",
+      "cta": "See benchmarks"
+    },
+    "faq": {
+      "title": "FAQ",
+      "items": [
+        {
+          "q": "Is it really free?",
+          "a": "Yes. Individuals and organizations can use the current Free Edition at no cost, including for commercial work. A future paid edition will not retroactively charge for this free version."
+        },
+        {
+          "q": "Is the source code available?",
+          "a": "The AnyThingISee source is not published. Bundled third-party components, such as the Ghidra native decompiler, keep their own licenses."
+        },
+        {
+          "q": "Windows shows a warning when I install.",
+          "a": "The installer is not code-signed yet. Check the SHA-256 and the download source on the download page. You don't need to turn off any security features."
+        },
+        {
+          "q": "Can I trust the decompiler output?",
+          "a": "This is a preview and complete recovery is not guaranteed for every binary. Verify types, conditions, call arguments and return values against the original assembly before relying on them."
+        },
+        {
+          "q": "Does it run on Mac?",
+          "a": "Only Windows 10/11 x64 is supported today. A macOS (Apple Silicon) version is in development."
+        },
+        {
+          "q": "Where do I report problems?",
+          "a": "Open a GitHub issue with the product version, Windows version, steps to reproduce and the error. Don't attach private binaries or personal data."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Open your first file today",
+      "body": "One installer to get started. Free for personal and commercial use.",
+      "download": "Free download",
+      "more": "Download details"
+    }
   },
   "Nav": {
     "label": "Main",
