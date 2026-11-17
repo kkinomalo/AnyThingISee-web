@@ -19,7 +19,7 @@ export default async function ReleasesPage({ params }: PageProps<"/[locale]/rele
 
   return (
     <div className="mx-auto w-full max-w-[1200px] px-6 pt-12">
-      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{t("title")}</h1>
+      <h1 className="display first-underline">{t("title")}</h1>
       <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">{t("lead")}</p>
 
       {releases.length === 0 ? (
@@ -30,7 +30,7 @@ export default async function ReleasesPage({ params }: PageProps<"/[locale]/rele
             <li key={r.tag}>
               <Link
                 href={`/releases/${r.tag}`}
-                className="group flex flex-col gap-3 rounded-xl bg-header p-7 shadow-float sm:flex-row sm:items-center sm:justify-between"
+                className="group card flex flex-col gap-3 p-7 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
                   <h2 className="text-xl font-bold">{r.title}</h2>

@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <div className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col items-start justify-center gap-5 px-6 py-24">
       <p className="font-mono text-sm text-muted">404</p>
-      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{t("title")}</h1>
+      <h1 className="title first-underline">{t("title")}</h1>
       <p className="text-muted">{t("body")}</p>
       <Link
         href="/"

@@ -31,27 +31,33 @@
       "items": [
         {
           "title": "C pseudocode ↔ assembly",
-          "body": "Select a C line to see the instructions at the linked addresses."
+          "body": "Select a C line to see the instructions at the linked addresses.",
+          "sub": "Read C right next to the assembly"
         },
         {
           "title": "Graph, data and byte views",
-          "body": "Inspect the flow graph, data and file bytes for the same function."
+          "body": "Inspect the flow graph, data and file bytes for the same function.",
+          "sub": "One function, every angle"
         },
         {
           "title": "Function and data navigation",
-          "body": "Double-click a function name to jump to it, or a data name to see its bytes."
+          "body": "Double-click a function name to jump to it, or a data name to see its bytes.",
+          "sub": "Follow names, not addresses"
         },
         {
           "title": "Project names and notes",
-          "body": "Rename variables and functions and keep notes in a project."
+          "body": "Rename variables and functions and keep notes in a project.",
+          "sub": "Keep what you've figured out"
         },
         {
           "title": "Instruction patching",
-          "body": "Edit instructions, review the changes and export them to a separate file."
+          "body": "Edit instructions, review the changes and export them to a separate file.",
+          "sub": "Original untouched, result in a new file"
         },
         {
           "title": "EN · KO · JA interface",
-          "body": "Switch language and display options in Settings; find shortcuts in Help."
+          "body": "Switch language and display options in Settings; find shortcuts in Help.",
+          "sub": "Work in your language"
         }
       ]
     },
@@ -140,11 +146,25 @@
         }
       ]
     },
-    "cta": {
-      "title": "Open your first file today",
-      "body": "One installer to get started. Free for personal and commercial use.",
-      "download": "Free download",
-      "more": "Download details"
+    "strip": [
+      "Windows 10/11 x64",
+      "x64 PE",
+      "ELF",
+      "C pseudocode",
+      "Assembly · Graph",
+      "English · 한국어 · 日本語"
+    ],
+    "linked": {
+      "title": "C and assembly move together",
+      "body": "Select a C line to highlight the instructions at the linked addresses. Double-click a function name to jump to it, or a data name to see its file bytes.",
+      "cta": "Read the user guide",
+      "note": "Illustration of how views are linked."
+    },
+    "contact": {
+      "title": "Still have questions?",
+      "body": "Report problems or ideas on GitHub Issues. The user guide covers everyday use.",
+      "issues": "Open an issue",
+      "guide": "User guide"
     }
   },
   "Nav": {

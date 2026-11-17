@@ -36,7 +36,7 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
         <ArrowRight width={16} height={16} className="rotate-180" />
         {t("back")}
       </Link>
-      <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">{release.title}</h1>
+      <h1 className="title mt-6">{release.title}</h1>
       <div className="mt-4">
         <ReleaseBadges release={release} latest={index === 0} />
       </div>
@@ -46,7 +46,7 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
           <Markdown>{release.body}</Markdown>
         </article>
 
-        <aside className="h-fit space-y-4 rounded-xl bg-header p-6 shadow-float lg:sticky lg:top-28">
+        <aside className="card h-fit space-y-4 p-6 lg:sticky lg:top-28">
           <h2 className="font-bold">{t("assets")}</h2>
           <ul className="space-y-4">
             {release.assets.map((a) => (
