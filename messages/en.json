@@ -206,5 +206,63 @@
     "title": "Page not found",
     "body": "The address has changed or the page is not ready yet.",
     "home": "Go home"
+  },
+  "Download": {
+    "title": "Download",
+    "lead": "The latest version is {version} ({date}). This is an early release, so please check analysis results against the original instructions.",
+    "button": "Download for Windows",
+    "meta": "{file} · {size}",
+    "table": {
+      "file": "File",
+      "os": "OS",
+      "size": "Size",
+      "version": "Version",
+      "macos": "macOS (Apple Silicon)",
+      "macosStatus": "In development."
+    },
+    "install": {
+      "title": "Install",
+      "steps": [
+        "Download the installer with the button above.",
+        "Run the installer and choose a setup language.",
+        "Read and accept the Free Edition license agreement, then install.",
+        "Launch AnyThingISee from the Start menu. A desktop shortcut is optional during setup."
+      ]
+    },
+    "webview": "If you're told WebView2 is missing, install the Evergreen Runtime x64 from Microsoft and run setup again. The installer does not download it for you.",
+    "webviewLink": "Get WebView2",
+    "requirements": {
+      "title": "Requirements",
+      "items": [
+        "Windows 10/11 x64",
+        ".NET Framework 4.6.2 or later",
+        "Microsoft Edge WebView2 Runtime",
+        "No separate Ghidra or Java install"
+      ]
+    },
+    "unsigned": {
+      "title": "About code signing",
+      "body": "The installer is not code-signed yet, so Windows may show a warning. Check the SHA-256 below and where you downloaded it from. You don't need to turn off security features or run files from other sources."
+    },
+    "verify": {
+      "title": "Verify the file",
+      "body": "Check the SHA-256 in PowerShell with the command below. Adjust the path to where you saved the file.",
+      "hash": "SHA-256",
+      "command": "PowerShell command"
+    },
+    "terms": {
+      "title": "Terms of use",
+      "body": "Free for individuals and organizations. The program source is not published. The installer includes the license agreement and third-party license documents.",
+      "link": "Read the license"
+    },
+    "previous": {
+      "title": "Previous versions",
+      "empty": "None yet.",
+      "notes": "Release notes"
+    },
+    "copy": "Copy",
+    "copied": "Copied",
+    "offline": "We couldn't reach GitHub, so this shows the last version we confirmed.",
+    "metaDescription": "The Windows x64 installer, setup steps and how to verify the SHA-256."
   }
 }
