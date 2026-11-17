@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { Download, ExternalArrow } from "@/components/icons";
+import { ArrowRight, Download, ExternalArrow } from "@/components/icons";
 import { external } from "@/lib/links";
 
 type Platform = "windows" | "other";
@@ -32,10 +32,10 @@ export function DownloadCta({
       <a
         href={href}
         download
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+        className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
       >
-        <Download width={18} height={18} />
         {label}
+        <ArrowRight width={18} height={18} />
       </a>
     );
   }
@@ -46,7 +46,7 @@ export function DownloadCta({
         href={`${external.repo}/releases`}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+        className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
       >
         {macLabel}
         <ExternalArrow width={16} height={16} />
