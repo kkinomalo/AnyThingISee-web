@@ -8,7 +8,7 @@
       "eyebrow": "Windows 向けローカル逆アセンブラー・逆コンパイラー",
       "title": "アセンブリの向こうのコードを、\n手元の PC で読み解く",
       "body": "x64 PE・ELF ファイルを開くと、C 疑似コードとアセンブリが行ごとに連動します。名前やメモを残し、命令を書き換えて別ファイルに書き出せます。Ghidra のネイティブ逆コンパイラーコアを内蔵しているため、Ghidra や Java を別途インストールする必要はありません。",
-      "download": "無料ダウンロード",
+      "download": "Windows 版を無料ダウンロード",
       "meta": "Windows 10/11 x64 · {size} · {version}",
       "warning": "インストール時に警告が出ますか？ · SHA-256 を確認",
       "badge": "{version} · {date}",
@@ -77,9 +77,9 @@
       ]
     },
     "compare": {
-      "title": "性能比較は準備中です",
+      "title": "性能比較は<em>準備中</em>です",
       "body": "Ghidra、IDA Free、Binary Ninja Free、Cutter と同じ条件で測定し、測定環境・バージョン・測定日・サンプルバイナリをあわせて公開します。",
-      "cta": "測定方法を見る · 結果は準備中"
+      "cta": "測定方法を見る"
     },
     "faq": {
       "title": "よくある質問",
@@ -111,10 +111,11 @@
       ]
     },
     "download": {
-      "title": "さっそく開いてみましょう",
+      "title": "さっそく最初のファイルを開いてみましょう",
       "body": "インストーラーひとつで始められます。個人・法人とも無料です。",
       "issues": "Issue を作成",
-      "guide": "使い方"
+      "guide": "使い方",
+      "mac": "macOS 版の通知を受け取る"
     }
   },
   "Nav": {
@@ -131,6 +132,10 @@
       "license": "利用規約"
     },
     "items": {
+      "features": {
+        "title": "機能",
+        "desc": "AnyThingISee でできることをひと目で確認できます。"
+      },
       "overview": {
         "title": "紹介",
         "desc": "AnyThingISee でできることをひと目で確認できます。"

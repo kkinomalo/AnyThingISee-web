@@ -21,7 +21,7 @@ export function DownloadButton({
     <a
       href={href}
       download
-      className={`inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-semibold transition ${color} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold transition ${color} ${className}`}
     >
       <Download width={18} height={18} />
       {label}

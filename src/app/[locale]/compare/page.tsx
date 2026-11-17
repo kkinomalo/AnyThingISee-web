@@ -30,9 +30,9 @@ export default async function ComparePage({ params }: PageProps<"/[locale]/compa
       <p className="mt-5 max-w-3xl text-lg text-muted">{t("lead")}</p>
 
       {measured.length === 0 ? (
-        <section className="mt-12 rounded-2xl bg-ink p-8 text-on-ink sm:p-12">
+        <section className="rule-top mt-12 pt-10">
           <h2>{t("pending.title")}</h2>
-          <p className="mt-4 max-w-2xl text-on-ink-muted">{t("pending.body")}</p>
+          <p className="mt-4 max-w-2xl text-muted">{t("pending.body")}</p>
         </section>
       ) : (
         <section className="mt-12 space-y-6">
@@ -41,7 +41,7 @@ export default async function ComparePage({ params }: PageProps<"/[locale]/compa
             {data.environment &&
               ` · ${t("env")}: ${data.environment.os} · ${data.environment.cpu} · ${data.environment.ramGB}GB · ${data.environment.disk}`}
           </p>
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-x-16 gap-y-12 lg:grid-cols-2">
             {measured.map((metric) => (
               <MetricCard
                 key={metric}
@@ -65,9 +65,9 @@ export default async function ComparePage({ params }: PageProps<"/[locale]/compa
       {/* 비교 대상 */}
       <section aria-labelledby="tools-title" className="mt-20">
         <h2 id="tools-title">{t("tools")}</h2>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="rule-top mt-8 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
           {data.tools.map((tool) => (
-            <li key={tool.id} className="card p-5">
+            <li key={tool.id} className="border-b border-border py-5">
               <a
                 href={tool.url}
                 target="_blank"
@@ -117,9 +117,9 @@ export default async function ComparePage({ params }: PageProps<"/[locale]/compa
       {data.samples.length > 0 && (
         <section aria-labelledby="samples-title" className="mt-20">
           <h2 id="samples-title">{t("samples")}</h2>
-          <ul className="mt-6 space-y-3">
+          <ul className="rule-top mt-6">
             {data.samples.map((s) => (
-              <li key={s.id} className="card p-5 text-sm">
+              <li key={s.id} className="border-b border-border py-5 text-sm">
                 <a href={s.source} target="_blank" rel="noopener noreferrer" className="text-link" translate="no">
                   {s.name}
                 </a>{" "}
@@ -160,7 +160,7 @@ function MetricCard({
   const max = Math.max(...rows.map((r) => r.value), 1);
   const sorted = [...rows].sort((a, b) => (LOWER_IS_BETTER[metric] ? a.value - b.value : b.value - a.value));
   return (
-    <figure className="card p-6">
+    <figure className="rule-top m-0 pt-5">
       <figcaption className="flex items-baseline justify-between gap-4">
         <h3>{title}</h3>
         <span className="text-sm text-muted">{hint}</span>

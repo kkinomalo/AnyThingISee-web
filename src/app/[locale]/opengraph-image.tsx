@@ -12,15 +12,14 @@ export function generateStaticParams() {
 }
 
 // Pretendard에는 일본어 가나가 없어 ja는 영어 문구를 쓴다
-const TAGLINE: Record<string, string> = {
-  ko: "Windows용 로컬 디스어셈블러·디컴파일러",
-  en: "Local disassembler and decompiler for Windows",
-  ja: "Local disassembler and decompiler for Windows",
+const TITLE: Record<string, [string, string]> = {
+  ko: ["어셈블리 너머의 코드를,", "내 PC에서 바로"],
+  en: ["Read what's behind the assembly,", "right on your PC"],
+  ja: ["Read what's behind the assembly,", "right on your PC"],
 };
+const NOTE: Record<string, string> = { ko: "Windows용 · 무료", en: "For Windows · Free", ja: "For Windows · Free" };
 
-const C = ["int check_key(const char *key)", "{", "  size_t n = strlen(key);", "  if (n != 16) return 0;", "  for (int i = 0; i < 16; i++)"];
-const ASM = ["push   rbx", "sub    rsp, 20h", "call   strlen", "cmp    rax, 10h", "jne    loc_140001058"];
-
+// 시안 #28: 밝은 바탕, 큰 제목, 아래 선 위 C ↔ 어셈블리 한 줄
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const font = (w: string) =>
@@ -30,36 +29,40 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
     font("Regular"),
     readFile(join(process.cwd(), "public/brand/logo.svg"), "base64"),
   ]);
+  const [l1, l2] = TITLE[locale] ?? TITLE.en;
+  const mark = { background: "#eddfcf", color: "#8a3e10", padding: "2px 10px", borderRadius: 6 };
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: "#f7f3e8", padding: 64, fontFamily: "Pretendard" }}>
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: 520 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <img src={`data:image/svg+xml;base64,${logo}`} width={88} height={88} alt="" />
-            <span style={{ fontSize: 44, fontWeight: 700, color: "#1f1b16" }}>AnyThingISee</span>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          background: "#f7f3e8",
+          padding: "64px 72px",
+          fontFamily: "Pretendard",
+          color: "#1f1b16",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <img src={`data:image/svg+xml;base64,${logo}`} width={64} height={64} alt="" />
+            <span style={{ fontSize: 34, fontWeight: 700 }}>AnyThingISee</span>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <span style={{ fontSize: 46, fontWeight: 700, color: "#1f1b16", lineHeight: 1.2, wordBreak: "keep-all" }}>{TAGLINE[locale] ?? TAGLINE.en}</span>
-            <span style={{ fontSize: 26, color: "#5f574a" }}>Free Edition · Windows 10/11 x64 · x64 PE · ELF</span>
-          </div>
+          <span style={{ fontSize: 22, color: "#5f574a" }}>kkinomalo.com</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", marginLeft: "auto", width: 500, borderRadius: 20, background: "#1f1b16", padding: 32, gap: 24, fontSize: 21 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            {C.map((l, i) => (
-              <span key={i} style={{ color: i === 3 ? "#fffdf7" : "#f7f3e8", background: i === 3 ? "#a04914" : "transparent", padding: "2px 10px", borderRadius: 6, whiteSpace: "pre" }}>
-                {l}
-              </span>
-            ))}
-          </div>
-          <div style={{ display: "flex", height: 1, background: "rgba(247,243,232,0.15)" }} />
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            {ASM.map((l, i) => (
-              <span key={i} style={{ color: i >= 3 ? "#fffdf7" : "#b8ad94", background: i >= 3 ? "#a04914" : "transparent", padding: "2px 10px", borderRadius: 6, whiteSpace: "pre" }}>
-                {l}
-              </span>
-            ))}
-          </div>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 72, fontWeight: 700, lineHeight: 1.08, letterSpacing: -2 }}>
+          <span>{l1}</span>
+          <span>{l2}</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 24, borderTop: "2px solid #1f1b16", paddingTop: 18, fontSize: 22 }}>
+          <span style={mark}>if (n != 16) return 0;</span>
+          <span style={{ color: "#6f6656" }}>↔</span>
+          <span style={mark}>cmp rax, 10h · jne</span>
+          <span style={{ marginLeft: "auto", fontSize: 20, color: "#5f574a" }}>{NOTE[locale] ?? NOTE.en}</span>
         </div>
       </div>
     ),

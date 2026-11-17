@@ -56,9 +56,9 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
       )}
 
       {/* 파일 목록 — 640px 이상은 표, 그 아래는 카드 */}
-      <ul className="mt-12 space-y-3 sm:hidden">
+      <ul className="rule-top mt-12 sm:hidden">
         {installer && (
-          <li className="card space-y-2 p-5">
+          <li className="space-y-2 border-b border-border py-5">
             <a href={installer.url} download translate="no" className="text-link block break-all font-mono text-sm">
               {installer.name}
             </a>
@@ -72,40 +72,40 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
             </dl>
           </li>
         )}
-        <li className="card p-5 text-sm">
+        <li className="border-b border-border py-5 text-sm">
           <p className="font-semibold">{t("table.macos")}</p>
           <p className="mt-1 text-muted">{t("table.macosStatus")}</p>
         </li>
       </ul>
-      <div className="card mt-12 hidden sm:block">
+      <div className="rule-top mt-12 hidden sm:block">
         <table className="w-full text-left">
           <thead className="text-sm text-muted">
             <tr className="border-b border-border">
-              <th className="px-6 py-4 font-semibold">{t("table.file")}</th>
-              <th className="px-6 py-4 font-semibold">{t("table.os")}</th>
-              <th className="px-6 py-4 font-semibold">{t("table.size")}</th>
-              <th className="px-6 py-4 font-semibold">{t("table.version")}</th>
+              <th className="py-4 pr-6 font-semibold">{t("table.file")}</th>
+              <th className="py-4 pr-6 font-semibold">{t("table.os")}</th>
+              <th className="py-4 pr-6 font-semibold">{t("table.size")}</th>
+              <th className="py-4 pr-6 font-semibold">{t("table.version")}</th>
             </tr>
           </thead>
           <tbody>
             {installer && (
               <tr className="border-b border-border">
-                <td className="px-6 py-4">
+                <td className="py-4 pr-6">
                   <a href={installer.url} download translate="no" className="text-link break-all font-mono text-sm">
                     {installer.name}
                   </a>
                 </td>
-                <td className="px-6 py-4">Windows 10/11 (x64)</td>
-                <td className="px-6 py-4 font-mono text-sm tabular-nums">{formatBytes(installer.size)}</td>
-                <td className="px-6 py-4">{latest.version}</td>
+                <td className="py-4 pr-6">Windows 10/11 (x64)</td>
+                <td className="py-4 pr-6 font-mono text-sm tabular-nums">{formatBytes(installer.size)}</td>
+                <td className="py-4 pr-6">{latest.version}</td>
               </tr>
             )}
             <tr className="text-muted">
-              <td className="px-6 py-4">{t("table.macos")}</td>
-              <td className="px-6 py-4" colSpan={2}>
+              <td className="py-4 pr-6">{t("table.macos")}</td>
+              <td className="py-4 pr-6" colSpan={2}>
                 {t("table.macosStatus")}
               </td>
-              <td className="px-6 py-4">—</td>
+              <td className="py-4 pr-6">—</td>
             </tr>
           </tbody>
         </table>
@@ -119,14 +119,14 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
           <ol className="mt-5 space-y-3">
             {(t.raw("install.steps") as string[]).map((step, i) => (
               <li key={step} className="flex gap-4">
-                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-ink font-mono text-xs font-bold text-on-ink">
+                <span className="w-6 shrink-0 pt-0.5 font-mono text-sm text-accent">
                   {i + 1}
                 </span>
                 <span className="pt-0.5 leading-relaxed">{step}</span>
               </li>
             ))}
           </ol>
-          <p className="mt-6 rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-muted">
+          <p className="mt-6 text-sm leading-relaxed text-muted">
             {t("webview")}{" "}
             <a
               href={WEBVIEW2_URL}
@@ -156,7 +156,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
       {installer?.sha256 && (
         <section id="verify" aria-labelledby="verify-title" className="mt-16">
           <h2 id="verify-title">{t("verify.title")}</h2>
-          <div className="card mt-6 max-w-3xl border-accent/40 p-5">
+          <div className="mt-6 max-w-3xl">
             <h3>{t("unsigned.title")}</h3>
             <p className="mt-2 text-muted">{t("unsigned.body")}</p>
           </div>
@@ -216,9 +216,9 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
 
 function CodeRow({ label, text, copy, copied }: { label: string; text: string; copy: string; copied: string }) {
   return (
-    <div className="rounded-lg bg-ink p-4 text-on-ink">
+    <div className="rule-top border-b border-border py-4">
       <div className="flex items-center justify-between gap-4">
-        <span className="text-xs font-semibold text-on-ink-muted">{label}</span>
+        <span className="text-xs font-semibold text-muted">{label}</span>
         <CopyButton text={text} label={copy} done={copied} />
       </div>
       <code translate="no" className="mt-3 block break-all font-mono text-sm leading-relaxed">{text}</code>

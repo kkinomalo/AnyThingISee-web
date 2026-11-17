@@ -8,7 +8,7 @@
       "eyebrow": "Local disassembler and decompiler for Windows",
       "title": "Read what's behind the assembly,\nright on your PC",
       "body": "Open an x64 PE or ELF and get C pseudocode linked line by line to assembly. Keep names and notes, patch instructions and export them to a separate file. The Ghidra native decompiler core is built in, so you don't need to install Ghidra or Java.",
-      "download": "Free download",
+      "download": "Free download for Windows",
       "meta": "Windows 10/11 x64 · {size} · {version}",
       "warning": "Seeing a warning on install? · Check SHA-256",
       "badge": "{version} · {date}",
@@ -77,9 +77,9 @@
       ]
     },
     "compare": {
-      "title": "Benchmarks are in progress",
+      "title": "Benchmarks are <em>in progress</em>",
       "body": "We'll measure against Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions and publish the environment, versions, dates and sample binaries alongside the results.",
-      "cta": "See the method · results in progress"
+      "cta": "See the method"
     },
     "faq": {
       "title": "FAQ",
@@ -114,7 +114,8 @@
       "title": "Open your first file today",
       "body": "One installer to get started. Free for personal and commercial use.",
       "issues": "Open an issue",
-      "guide": "User guide"
+      "guide": "User guide",
+      "mac": "Get notified for macOS"
     }
   },
   "Nav": {
@@ -131,6 +132,10 @@
       "license": "License"
     },
     "items": {
+      "features": {
+        "title": "Features",
+        "desc": "See what AnyThingISee does at a glance."
+      },
       "overview": {
         "title": "Overview",
         "desc": "See what AnyThingISee does at a glance."
