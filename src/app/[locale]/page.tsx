@@ -116,9 +116,13 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <h2>{t("compare.title")}</h2>
           <p className="mt-4 text-on-ink-muted">{t("compare.body")}</p>
         </div>
-        <span className="inline-flex w-fit items-center rounded-lg border border-on-ink/30 px-6 py-3 font-semibold text-on-ink-muted">
+        <Link
+          href="/compare"
+          className="inline-flex w-fit items-center gap-2 rounded-lg border border-on-ink/40 px-6 py-3 font-semibold text-on-ink transition-colors hover:bg-on-ink/10"
+        >
           {t("compare.cta")}
-        </span>
+          <ArrowRight width={18} height={18} />
+        </Link>
       </section>
 
       {/* FAQ */}

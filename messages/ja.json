@@ -79,7 +79,7 @@
     "compare": {
       "title": "性能比較は準備中です",
       "body": "Ghidra、IDA Free、Binary Ninja Free、Cutter と同じ条件で測定し、測定環境・バージョン・測定日・サンプルバイナリをあわせて公開します。",
-      "cta": "性能比較は準備中"
+      "cta": "測定方法を見る · 結果は準備中"
     },
     "faq": {
       "title": "よくある質問",
@@ -137,7 +137,7 @@
       },
       "compare": {
         "title": "性能比較",
-        "desc": "他の逆アセンブラー・逆コンパイラーと実測した結果です。"
+        "desc": "同じ条件で測定した結果と方法を公開します。"
       },
       "download": {
         "title": "ダウンロード",
@@ -283,5 +283,53 @@
     "open": "設定",
     "title": "設定",
     "language": "言語"
+  },
+  "Compare": {
+    "title": "性能比較",
+    "metaDescription": "AnyThingISee と Ghidra・IDA Free・Binary Ninja Free・Cutter を同じ条件で測定した結果と方法。",
+    "lead": "同じ PC・同じサンプルで実測した値だけを公開します。すべての数値に測定環境・バージョン・測定日を併記します。",
+    "pending": {
+      "title": "測定準備中",
+      "body": "公開できる測定結果はまだありません。下の方法で測定が終わると、このページに結果が表示されます。"
+    },
+    "tools": "比較対象",
+    "version": "バージョン",
+    "versionPending": "測定時に記録",
+    "ghidraNote": "AnyThingISee は Ghidra 11.4.3 のネイティブ逆コンパイラーコアを内蔵しているため、逆コンパイル結果や速度が Ghidra に近くなることがあります。",
+    "metrics": {
+      "title": "測定項目",
+      "install_size_mb": "インストールサイズ",
+      "cold_start_s": "初回起動時間",
+      "auto_analysis_s": "自動解析時間",
+      "decompile_s": "関数 1 つの逆コンパイル時間",
+      "peak_memory_mb": "最大メモリ",
+      "functions_found": "検出した関数の数"
+    },
+    "units": {
+      "install_size_mb": "MB",
+      "cold_start_s": "秒",
+      "auto_analysis_s": "秒",
+      "decompile_s": "秒",
+      "peak_memory_mb": "MB",
+      "functions_found": "個"
+    },
+    "lower": "低いほど良い",
+    "higher": "高いほど良い",
+    "method": {
+      "title": "測定方法",
+      "items": [
+        "Windows 11 x64 の 1 台で測定し、CPU・RAM・ディスク・ビルド番号を記録します。",
+        "公開・再配布可能な PE・ELF バイナリをサイズ別に使い、SHA-256 と入手元を公開します。",
+        "各項目を 3 回以上繰り返し、中央値を使います。",
+        "GUI のみのツールは手動で測定し、その旨を表示します。"
+      ],
+      "doc": "測定方法の全文を見る"
+    },
+    "env": "測定環境",
+    "updated": "測定日 {date}",
+    "sample": "サンプル",
+    "all": "すべて",
+    "samples": "サンプルバイナリ",
+    "noValue": "—"
   }
 }
