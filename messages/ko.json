@@ -194,7 +194,8 @@
         "title": "외부 구성요소 고지",
         "desc": "Ghidra 등 포함된 외부 구성요소의 라이선스입니다."
       }
-    }
+    },
+    "account": "내 계정"
   },
   "Footer": {
     "tagline": "Windows용 로컬 디스어셈블러·디컴파일러",
@@ -362,5 +363,31 @@
     "all": "전체",
     "samples": "샘플 바이너리",
     "noValue": "—"
+  },
+  "Auth": {
+    "title": "계정에 로그인",
+    "body": "Google · GitHub 계정이나 이메일로 로그인하세요. 처음이면 계정이 자동으로 만들어집니다.",
+    "google": "Google로 계속하기",
+    "github": "GitHub로 계속하기",
+    "or": "또는",
+    "email": "이메일 주소",
+    "emailPlaceholder": "name@example.com",
+    "submit": "로그인 링크 받기",
+    "sent": "{email}로 로그인 링크를 보냈습니다. 메일함을 확인하세요.",
+    "error": "로그인하지 못했습니다. 잠시 후 다시 시도해 주세요.",
+    "unavailable": "로그인 기능을 준비하고 있습니다. 조금만 기다려 주세요.",
+    "home": "홈",
+    "tagline": "어셈블리 너머의 코드를, 내 PC에서",
+    "license": "사용권"
+  },
+  "Account": {
+    "title": "내 계정",
+    "loading": "계정 정보를 불러오는 중…",
+    "email": "이메일",
+    "provider": "로그인 방법",
+    "emailLink": "이메일 링크",
+    "since": "가입일",
+    "soon": "구매 내역과 라이선스는 유료 에디션이 나오면 이곳에서 확인할 수 있습니다.",
+    "signOut": "로그아웃"
   }
 }

@@ -8,6 +8,7 @@ import { GeistSans } from "geist/font/sans";
 import { Analytics } from "@vercel/analytics/next";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import { BackToTop } from "@/components/layout/back-to-top";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { routing } from "@/i18n/routing";
@@ -52,12 +53,16 @@ export default async function LocaleLayout({
       <body className="flex min-h-full flex-col font-sans">
           <NextIntlClientProvider>
             <SkipLink />
-            <SiteHeader />
+            <SiteChrome>
+              <SiteHeader />
+            </SiteChrome>
             <main id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">
               {children}
             </main>
-            <SiteFooter />
-            <BackToTop />
+            <SiteChrome>
+              <SiteFooter />
+              <BackToTop />
+            </SiteChrome>
             <Analytics />
           </NextIntlClientProvider>
       </body>

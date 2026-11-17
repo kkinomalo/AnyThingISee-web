@@ -161,10 +161,10 @@ export function SiteHeader() {
               <SettingsMenu />
             </div>
             <Link
-              href="/download"
-              className="ml-2 hidden rounded-lg bg-accent px-6 py-3 text-[16px] font-semibold text-on-accent hover:bg-accent-hover sm:block"
+              href="/account"
+              className="ml-2 hidden rounded-lg bg-cta-dark px-6 py-3 text-[16px] font-semibold text-white hover:bg-cta-dark-hover sm:block"
             >
-              {t("download")}
+              {t("account")}
             </Link>
             <button
               ref={mobileButtonRef}
@@ -211,12 +211,20 @@ export function SiteHeader() {
           <section className="border-b border-border py-4">
             <SettingsMenu variant="inline" />
           </section>
-          <Link
-            href="/download"
-            className="mt-4 block rounded-lg bg-accent px-6 py-3.5 text-center font-semibold text-on-accent"
-          >
-            {t("download")}
-          </Link>
+          <div className="mt-4 grid gap-2">
+            <Link
+              href="/download"
+              className="block rounded-lg bg-accent px-6 py-3.5 text-center font-semibold text-on-accent"
+            >
+              {t("download")}
+            </Link>
+            <Link
+              href="/account"
+              className="block rounded-lg bg-cta-dark px-6 py-3.5 text-center font-semibold text-white"
+            >
+              {t("account")}
+            </Link>
+          </div>
         </div>
       </div>
     </header>
