@@ -264,5 +264,19 @@
     "copied": "복사됨",
     "offline": "GitHub에서 최신 정보를 불러오지 못해 마지막으로 확인한 버전을 보여 드립니다.",
     "metaDescription": "Windows x64 설치 파일과 설치 방법, SHA-256 확인 방법."
+  },
+  "Releases": {
+    "title": "릴리스 노트",
+    "lead": "버전별 변경 사항과 알려진 한계입니다. 원문은 GitHub 릴리스와 같습니다.",
+    "metaDescription": "AnyThingISee 버전별 변경 사항과 알려진 한계.",
+    "prerelease": "Preview",
+    "latest": "최신",
+    "published": "{date} 공개",
+    "assets": "파일",
+    "download": "다운로드",
+    "sha": "SHA-256",
+    "github": "GitHub에서 보기",
+    "back": "전체 릴리스",
+    "empty": "아직 공개된 릴리스가 없습니다."
   }
 }
