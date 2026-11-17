@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import { Analytics } from "@vercel/analytics/next";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
             </main>
             <SiteFooter />
             <BackToTop />
+            <Analytics />
           </NextIntlClientProvider>
       </body>
     </html>
