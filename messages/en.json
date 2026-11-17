@@ -298,5 +298,35 @@
     "github": "View on GitHub",
     "back": "All releases",
     "empty": "No releases yet."
+  },
+  "License": {
+    "title": "License",
+    "lead": "A summary of the AnyThingISee Free Edition license. The installer and the full text below govern.",
+    "metaDescription": "AnyThingISee Free Edition license summary and third-party notices.",
+    "summary": {
+      "title": "Summary",
+      "items": [
+        "Individuals and organizations may use the current Free Edition at no cost, including for commercial work.",
+        "The AnyThingISee source is under a proprietary license and is not distributed as open source.",
+        "A future paid edition may come with separate terms, but the current free version will not be retroactively charged.",
+        "Third-party components keep their own licenses; those documents are also included in the installer."
+      ]
+    },
+    "originals": {
+      "title": "Full license text",
+      "ko": "한국어 약관",
+      "en": "English license",
+      "ja": "日本語の利用規約"
+    },
+    "third": {
+      "title": "Third-party components",
+      "lead": "The Free Edition license does not restrict the rights these components' licenses grant.",
+      "component": "Component",
+      "license": "License",
+      "ghidraNote": "Ghidra is developed by the National Security Agency and its contributors. Its native core is embedded in AnyThingISee and is not represented as original AnyThingISee code. The complete Ghidra application and Java runtime are not included.",
+      "webviewNote": "The Microsoft Edge WebView2 Runtime is a prerequisite supplied separately by Microsoft. The installer includes WebView2 SDK components only.",
+      "full": "Read the full notices"
+    },
+    "notice": "This page is a summary for convenience; the full text is legally binding."
   }
 }

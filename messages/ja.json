@@ -298,5 +298,35 @@
     "github": "GitHub で見る",
     "back": "すべてのリリース",
     "empty": "公開済みのリリースはまだありません。"
+  },
+  "License": {
+    "title": "利用規約",
+    "lead": "AnyThingISee Free Edition 利用規約の概要です。実際の条件はインストーラーと下の原文に従います。",
+    "metaDescription": "AnyThingISee Free Edition 利用規約の概要とサードパーティー通知。",
+    "summary": {
+      "title": "概要",
+      "items": [
+        "個人・法人を問わず、商用利用を含めて現在の Free Edition を無料で使えます。",
+        "AnyThingISee 自体のソースは非公開のライセンスに従い、オープンソースとしては配布しません。",
+        "将来の有料版は別の条件で提供することがありますが、現在の無料版を遡って有料にすることはありません。",
+        "外部コンポーネントはそれぞれのライセンスに従い、その文書はインストーラーにも含まれています。"
+      ]
+    },
+    "originals": {
+      "title": "利用規約の原文",
+      "ko": "한국어 약관",
+      "en": "English license",
+      "ja": "日本語の利用規約"
+    },
+    "third": {
+      "title": "外部コンポーネント",
+      "lead": "Free Edition の利用規約は、以下のコンポーネントのライセンスが与える権利を制限しません。",
+      "component": "コンポーネント",
+      "license": "ライセンス",
+      "ghidraNote": "Ghidra は米国国家安全保障局（NSA）と貢献者によって開発されています。ネイティブコアは AnyThingISee に組み込まれており、AnyThingISee 独自のコードとしては表示しません。Ghidra アプリケーション全体と Java ランタイムは含みません。",
+      "webviewNote": "Microsoft Edge WebView2 Runtime は Microsoft が別途提供する必須コンポーネントです。インストーラーには WebView2 SDK コンポーネントのみが含まれています。",
+      "full": "通知の全文を見る"
+    },
+    "notice": "このページは理解のための概要であり、法的な効力は原文にあります。"
   }
 }
