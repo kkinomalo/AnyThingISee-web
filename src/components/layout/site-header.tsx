@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { ChevronDown, Close, GitHub, Menu } from "@/components/icons";
+import { ChevronDown, Close, ExternalArrow, GitHub, Menu } from "@/components/icons";
 import { NavLink } from "@/components/layout/nav-link";
 import { SettingsMenu } from "@/components/layout/settings-menu";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -234,9 +234,13 @@ function DropdownList({ items, isActive }: { items: NavItem[]; isActive: (item: 
             item={item}
             active={isActive(item)}
             externalLabel={t("external")}
+            externalIcon={false}
             className="block rounded-lg px-3.5 py-3 hover:bg-ink/5"
           >
-            <span className="block font-semibold">{t(`items.${item.key}.title`)}</span>
+            <span className="flex items-center gap-1.5 font-semibold">
+              {t(`items.${item.key}.title`)}
+              {item.external && <ExternalArrow width={14} height={14} className="opacity-60" />}
+            </span>
             <span className="mt-0.5 block text-sm leading-snug text-muted">{t(`items.${item.key}.desc`)}</span>
           </NavLink>
         </li>

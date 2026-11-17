@@ -81,14 +81,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               fill
               sizes="(min-width: 1440px) 1440px, 100vw"
               placeholder="blur"
-              className="-z-20 object-cover object-[50%_44%]"
+              className="-z-20 object-cover object-[50%_44%] brightness-[0.8]"
             />
-            {/* 레퍼런스와 같은 방향: 왼쪽 단색 → 42% 지점 조금 진하게 → 오른쪽 투명 */}
+            {/* 레퍼런스와 같은 방향: 왼쪽 단색 → 42% 지점 → 오른쪽으로 옅어짐. 흰 글자 대비를 위해 끝까지 완전히 투명하게는 두지 않는다 */}
             <div
               aria-hidden
-              className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(242,212,188,1)_0%,rgba(234,196,168,1)_42.31%,rgba(240,205,178,0)_100%)]"
+              className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(150,80,46,1)_0%,rgba(132,68,38,0.96)_42.31%,rgba(120,60,34,0.62)_100%)]"
             />
-            <div className="mx-auto grid max-w-[1200px] gap-x-16 gap-y-8 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-14">
+            <div className="mx-auto grid max-w-[1200px] gap-x-16 gap-y-8 px-5 py-12 text-white [text-shadow:0_1px_2px_rgb(0_0_0/0.25)] sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-14">
               <div>
                 <p className="text-sm font-semibold">
                   {t("release.label")}
@@ -98,7 +98,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 <p className="mt-4 max-w-[30rem] text-lg">{t("release.summary")}</p>
                 <Link
                   href={`/releases/${release.tag}`}
-                  className="mt-8 inline-flex items-center gap-2 rounded-lg bg-surface px-6 py-3.5 font-semibold shadow-float hover:bg-background"
+                  className="mt-8 inline-flex items-center gap-2 rounded-lg bg-surface px-6 py-3.5 font-semibold text-ink shadow-float [text-shadow:none] hover:bg-background"
                 >
                   {t("release.cta")}
                   <ArrowRight width={18} height={18} />
@@ -107,7 +107,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <ul className="space-y-3 self-center text-[17px]">
                 {releaseItems.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <Check width={20} height={20} className="mt-[3px] shrink-0 text-accent-hover" />
+                    <Check width={20} height={20} className="mt-[3px] shrink-0" />
                     {item}
                   </li>
                 ))}
