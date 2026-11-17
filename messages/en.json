@@ -264,5 +264,19 @@
     "copied": "Copied",
     "offline": "We couldn't reach GitHub, so this shows the last version we confirmed.",
     "metaDescription": "The Windows x64 installer, setup steps and how to verify the SHA-256."
+  },
+  "Releases": {
+    "title": "Release notes",
+    "lead": "Changes and known limitations by version. The text matches the GitHub release.",
+    "metaDescription": "Changes and known limitations for each AnyThingISee version.",
+    "prerelease": "Preview",
+    "latest": "Latest",
+    "published": "Published {date}",
+    "assets": "Files",
+    "download": "Download",
+    "sha": "SHA-256",
+    "github": "View on GitHub",
+    "back": "All releases",
+    "empty": "No releases yet."
   }
 }

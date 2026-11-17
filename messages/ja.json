@@ -264,5 +264,19 @@
     "copied": "コピーしました",
     "offline": "GitHub から最新情報を取得できなかったため、最後に確認したバージョンを表示しています。",
     "metaDescription": "Windows x64 インストーラー、インストール方法、SHA-256 の確認方法。"
+  },
+  "Releases": {
+    "title": "リリースノート",
+    "lead": "バージョンごとの変更点と既知の制限です。本文は GitHub のリリースと同じです。",
+    "metaDescription": "AnyThingISee のバージョンごとの変更点と既知の制限。",
+    "prerelease": "Preview",
+    "latest": "最新",
+    "published": "{date} 公開",
+    "assets": "ファイル",
+    "download": "ダウンロード",
+    "sha": "SHA-256",
+    "github": "GitHub で見る",
+    "back": "すべてのリリース",
+    "empty": "公開済みのリリースはまだありません。"
   }
 }
