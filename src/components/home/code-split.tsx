@@ -35,7 +35,7 @@ export function CodeSplit({ label }: { label: string }) {
         <span className="size-2.5 rounded-full bg-accent" />
         <span className="ml-3 font-mono text-xs text-ivory-light/50">check_key · 140001020</span>
       </div>
-      <div className="grid font-mono sm:grid-cols-2" aria-hidden>
+      <div translate="no" className="grid font-mono sm:grid-cols-2" aria-hidden>
         <pre className="overflow-x-auto border-ivory-light/10 p-4 sm:border-r">
           {cLines.map((l, i) => (
             <div key={i} className={l.link ? "-mx-2 rounded bg-accent/15 px-2 text-accent" : ""}>

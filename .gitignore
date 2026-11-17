@@ -40,5 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local agent config
-.claude/
+# local agent config (프로젝트 스킬은 공유)
+.claude/*
+!.claude/skills/

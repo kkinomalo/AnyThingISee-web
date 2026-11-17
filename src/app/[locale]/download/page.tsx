@@ -38,7 +38,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
   return (
     <div className="mx-auto w-full max-w-[1200px] px-6 pt-12">
       <header className="max-w-3xl">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{t("title")}</h1>
+        <h1 className="display first-underline">{t("title")}</h1>
         <p className="mt-5 text-lg leading-relaxed text-muted">
           {t("lead", { version: latest.version, date })}
         </p>
@@ -55,10 +55,10 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
       )}
 
       {/* 파일 표 */}
-      <div className="mt-12 overflow-x-auto rounded-xl bg-header shadow-float">
+      <div className="mt-12 overflow-x-auto card">
         <table className="w-full min-w-[560px] text-left">
           <thead className="text-sm text-muted">
-            <tr className="border-b border-foreground/10">
+            <tr className="border-b border-border">
               <th className="px-6 py-4 font-semibold">{t("table.file")}</th>
               <th className="px-6 py-4 font-semibold">{t("table.os")}</th>
               <th className="px-6 py-4 font-semibold">{t("table.size")}</th>
@@ -67,18 +67,18 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
           </thead>
           <tbody>
             {installer && (
-              <tr className="border-b border-foreground/10">
+              <tr className="border-b border-border">
                 <td className="px-6 py-4">
                   <a
                     href={installer.url}
                     download
-                    className="break-all font-mono text-sm underline underline-offset-4"
+                    translate="no" className="break-all font-mono text-sm underline underline-offset-4"
                   >
                     {installer.name}
                   </a>
                 </td>
                 <td className="px-6 py-4">Windows 10/11 (x64)</td>
-                <td className="px-6 py-4 font-mono text-sm">{formatBytes(installer.size)}</td>
+                <td className="px-6 py-4 font-mono text-sm tabular-nums">{formatBytes(installer.size)}</td>
                 <td className="px-6 py-4">{latest.version}</td>
               </tr>
             )}
@@ -95,7 +95,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
 
       <div className="mt-16 grid gap-12 lg:grid-cols-2">
         <section aria-labelledby="install-title">
-          <h2 id="install-title" className="text-2xl font-bold">
+          <h2 id="install-title" className="subtitle">
             {t("install.title")}
           </h2>
           <ol className="mt-5 space-y-3">
@@ -123,7 +123,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
         </section>
 
         <section aria-labelledby="req-title">
-          <h2 id="req-title" className="text-2xl font-bold">
+          <h2 id="req-title" className="subtitle">
             {t("requirements.title")}
           </h2>
           <ul className="mt-5 list-disc space-y-2 pl-5 leading-relaxed">
@@ -141,7 +141,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
       {/* 파일 확인 */}
       {installer?.sha256 && (
         <section aria-labelledby="verify-title" className="mt-16">
-          <h2 id="verify-title" className="text-2xl font-bold">
+          <h2 id="verify-title" className="subtitle">
             {t("verify.title")}
           </h2>
           <p className="mt-3 max-w-3xl leading-relaxed text-muted">{t("verify.body")}</p>
@@ -154,7 +154,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
 
       <div className="mt-16 grid gap-12 lg:grid-cols-2">
         <section aria-labelledby="terms-title">
-          <h2 id="terms-title" className="text-2xl font-bold">
+          <h2 id="terms-title" className="subtitle">
             {t("terms.title")}
           </h2>
           <p className="mt-3 leading-relaxed text-muted">{t("terms.body")}</p>
@@ -168,13 +168,13 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
         </section>
 
         <section aria-labelledby="prev-title">
-          <h2 id="prev-title" className="text-2xl font-bold">
+          <h2 id="prev-title" className="subtitle">
             {t("previous.title")}
           </h2>
           {previous.length === 0 ? (
             <p className="mt-3 text-muted">{t("previous.empty")}</p>
           ) : (
-            <ul className="mt-4 divide-y divide-foreground/10">
+            <ul className="mt-4 divide-y divide-border">
               {previous.map((r) => (
                 <li key={r.tag} className="flex flex-wrap items-center justify-between gap-3 py-3">
                   <span className="font-semibold">{r.version}</span>
@@ -205,7 +205,7 @@ function CodeRow({ label, text, copy, copied }: { label: string; text: string; c
         <span className="text-xs font-semibold text-ivory-light/60">{label}</span>
         <CopyButton text={text} label={copy} done={copied} />
       </div>
-      <code className="mt-3 block break-all font-mono text-sm leading-relaxed">{text}</code>
+      <code translate="no" className="mt-3 block break-all font-mono text-sm leading-relaxed">{text}</code>
     </div>
   );
 }

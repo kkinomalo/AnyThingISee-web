@@ -92,7 +92,7 @@ export function SiteHeader() {
             className="flex shrink-0 items-center gap-2.5 rounded-md px-1.5 py-1"
           >
             <Image src="/brand/logo.svg" alt="" width={36} height={36} priority />
-            <span className="text-lg font-bold tracking-tight">AnyThingISee</span>
+            <span translate="no" className="text-lg font-bold tracking-tight">AnyThingISee</span>
           </Link>
 
           {/* 데스크톱 메뉴 */}
@@ -191,7 +191,7 @@ export function SiteHeader() {
         <div
           id={`${baseId}-mobile`}
           hidden={!mobileOpen}
-          className="absolute inset-x-0 top-full mt-2 max-h-[calc(100dvh-112px)] overflow-y-auto rounded-lg bg-header p-4 shadow-float lg:hidden"
+          className="absolute inset-x-0 top-full mt-2 max-h-[calc(100dvh-112px)] overflow-y-auto overscroll-contain rounded-lg bg-header p-4 shadow-float lg:hidden"
         >
           {[...navGroups, { key: "license", items: licenseItems }].map((group) => (
             <section key={group.key} className="border-b border-border py-3 last:border-0">
