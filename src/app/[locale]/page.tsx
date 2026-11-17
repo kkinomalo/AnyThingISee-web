@@ -1,6 +1,7 @@
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { CodeDemo } from "@/components/home/code-demo";
 import { DownloadCta } from "@/components/home/download-cta";
+import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
 import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
 import { formatBytes } from "@/lib/format";
@@ -28,7 +29,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     version: release.version,
   });
 
-  const features = t.raw("features.items") as Item[];
+  const features = t.raw("features.items") as (Item & { icon: FeatureIconName; lead: string })[];
   const steps = t.raw("flow.steps") as Item[];
   const faqs = t.raw("faq.items") as Faq[];
   const releaseItems = t.raw("release.items") as string[];
@@ -115,27 +116,23 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
-      {/* 기능: 왼쪽 제목 · 오른쪽 번호 목록 */}
-      <section
-        id="features"
-        aria-labelledby="features-title"
-        className="grid scroll-mt-24 gap-x-20 gap-y-12 pt-40 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
-      >
-        <div>
-          <h2 id="features-title">{t("features.title")}</h2>
-          <p className="mt-5 max-w-sm text-muted">{t("features.body")}</p>
-        </div>
-        <ol className="rule-top">
-          {features.map((f, i) => (
-            <li key={f.title} className="grid grid-cols-[3.5rem_1fr] gap-2 border-b border-border py-6">
-              <span className="pt-0.5 font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <h3>{f.title}</h3>
-                <p className="mt-1 text-muted">{f.body}</p>
-              </div>
+      {/* 기능: 가운데 큰 제목 + 3×2 격자 (#34) */}
+      <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-40">
+        <h2 id="features-title" className="mx-auto max-w-[22em] text-center">
+          {t("features.title")}
+        </h2>
+        <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((f) => (
+            <li key={f.title} className="rounded-lg border border-border bg-surface p-8">
+              <span className="flex size-14 items-center justify-center rounded-md bg-tint text-on-tint">
+                <FeatureIcon name={f.icon} width={28} height={28} />
+              </span>
+              <h3 className="mt-8 text-2xl">{f.title}</h3>
+              <p className="mt-4 font-semibold">{f.lead}</p>
+              <p className="mt-3 text-muted">{f.body}</p>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
 
       {/* 처음 쓰는 순서: 가로 단계 */}
