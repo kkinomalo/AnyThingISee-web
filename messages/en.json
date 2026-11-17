@@ -79,7 +79,7 @@
     "compare": {
       "title": "Benchmarks are in progress",
       "body": "We'll measure against Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions and publish the environment, versions, dates and sample binaries alongside the results.",
-      "cta": "Benchmarks coming soon"
+      "cta": "See the method · results in progress"
     },
     "faq": {
       "title": "FAQ",
@@ -137,7 +137,7 @@
       },
       "compare": {
         "title": "Benchmarks",
-        "desc": "Measured results against other disassemblers and decompilers."
+        "desc": "Results and method, measured under the same conditions."
       },
       "download": {
         "title": "Download",
@@ -283,5 +283,53 @@
     "open": "Settings",
     "title": "Settings",
     "language": "Language"
+  },
+  "Compare": {
+    "title": "Benchmarks",
+    "metaDescription": "How AnyThingISee compares with Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions, and how we measured.",
+    "lead": "We only publish values we measured ourselves on the same PC with the same samples. Every number comes with the environment, versions and date.",
+    "pending": {
+      "title": "Measurements in progress",
+      "body": "There are no results to publish yet. Results will appear here once measurements following the method below are complete."
+    },
+    "tools": "Tools compared",
+    "version": "Version",
+    "versionPending": "Recorded when measured",
+    "ghidraNote": "AnyThingISee embeds the Ghidra 11.4.3 native decompiler core, so its decompiler output and speed may be close to Ghidra's.",
+    "metrics": {
+      "title": "What we measure",
+      "install_size_mb": "Install size",
+      "cold_start_s": "Cold start",
+      "auto_analysis_s": "Auto-analysis time",
+      "decompile_s": "Decompile one function",
+      "peak_memory_mb": "Peak memory",
+      "functions_found": "Functions found"
+    },
+    "units": {
+      "install_size_mb": "MB",
+      "cold_start_s": "s",
+      "auto_analysis_s": "s",
+      "decompile_s": "s",
+      "peak_memory_mb": "MB",
+      "functions_found": "functions"
+    },
+    "lower": "Lower is better",
+    "higher": "Higher is better",
+    "method": {
+      "title": "Method",
+      "items": [
+        "Measured on a single Windows 11 x64 machine; CPU, RAM, disk and build number are recorded.",
+        "Public, redistributable PE and ELF binaries in several sizes, with SHA-256 and source published.",
+        "Each metric is run at least 3 times and the median is used.",
+        "Tools that are GUI-only are timed manually, and marked as such."
+      ],
+      "doc": "Read the full method"
+    },
+    "env": "Environment",
+    "updated": "Measured {date}",
+    "sample": "Sample",
+    "all": "All",
+    "samples": "Sample binaries",
+    "noValue": "—"
   }
 }

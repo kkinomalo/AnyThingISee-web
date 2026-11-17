@@ -1,0 +1,13 @@
+{
+  "updatedAt": null,
+  "environment": null,
+  "tools": [
+    { "id": "anythingisee", "name": "AnyThingISee", "version": "0.1.0 Preview", "url": "https://github.com/kkinomalo/AnyThingISee-releases", "note": "Ghidra 11.4.3 네이티브 디컴파일러 코어 내장" },
+    { "id": "ghidra", "name": "Ghidra", "version": null, "url": "https://github.com/NationalSecurityAgency/ghidra" },
+    { "id": "ida-free", "name": "IDA Free", "version": null, "url": "https://hex-rays.com/ida-free" },
+    { "id": "binja-free", "name": "Binary Ninja Free", "version": null, "url": "https://binary.ninja/free/" },
+    { "id": "cutter", "name": "Cutter", "version": null, "url": "https://cutter.re/" }
+  ],
+  "samples": [],
+  "results": []
+}

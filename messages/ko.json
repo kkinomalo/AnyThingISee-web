@@ -79,7 +79,7 @@
     "compare": {
       "title": "성능 비교는 준비 중입니다",
       "body": "Ghidra, IDA Free, Binary Ninja Free, Cutter와 같은 조건에서 측정한 뒤 측정 환경·버전·측정일·샘플 바이너리를 함께 공개합니다.",
-      "cta": "성능 비교 준비 중"
+      "cta": "측정 방법 보기 · 결과 준비 중"
     },
     "faq": {
       "title": "자주 묻는 질문",
@@ -137,7 +137,7 @@
       },
       "compare": {
         "title": "성능 비교",
-        "desc": "다른 디스어셈블러·디컴파일러와 직접 측정한 결과입니다."
+        "desc": "같은 조건에서 측정한 결과와 방법을 공개합니다."
       },
       "download": {
         "title": "다운로드",
@@ -283,5 +283,53 @@
     "open": "설정",
     "title": "설정",
     "language": "언어"
+  },
+  "Compare": {
+    "title": "성능 비교",
+    "metaDescription": "AnyThingISee와 Ghidra · IDA Free · Binary Ninja Free · Cutter를 같은 조건에서 측정한 결과와 방법.",
+    "lead": "같은 PC · 같은 샘플로 직접 측정한 값만 공개합니다. 모든 수치에 측정 환경 · 버전 · 측정일을 함께 적습니다.",
+    "pending": {
+      "title": "측정 준비 중",
+      "body": "아직 공개할 측정 결과가 없습니다. 아래 방법으로 측정을 마치면 이 페이지에 결과가 표시됩니다."
+    },
+    "tools": "비교 대상",
+    "version": "버전",
+    "versionPending": "측정 시 기록",
+    "ghidraNote": "AnyThingISee는 Ghidra 11.4.3 네이티브 디컴파일러 코어를 내장하고 있어, 디컴파일 결과와 속도가 Ghidra와 비슷할 수 있습니다.",
+    "metrics": {
+      "title": "측정 항목",
+      "install_size_mb": "설치 크기",
+      "cold_start_s": "첫 실행 시간",
+      "auto_analysis_s": "자동 분석 시간",
+      "decompile_s": "함수 하나 디컴파일 시간",
+      "peak_memory_mb": "최대 메모리",
+      "functions_found": "찾은 함수 수"
+    },
+    "units": {
+      "install_size_mb": "MB",
+      "cold_start_s": "초",
+      "auto_analysis_s": "초",
+      "decompile_s": "초",
+      "peak_memory_mb": "MB",
+      "functions_found": "개"
+    },
+    "lower": "낮을수록 좋음",
+    "higher": "높을수록 좋음",
+    "method": {
+      "title": "측정 방법",
+      "items": [
+        "Windows 11 x64 한 대에서 측정하고 CPU · RAM · 디스크 · 빌드 번호를 기록합니다.",
+        "공개 · 재배포 가능한 PE · ELF 바이너리를 크기별로 사용하고 SHA-256과 출처를 공개합니다.",
+        "항목마다 3회 이상 반복해 중앙값을 씁니다.",
+        "GUI만 있는 도구는 수동으로 측정하며 그 사실을 표시합니다."
+      ],
+      "doc": "측정 방법 전체 보기"
+    },
+    "env": "측정 환경",
+    "updated": "측정일 {date}",
+    "sample": "샘플",
+    "all": "전체",
+    "samples": "샘플 바이너리",
+    "noValue": "—"
   }
 }
