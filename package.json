@@ -12,6 +12,8 @@
     "bench:merge": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/benchmark/merge.mts"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.0",
     "@vercel/analytics": "^2.0.1",
     "geist": "^1.9.2",
     "next": "16.4.6",

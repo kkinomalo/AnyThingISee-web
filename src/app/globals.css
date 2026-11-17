@@ -21,6 +21,9 @@
   --accent: #a04914;
   --accent-hover: #8a3e10;
   --on-accent: #fffdf7;
+  /* 검정에 가까운 갈색 CTA (다운로드 · 내 계정) */
+  --cta-dark: #2b1d13;
+  --cta-dark-hover: #45301f;
   /* 코드 강조: 강조색 12% 바탕 + 진한 강조 글자 (5.78:1) */
   --tint: #eddfcf;
   --on-tint: #8a3e10;
@@ -42,6 +45,8 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-on-accent: var(--on-accent);
+  --color-cta-dark: var(--cta-dark);
+  --color-cta-dark-hover: var(--cta-dark-hover);
   --color-tint: var(--tint);
   --color-on-tint: var(--on-tint);
   --color-faint: var(--faint);

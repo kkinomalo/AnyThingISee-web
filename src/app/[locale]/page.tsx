@@ -60,7 +60,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
               <Link
                 href="/download"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent-hover px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-[#743410]"
+                className="inline-flex items-center gap-2 rounded-lg bg-cta-dark px-7 py-3.5 font-semibold text-white transition-colors hover:bg-cta-dark-hover"
               >
                 {t("hero.goDownload")}
                 <ArrowRight width={18} height={18} />

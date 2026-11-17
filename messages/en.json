@@ -194,7 +194,8 @@
         "title": "Third-party notices",
         "desc": "Licenses for bundled components such as Ghidra."
       }
-    }
+    },
+    "account": "My account"
   },
   "Footer": {
     "tagline": "A local disassembler and decompiler for Windows",
@@ -362,5 +363,31 @@
     "all": "All",
     "samples": "Sample binaries",
     "noValue": "—"
+  },
+  "Auth": {
+    "title": "Sign in to your account",
+    "body": "Sign in with Google, GitHub or your email. If you're new, an account is created for you.",
+    "google": "Continue with Google",
+    "github": "Continue with GitHub",
+    "or": "or",
+    "email": "Email address",
+    "emailPlaceholder": "name@example.com",
+    "submit": "Email me a sign-in link",
+    "sent": "We sent a sign-in link to {email}. Check your inbox.",
+    "error": "We couldn't sign you in. Please try again shortly.",
+    "unavailable": "Sign-in is being set up. Please check back soon.",
+    "home": "Home",
+    "tagline": "Read what's behind the assembly, on your PC",
+    "license": "License"
+  },
+  "Account": {
+    "title": "My account",
+    "loading": "Loading your account…",
+    "email": "Email",
+    "provider": "Signed in with",
+    "emailLink": "Email link",
+    "since": "Member since",
+    "soon": "Purchases and licenses will appear here once the paid edition launches.",
+    "signOut": "Sign out"
   }
 }
