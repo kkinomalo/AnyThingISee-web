@@ -20,7 +20,7 @@ export default async function ReleasesPage({ params }: PageProps<"/[locale]/rele
 
   return (
     <div className="mx-auto w-full max-w-[1200px] px-6 pt-12">
-      <h1 className="display first-underline">{t("title")}</h1>
+      <h1>{t("title")}</h1>
       <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">{t("lead")}</p>
 
       {releases.length === 0 ? (

@@ -37,7 +37,7 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
         <ArrowRight width={16} height={16} className="rotate-180" />
         {t("back")}
       </Link>
-      <h1 className="title mt-6">{release.title}</h1>
+      <h1 className="mt-6">{release.title}</h1>
       <div className="mt-4">
         <ReleaseBadges release={release} latest={index === 0} />
       </div>

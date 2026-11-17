@@ -15,7 +15,7 @@ export function DownloadButton({
 }) {
   const color =
     variant === "ivory"
-      ? "bg-ivory text-ink hover:bg-ivory-light"
+      ? "bg-surface text-ink hover:bg-background"
       : "bg-cta text-cta-foreground hover:opacity-90";
   return (
     <a
