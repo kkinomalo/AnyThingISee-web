@@ -8,12 +8,15 @@ export function NavLink({
   item,
   active = false,
   externalLabel,
+  externalIcon = true,
   className = "",
   children,
 }: {
   item: NavItem;
   active?: boolean;
   externalLabel?: string;
+  /** false면 바깥 링크 화살표를 직접 그린다 (드롭다운에서 제목 옆에 두기 위해) */
+  externalIcon?: boolean;
   className?: string;
   children: ReactNode;
 }) {
@@ -21,7 +24,9 @@ export function NavLink({
     return (
       <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
         {children}
-        <ExternalArrow width={14} height={14} className="ml-1 inline-block align-[-1px] opacity-60" />
+        {externalIcon && (
+          <ExternalArrow width={14} height={14} className="ml-1 inline-block align-[-1px] opacity-60" />
+        )}
         {externalLabel && <span className="sr-only"> ({externalLabel})</span>}
       </a>
     );
