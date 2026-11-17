@@ -39,7 +39,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
   return (
     <div className="mx-auto w-full max-w-[1200px] px-6 pt-12">
       <header className="max-w-3xl">
-        <h1 className="display first-underline">{t("title")}</h1>
+        <h1>{t("title")}</h1>
         <p className="mt-5 text-lg leading-relaxed text-muted">
           {t("lead", { version: latest.version, date })}
         </p>
@@ -55,9 +55,30 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
         </div>
       )}
 
-      {/* 파일 표 */}
-      <div className="mt-12 overflow-x-auto card">
-        <table className="w-full min-w-[560px] text-left">
+      {/* 파일 목록 — 640px 이상은 표, 그 아래는 카드 */}
+      <ul className="mt-12 space-y-3 sm:hidden">
+        {installer && (
+          <li className="card space-y-2 p-5">
+            <a href={installer.url} download translate="no" className="text-link block break-all font-mono text-sm">
+              {installer.name}
+            </a>
+            <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+              <dt className="text-muted">{t("table.os")}</dt>
+              <dd>Windows 10/11 (x64)</dd>
+              <dt className="text-muted">{t("table.size")}</dt>
+              <dd className="font-mono tabular-nums">{formatBytes(installer.size)}</dd>
+              <dt className="text-muted">{t("table.version")}</dt>
+              <dd>{latest.version}</dd>
+            </dl>
+          </li>
+        )}
+        <li className="card p-5 text-sm">
+          <p className="font-semibold">{t("table.macos")}</p>
+          <p className="mt-1 text-muted">{t("table.macosStatus")}</p>
+        </li>
+      </ul>
+      <div className="card mt-12 hidden sm:block">
+        <table className="w-full text-left">
           <thead className="text-sm text-muted">
             <tr className="border-b border-border">
               <th className="px-6 py-4 font-semibold">{t("table.file")}</th>
@@ -70,11 +91,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
             {installer && (
               <tr className="border-b border-border">
                 <td className="px-6 py-4">
-                  <a
-                    href={installer.url}
-                    download
-                    translate="no" className="break-all font-mono text-sm underline underline-offset-4"
-                  >
+                  <a href={installer.url} download translate="no" className="text-link break-all font-mono text-sm">
                     {installer.name}
                   </a>
                 </td>
@@ -96,26 +113,26 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
 
       <div className="mt-16 grid gap-12 lg:grid-cols-2">
         <section aria-labelledby="install-title">
-          <h2 id="install-title" className="subtitle">
+          <h2 id="install-title">
             {t("install.title")}
           </h2>
           <ol className="mt-5 space-y-3">
             {(t.raw("install.steps") as string[]).map((step, i) => (
               <li key={step} className="flex gap-4">
-                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-ink font-mono text-xs font-bold text-accent">
+                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-ink font-mono text-xs font-bold text-on-ink">
                   {i + 1}
                 </span>
                 <span className="pt-0.5 leading-relaxed">{step}</span>
               </li>
             ))}
           </ol>
-          <p className="mt-6 rounded-lg border border-foreground/15 p-4 text-sm leading-relaxed text-muted">
+          <p className="mt-6 rounded-lg border border-border bg-surface p-4 text-sm leading-relaxed text-muted">
             {t("webview")}{" "}
             <a
               href={WEBVIEW2_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center font-semibold text-foreground underline underline-offset-4"
+              className="text-link inline-flex items-center"
             >
               {t("webviewLink")}
               <ExternalArrow width={14} height={14} className="ml-0.5" />
@@ -124,7 +141,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
         </section>
 
         <section aria-labelledby="req-title">
-          <h2 id="req-title" className="subtitle">
+          <h2 id="req-title">
             {t("requirements.title")}
           </h2>
           <ul className="mt-5 list-disc space-y-2 pl-5 leading-relaxed">
@@ -132,20 +149,18 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <div className="mt-8 rounded-lg bg-accent/20 p-5">
-            <h3 className="font-bold">{t("unsigned.title")}</h3>
-            <p className="mt-2 text-sm leading-relaxed">{t("unsigned.body")}</p>
-          </div>
         </section>
       </div>
 
       {/* 파일 확인 */}
       {installer?.sha256 && (
-        <section aria-labelledby="verify-title" className="mt-16">
-          <h2 id="verify-title" className="subtitle">
-            {t("verify.title")}
-          </h2>
-          <p className="mt-3 max-w-3xl leading-relaxed text-muted">{t("verify.body")}</p>
+        <section id="verify" aria-labelledby="verify-title" className="mt-16">
+          <h2 id="verify-title">{t("verify.title")}</h2>
+          <div className="card mt-6 max-w-3xl border-accent/40 p-5">
+            <h3>{t("unsigned.title")}</h3>
+            <p className="mt-2 text-muted">{t("unsigned.body")}</p>
+          </div>
+          <p className="mt-6 max-w-3xl text-muted">{t("verify.body")}</p>
           <div className="mt-6 space-y-4">
             <CodeRow label={t("verify.hash")} text={installer.sha256} copy={t("copy")} copied={t("copied")} />
             <CodeRow label={t("verify.command")} text={command} copy={t("copy")} copied={t("copied")} />
@@ -155,13 +170,13 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
 
       <div className="mt-16 grid gap-12 lg:grid-cols-2">
         <section aria-labelledby="terms-title">
-          <h2 id="terms-title" className="subtitle">
+          <h2 id="terms-title">
             {t("terms.title")}
           </h2>
           <p className="mt-3 leading-relaxed text-muted">{t("terms.body")}</p>
           <Link
             href="/license"
-            className="mt-4 inline-flex items-center gap-1.5 font-semibold underline underline-offset-4"
+            className="text-link mt-4 inline-flex items-center gap-1.5"
           >
             {t("terms.link")}
             <ArrowRight width={16} height={16} />
@@ -169,7 +184,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
         </section>
 
         <section aria-labelledby="prev-title">
-          <h2 id="prev-title" className="subtitle">
+          <h2 id="prev-title">
             {t("previous.title")}
           </h2>
           {previous.length === 0 ? (
@@ -201,9 +216,9 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
 
 function CodeRow({ label, text, copy, copied }: { label: string; text: string; copy: string; copied: string }) {
   return (
-    <div className="rounded-lg bg-ink p-4 text-ivory-light">
+    <div className="rounded-lg bg-ink p-4 text-on-ink">
       <div className="flex items-center justify-between gap-4">
-        <span className="text-xs font-semibold text-ivory-light/60">{label}</span>
+        <span className="text-xs font-semibold text-on-ink-muted">{label}</span>
         <CopyButton text={text} label={copy} done={copied} />
       </div>
       <code translate="no" className="mt-3 block break-all font-mono text-sm leading-relaxed">{text}</code>

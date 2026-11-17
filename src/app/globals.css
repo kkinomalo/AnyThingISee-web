@@ -1,77 +1,80 @@
 @import "tailwindcss";
 
 /*
- * 디자인 토큰 — 로고(public/brand/logo.svg) 색 + 레퍼런스 실측값
- * 레퍼런스: hex-rays.com(구성·크기·간격 95%), mobbin.com(자간·등장 모션 40%)
+ * 디자인 토큰 — 색 비율 60:30:10, 테마는 라이트 하나로 고정
+ * 60 상아색 배경 · 30 잉크(글자·어두운 블록) · 10 강조(딥 앰버, CTA·링크·코드 강조에만)
+ * 모든 글자/배경 조합 대비 4.5:1 이상 (#24 PR에 수치 기록)
  */
 :root {
-  --ivory: #eee6c4; /* 메인 */
-  --ivory-light: #f5eedf; /* 로고 눈 선 */
-  --ink: #221e19; /* 로고 배경 계열 */
-  --ink-soft: #332d27;
-  --accent: #f2c350; /* 로고 동공, 소량만 사용 */
+  color-scheme: light;
 
-  --background: var(--ivory);
-  --surface: var(--ivory-light);
-  --foreground: var(--ink);
+  /* 60 */
+  --bg: #f7f3e8;
+  --surface: #fffdf7;
+  --border: #e3dccb;
+  /* 30 */
+  --ink: #1f1b16;
   --muted: #5f574a;
-  --border: #d3c79c; /* 상아색 위 1px 선 */
-  --card: #fffdf7;
-  --dots: rgb(34 30 25 / 0.16);
-  --brand: var(--ivory);
-  --brand-foreground: var(--ink);
-  --header: #fffdf7;
-  --cta: #1d1a16; /* hex-rays #181818을 우리 잉크 쪽으로 */
-  --cta-foreground: #fffdf7;
-  --float-shadow: 0 0 4px rgb(34 30 25 / 0.04), 0 8px 16px rgb(34 30 25 / 0.08);
-}
+  --on-ink: #f7f3e8;
+  --on-ink-muted: #b8ad94;
+  /* 10 */
+  --accent: #a04914;
+  --accent-hover: #8a3e10;
+  --on-accent: #fffdf7;
 
-.dark {
-  --background: #1a1713;
-  --surface: var(--ink);
-  --foreground: var(--ivory-light);
-  --muted: #b3a98f;
-  --border: #3d362d;
-  --card: #221e19;
-  --dots: rgb(245 238 223 / 0.12);
-  --brand: var(--ivory);
-  --brand-foreground: var(--ink);
-  --header: #26211c;
-  --cta: var(--ivory);
-  --cta-foreground: var(--ink);
-  --float-shadow: 0 0 4px rgb(0 0 0 / 0.3), 0 8px 16px rgb(0 0 0 / 0.35);
+  --float-shadow: 0 0 4px rgb(31 27 22 / 0.04), 0 8px 16px rgb(31 27 22 / 0.08);
 }
-
-@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--bg);
   --color-surface: var(--surface);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
   --color-border: var(--border);
-  --color-card: var(--card);
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-ivory: var(--ivory);
-  --color-ivory-light: var(--ivory-light);
+  --color-foreground: var(--ink);
   --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-muted: var(--on-ink-muted);
   --color-accent: var(--accent);
-  --color-header: var(--header);
-  --color-cta: var(--cta);
-  --color-cta-foreground: var(--cta-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  /* 예전 이름 호환 (헤더·푸터·설정 메뉴) */
+  --color-header: var(--surface);
+  --color-cta: var(--accent);
+  --color-cta-foreground: var(--on-accent);
   --shadow-float: var(--float-shadow);
-  /* 라틴은 Geist(레퍼런스와 같은 글꼴), 한글·일본어는 Pretendard로 이어진다 */
+  /* 라틴은 Geist, 한글·일본어는 Pretendard로 이어진다 */
   --font-sans: var(--font-geist-sans), "Pretendard Variable", Pretendard, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-:root {
-  color-scheme: light;
-}
-.dark {
-  color-scheme: dark;
+/* 타입 스케일 — h1 36~64px(데스크톱 56~64) · h2 36~44px · h3 20px · 본문 16~17px/1.6 */
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-size: clamp(1rem, 0.96rem + 0.12vw, 1.0625rem);
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: clamp(2.25rem, 1.8rem + 1.2vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
 }
 
 /* 한국어는 낱말 단위로 줄바꿈 (일본어는 띄어쓰기가 없어 제외) */
@@ -85,13 +88,6 @@ a,
 button,
 summary {
   touch-action: manipulation;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-size: 16px;
-  line-height: 1.5;
 }
 
 html {
@@ -109,64 +105,20 @@ html {
   outline-offset: 2px;
 }
 
-/* 제목 크기 — hex-rays 실측 (H1 36 · H2 34 · H3 22, 600) + mobbin 자간 */
-@utility display {
-  text-wrap: balance;
-  font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.25rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-}
-@utility title {
-  text-wrap: balance;
-  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.125rem);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-}
-@utility subtitle {
-  text-wrap: balance;
-  font-size: 1.375rem;
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-
-/* hex-rays 제목 특징: 첫 글자 밑줄 */
-@utility first-underline {
-  &::first-letter {
-    text-decoration: underline;
-    text-decoration-thickness: 0.07em;
-    text-underline-offset: 0.12em;
-  }
-}
-
-/* 카드 — 1px 선, 작은 모서리 (hex-rays 4px, mobbin 쪽으로 조금 키움) */
+/* 카드 — 표면색 + 1px 선 */
 @utility card {
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
-/* 점무늬 배경 (하프톤 느낌) */
-@utility dots {
-  background-image: radial-gradient(var(--dots) 1.1px, transparent 1.3px);
-  background-size: 12px 12px;
-}
-
-/* 스크롤 등장 — CSS만 사용, 지원하지 않거나 움직임 줄이기면 그냥 보인다 */
-@keyframes reveal {
-  from {
-    opacity: 0;
-    translate: 0 16px;
-  }
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 40%;
-    }
+/* 본문 안 링크 */
+@utility text-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  &:hover {
+    color: var(--accent-hover);
   }
 }

@@ -32,12 +32,12 @@ export default async function LicensePage({ params }: PageProps<"/[locale]/licen
 
   return (
     <div className="mx-auto w-full max-w-[1200px] px-6 pt-12">
-      <h1 className="display first-underline">{t("title")}</h1>
+      <h1>{t("title")}</h1>
       <p className="mt-5 max-w-3xl text-lg text-muted">{t("lead")}</p>
 
       <div className="mt-12 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <section aria-labelledby="summary-title" className="card p-6 sm:p-8">
-          <h2 id="summary-title" className="subtitle">
+          <h2 id="summary-title">
             {t("summary.title")}
           </h2>
           <ul className="mt-5 space-y-4">
@@ -52,7 +52,7 @@ export default async function LicensePage({ params }: PageProps<"/[locale]/licen
         </section>
 
         <section aria-labelledby="originals-title" className="card h-fit p-6 sm:p-8">
-          <h2 id="originals-title" className="subtitle">
+          <h2 id="originals-title">
             {t("originals.title")}
           </h2>
           <ul className="mt-5 space-y-3">
@@ -75,7 +75,7 @@ export default async function LicensePage({ params }: PageProps<"/[locale]/licen
       </div>
 
       <section aria-labelledby="third-title" className="mt-16">
-        <h2 id="third-title" className="title first-underline">
+        <h2 id="third-title">
           {t("third.title")}
         </h2>
         <p className="mt-3 max-w-3xl text-muted">{t("third.lead")}</p>

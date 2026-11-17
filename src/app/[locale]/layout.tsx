@@ -9,16 +9,13 @@ import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
 import { alternates, SITE_URL } from "@/lib/seo";
 import "../globals.css";
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eee6c4" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1713" },
-  ],
+  themeColor: "#f7f3e8",
+  colorScheme: "light",
 };
 
 export function generateStaticParams() {
@@ -50,10 +47,8 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
-      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col font-sans">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider>
             <SkipLink />
             <SiteHeader />
@@ -63,7 +58,6 @@ export default async function LocaleLayout({
             <SiteFooter />
             <BackToTop />
           </NextIntlClientProvider>
-        </ThemeProvider>
       </body>
     </html>
   );

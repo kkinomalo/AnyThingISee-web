@@ -7,23 +7,23 @@
     "hero": {
       "eyebrow": "Local disassembler and decompiler for Windows",
       "title": "Read what's behind the assembly,\nright on your PC",
-      "body": "Open an x64 PE or ELF and get C pseudocode linked line by line to assembly. Keep names and notes, patch instructions and export them to a separate file. No separate Ghidra or Java install needed.",
+      "body": "Open an x64 PE or ELF and get C pseudocode linked line by line to assembly. Keep names and notes, patch instructions and export them to a separate file. The Ghidra native decompiler core is built in, so you don't need to install Ghidra or Java.",
       "download": "Free download",
-      "downloadMeta": "Windows 10/11 x64 · {version}",
-      "compare": "See benchmarks",
-      "visualLabel": "Example of C pseudocode shown side by side with assembly"
+      "meta": "Windows 10/11 x64 · {size} · {version}",
+      "warning": "Seeing a warning on install? · Check SHA-256",
+      "badge": "{version} · {date}",
+      "notes": "Release notes",
+      "mac": "macOS version in development — get notified on GitHub",
+      "windowsLink": "Get the Windows installer"
     },
-    "release": {
-      "badge": "Latest",
-      "title": "Free Edition 0.1.0 Preview",
-      "body": "Our first public preview. Check important conditions, types and return values against the original assembly.",
-      "items": [
-        "Built-in C decompiler with assembly, graph and data views",
-        "Function and data navigation, project notes",
-        "Instruction patching with separate-file export",
-        "English, Korean and Japanese interface"
-      ],
-      "notes": "Release notes"
+    "demo": {
+      "title": "C and assembly move together",
+      "body": "Hover over or click a C line to highlight the assembly that does the same work. Use Tab to move with the keyboard.",
+      "c": "C pseudocode",
+      "asm": "Assembly",
+      "live": "C line {line} → {count} assembly lines",
+      "note": "An illustration of how views are linked, not real analysis output.",
+      "label": "Example of C pseudocode linked to assembly"
     },
     "features": {
       "title": "Every view you need, in one window",
@@ -31,33 +31,27 @@
       "items": [
         {
           "title": "C pseudocode ↔ assembly",
-          "body": "Select a C line to see the instructions at the linked addresses.",
-          "sub": "Read C right next to the assembly"
+          "body": "Select a C line to see the instructions at the linked addresses."
         },
         {
           "title": "Graph, data and byte views",
-          "body": "Inspect the flow graph, data and file bytes for the same function.",
-          "sub": "One function, every angle"
+          "body": "Inspect the flow graph, data and file bytes for the same function."
         },
         {
           "title": "Function and data navigation",
-          "body": "Double-click a function name to jump to it, or a data name to see its bytes.",
-          "sub": "Follow names, not addresses"
+          "body": "Double-click a function name to jump to it, or a data name to see its bytes."
         },
         {
           "title": "Project names and notes",
-          "body": "Rename variables and functions and keep notes in a project.",
-          "sub": "Keep what you've figured out"
+          "body": "Rename variables and functions and keep notes in a project."
         },
         {
           "title": "Instruction patching",
-          "body": "Edit instructions, review the changes and export them to a separate file.",
-          "sub": "Original untouched, result in a new file"
+          "body": "Edit instructions, review the changes and export them to a separate file."
         },
         {
           "title": "EN · KO · JA interface",
-          "body": "Switch language and display options in Settings; find shortcuts in Help.",
-          "sub": "Work in your language"
+          "body": "Switch language and display options in Settings; find shortcuts in Help."
         }
       ]
     },
@@ -82,40 +76,10 @@
         }
       ]
     },
-    "setup": {
-      "title": "One install and you're done",
-      "body": "No separate Ghidra or Java install. Everything it needs ships in the installer.",
-      "rows": [
-        {
-          "label": "OS",
-          "value": "Windows 10/11 x64"
-        },
-        {
-          "label": "Targets",
-          "value": "x64 PE · ELF"
-        },
-        {
-          "label": "Interface",
-          "value": "English · 한국어 · 日本語"
-        },
-        {
-          "label": "Runtimes",
-          "value": ".NET Framework 4.6.2+, Microsoft Edge WebView2 Runtime"
-        },
-        {
-          "label": "Ghidra · Java",
-          "value": "Not required"
-        },
-        {
-          "label": "macOS",
-          "value": "In development"
-        }
-      ]
-    },
     "compare": {
-      "title": "See how it compares",
-      "body": "We measure analysis time, memory and install size against Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions, and publish the results.",
-      "cta": "See benchmarks"
+      "title": "Benchmarks are in progress",
+      "body": "We'll measure against Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions and publish the environment, versions, dates and sample binaries alongside the results.",
+      "cta": "Benchmarks coming soon"
     },
     "faq": {
       "title": "FAQ",
@@ -146,23 +110,9 @@
         }
       ]
     },
-    "strip": [
-      "Windows 10/11 x64",
-      "x64 PE",
-      "ELF",
-      "C pseudocode",
-      "Assembly · Graph",
-      "English · 한국어 · 日本語"
-    ],
-    "linked": {
-      "title": "C and assembly move together",
-      "body": "Select a C line to highlight the instructions at the linked addresses. Double-click a function name to jump to it, or a data name to see its file bytes.",
-      "cta": "Read the user guide",
-      "note": "Illustration of how views are linked."
-    },
-    "contact": {
-      "title": "Still have questions?",
-      "body": "Report problems or ideas on GitHub Issues. The user guide covers everyday use.",
+    "download": {
+      "title": "Open your first file today",
+      "body": "One installer to get started. Free for personal and commercial use.",
       "issues": "Open an issue",
       "guide": "User guide"
     }
@@ -257,7 +207,7 @@
         "Windows 10/11 x64",
         ".NET Framework 4.6.2 or later",
         "Microsoft Edge WebView2 Runtime",
-        "No separate Ghidra or Java install"
+        "Ghidra native decompiler core built in (no full Ghidra or Java included, and none needed)"
       ]
     },
     "unsigned": {

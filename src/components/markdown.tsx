@@ -25,7 +25,7 @@ export function Markdown({ children }: { children: string }) {
           code: (p) => <code className="rounded bg-foreground/10 px-1.5 py-0.5 font-mono text-[0.9em]" {...p} />,
           pre: (p) => (
             <pre
-              className="overflow-x-auto rounded-lg bg-ink p-4 font-mono text-sm text-ivory-light [&_code]:bg-transparent [&_code]:p-0"
+              className="overflow-x-auto rounded-lg bg-ink p-4 font-mono text-sm text-on-ink [&_code]:bg-transparent [&_code]:p-0"
               {...p}
             />
           ),
