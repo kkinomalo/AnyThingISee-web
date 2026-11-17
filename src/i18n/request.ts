@@ -10,6 +10,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
+    // 날짜는 서버·브라우저 모두 같은 기준으로 표시
+    timeZone: "Asia/Seoul",
     messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });

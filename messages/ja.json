@@ -206,5 +206,63 @@
     "title": "ページが見つかりません",
     "body": "アドレスが変わったか、まだ準備中のページです。",
     "home": "トップへ"
+  },
+  "Download": {
+    "title": "ダウンロード",
+    "lead": "最新版は {version}（{date}）です。初期公開版のため、解析結果は元の命令と合わせて確認してください。",
+    "button": "Windows 版をダウンロード",
+    "meta": "{file} · {size}",
+    "table": {
+      "file": "ファイル",
+      "os": "OS",
+      "size": "サイズ",
+      "version": "バージョン",
+      "macos": "macOS（Apple Silicon）",
+      "macosStatus": "開発中です。"
+    },
+    "install": {
+      "title": "インストール方法",
+      "steps": [
+        "上のボタンからインストーラーをダウンロードします。",
+        "インストーラーを実行し、セットアップの言語を選びます。",
+        "Free Edition 利用規約を確認して同意し、インストールします。",
+        "スタートメニューから AnyThingISee を起動します。デスクトップのショートカットはインストール中に選べます。"
+      ]
+    },
+    "webview": "WebView2 がないと表示された場合は、Microsoft 公式サイトから Evergreen Runtime x64 をインストールしてから再度実行してください。インストーラーが自動でダウンロードすることはありません。",
+    "webviewLink": "WebView2 を入手",
+    "requirements": {
+      "title": "動作環境",
+      "items": [
+        "Windows 10/11 x64",
+        ".NET Framework 4.6.2 以上",
+        "Microsoft Edge WebView2 Runtime",
+        "Ghidra・Java の別途インストール不要"
+      ]
+    },
+    "unsigned": {
+      "title": "コード署名について",
+      "body": "現在のインストーラーにはコード署名がないため、実行時に Windows の警告が出ることがあります。下の SHA-256 とダウンロード元を確認してください。セキュリティ機能を無効にしたり、別の入手元のファイルを実行したりする必要はありません。"
+    },
+    "verify": {
+      "title": "ファイルの確認",
+      "body": "PowerShell で次のコマンドを実行すると SHA-256 を確認できます。パスは保存した場所に合わせて変更してください。",
+      "hash": "SHA-256",
+      "command": "PowerShell コマンド"
+    },
+    "terms": {
+      "title": "利用条件",
+      "body": "個人・法人とも無料で使えます。プログラムのソースは公開していません。インストーラーに利用規約と外部コンポーネントのライセンス文書が含まれています。",
+      "link": "利用規約を見る"
+    },
+    "previous": {
+      "title": "以前のバージョン",
+      "empty": "まだありません。",
+      "notes": "リリースノート"
+    },
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "offline": "GitHub から最新情報を取得できなかったため、最後に確認したバージョンを表示しています。",
+    "metaDescription": "Windows x64 インストーラー、インストール方法、SHA-256 の確認方法。"
   }
 }
