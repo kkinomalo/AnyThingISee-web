@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { CodeDemo } from "@/components/home/code-demo";
 import { DownloadCta } from "@/components/home/download-cta";
@@ -7,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
 import { external } from "@/lib/links";
+import releaseBand from "../../../public/images/release-band.jpg";
 
 type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
@@ -72,7 +74,20 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </div>
 
           {/* 릴리스 띠 */}
-          <div className="bg-[linear-gradient(100deg,#ead7bd,#dcc09c)]">
+          <div className="relative isolate">
+            <Image
+              src={releaseBand}
+              alt=""
+              fill
+              sizes="(min-width: 1440px) 1440px, 100vw"
+              placeholder="blur"
+              className="-z-20 object-cover object-[50%_44%]"
+            />
+            {/* 레퍼런스와 같은 방향: 왼쪽 단색 → 42% 지점 조금 진하게 → 오른쪽 투명 */}
+            <div
+              aria-hidden
+              className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(242,212,188,1)_0%,rgba(234,196,168,1)_42.31%,rgba(240,205,178,0)_100%)]"
+            />
             <div className="mx-auto grid max-w-[1200px] gap-x-16 gap-y-8 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-14">
               <div>
                 <p className="text-sm font-semibold">
@@ -116,7 +131,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* 기능: 가운데 큰 제목 + 3×2 격자 (#34) */}
       <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-40">
         <h2 id="features-title" className="mx-auto max-w-[22em] text-center">
-          {t("features.title")}
+          {t.rich("features.title", {
+            u: (chunks) => <span className="underline decoration-[3px] underline-offset-[6px]">{chunks}</span>,
+          })}
         </h2>
         <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
