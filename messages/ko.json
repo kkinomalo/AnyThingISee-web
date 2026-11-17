@@ -6,15 +6,17 @@
   "Home": {
     "hero": {
       "eyebrow": "Windows용 로컬 디스어셈블러·디컴파일러",
-      "title": "어셈블리 너머의 코드를,\n내 PC에서 바로 읽습니다",
-      "body": "x64 PE·ELF 파일을 열면 C 의사코드와 어셈블리가 나란히 연결됩니다. 이름과 메모를 남기고, 명령어를 고쳐 별도 파일로 내보내세요. Ghidra 네이티브 디컴파일러 코어가 들어 있어 Ghidra나 Java를 따로 설치하지 않아도 됩니다.",
+      "title": "디스어셈블, 디컴파일, 패치까지 AnyThingISee 하나로",
+      "body": "AnyThingISee는 Windows에서 바로 쓰는 로컬 바이너리 분석 도구입니다. x64 PE·ELF 파일의 C 의사코드와 어셈블리를 한 줄씩 맞춰 읽고, 이름 · 메모 · 명령어 패치까지 한 화면에서 끝내세요. Ghidra 네이티브 디컴파일러 코어가 들어 있어 Ghidra나 Java를 따로 설치하지 않아도 되고, 파일은 내 PC 밖으로 나가지 않습니다.",
       "download": "Windows용 무료 다운로드",
       "meta": "Windows 10/11 x64 · {size} · {version}",
       "warning": "설치 시 경고가 나오나요? · SHA-256 확인",
       "badge": "{version} · {date}",
       "notes": "릴리스 노트",
       "mac": "macOS 버전 준비 중 — GitHub에서 알림 받기",
-      "windowsLink": "Windows용 설치 파일 받기"
+      "windowsLink": "Windows용 설치 파일 받기",
+      "downloadNow": "지금 다운로드",
+      "explore": "기능 살펴보기"
     },
     "demo": {
       "title": "C 코드와 어셈블리가 함께 움직입니다",
@@ -116,6 +118,18 @@
       "issues": "이슈 남기기",
       "guide": "사용 안내",
       "mac": "macOS 알림 받기"
+    },
+    "release": {
+      "summary": "첫 공개 Preview입니다. 개인과 기업 모두 무료로 쓰는 Free Edition에 분석에 꼭 필요한 기능부터 담았습니다.",
+      "items": [
+        "내장 C 디컴파일러와 어셈블리 · 그래프 · 데이터 보기",
+        "함수 · 데이터 탐색과 프로젝트 메모",
+        "명령어 패치와 별도 파일 내보내기",
+        "한국어 · 영어 · 일본어 인터페이스",
+        "Ghidra · Java 별도 설치 없이 바로 실행"
+      ],
+      "cta": "릴리스 노트",
+      "label": "최신 릴리스"
     }
   },
   "Nav": {

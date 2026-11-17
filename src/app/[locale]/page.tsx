@@ -1,7 +1,7 @@
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { CodeDemo } from "@/components/home/code-demo";
 import { DownloadCta } from "@/components/home/download-cta";
-import { ArrowRight } from "@/components/icons";
+import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
 import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
@@ -31,6 +31,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const features = t.raw("features.items") as Item[];
   const steps = t.raw("flow.steps") as Item[];
   const faqs = t.raw("faq.items") as Faq[];
+  const releaseItems = t.raw("release.items") as string[];
 
   const cta = installer && (
     <DownloadCta
@@ -42,33 +43,70 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   );
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-6">
-      {/* 히어로 */}
-      <section className="pt-20 lg:pt-28">
-        <p className="text-[15px] text-muted">
-          <Link href={`/releases/${release.tag}`} className="text-ink hover:text-accent">
-            {t("hero.badge", { version: release.version, date })}
-          </Link>
-          <span aria-hidden className="mx-2">
-            —
-          </span>
-          <Link href={`/releases/${release.tag}`} className="text-link">
-            {t("hero.notes")}
-          </Link>
-        </p>
-        <h1 className="mt-7 max-w-[13em]">{t("hero.title")}</h1>
-        <div className="mt-10 grid items-end gap-x-16 gap-y-8 lg:grid-cols-2">
-          <p className="max-w-[34rem] text-lg text-muted">{t("hero.body")}</p>
-          <div>
-            {cta}
-            <p className="mt-3.5 font-mono text-sm text-muted">{meta}</p>
-            <Link href="/download#verify" className="text-link mt-1.5 inline-block text-[15px]">
-              {t("hero.warning")}
-            </Link>
+    <>
+      {/* 히어로: 헤더가 겹쳐 올라가는 큰 박스 + 아래 릴리스 띠 (#32) */}
+      <div className="-mt-[70px] px-1.5 sm:-mt-[74px] sm:px-2.5 lg:-mt-[80px]">
+        <section className="dot-grid mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-border">
+          <div className="mx-auto max-w-[1200px] px-5 pb-16 pt-[120px] sm:px-8 lg:pb-24 lg:pt-[184px]">
+            <h1 className="max-w-[17em]">{t("hero.title")}</h1>
+            <p className="mt-7 max-w-[40rem] text-lg">{t("hero.body")}</p>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+              {installer && (
+                <DownloadCta
+                  href={installer.url}
+                  label={t("hero.downloadNow")}
+                  macLabel={t("hero.mac")}
+                  windowsLinkLabel={t("hero.windowsLink")}
+                />
+              )}
+              <a href="#features" className="inline-flex items-center gap-2 font-semibold underline underline-offset-4 hover:text-accent">
+                {t("hero.explore")}
+                <ArrowRight width={18} height={18} />
+              </a>
+            </div>
+            <p className="mt-6 text-sm text-muted">
+              <span className="font-mono">{meta}</span>
+              <span aria-hidden className="mx-2">·</span>
+              <Link href="/download#verify" className="underline underline-offset-4 hover:text-accent">
+                {t("hero.warning")}
+              </Link>
+            </p>
           </div>
-        </div>
 
-        <div className="mt-20">
+          {/* 릴리스 띠 */}
+          <div className="bg-[linear-gradient(100deg,#ead7bd,#dcc09c)]">
+            <div className="mx-auto grid max-w-[1200px] gap-x-16 gap-y-8 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-14">
+              <div>
+                <p className="text-sm font-semibold">
+                  {t("release.label")}
+                  {date && <span className="font-normal"> · {date}</span>}
+                </p>
+                <h2 className="mt-2 text-[clamp(2rem,1.6rem+1.4vw,2.75rem)]">{release.version}</h2>
+                <p className="mt-4 max-w-[30rem] text-lg">{t("release.summary")}</p>
+                <Link
+                  href={`/releases/${release.tag}`}
+                  className="mt-8 inline-flex items-center gap-2 rounded-lg bg-surface px-6 py-3.5 font-semibold shadow-float hover:bg-background"
+                >
+                  {t("release.cta")}
+                  <ArrowRight width={18} height={18} />
+                </Link>
+              </div>
+              <ul className="space-y-3 self-center text-[17px]">
+                {releaseItems.map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <Check width={20} height={20} className="mt-[3px] shrink-0 text-accent-hover" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    <div className="mx-auto w-full max-w-[1200px] px-6">
+      <section className="pt-24">
+        <div>
           <h2 className="sr-only">{t("demo.title")}</h2>
           <CodeDemo />
           <p className="mt-3 text-sm text-muted">
@@ -168,5 +206,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </p>
       </section>
     </div>
+    </>
   );
 }

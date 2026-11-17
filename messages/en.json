@@ -6,15 +6,17 @@
   "Home": {
     "hero": {
       "eyebrow": "Local disassembler and decompiler for Windows",
-      "title": "Read what's behind the assembly,\nright on your PC",
-      "body": "Open an x64 PE or ELF and get C pseudocode linked line by line to assembly. Keep names and notes, patch instructions and export them to a separate file. The Ghidra native decompiler core is built in, so you don't need to install Ghidra or Java.",
+      "title": "Disassemble, decompile and patch with AnyThingISee",
+      "body": "AnyThingISee is a local binary analysis tool that runs right on Windows. Read C pseudocode and assembly side by side, line by line, for x64 PE and ELF files, and handle names, notes and instruction patches in one view. The Ghidra native decompiler core is built in, so there's no Ghidra or Java to install, and your files never leave your PC.",
       "download": "Free download for Windows",
       "meta": "Windows 10/11 x64 · {size} · {version}",
       "warning": "Seeing a warning on install? · Check SHA-256",
       "badge": "{version} · {date}",
       "notes": "Release notes",
       "mac": "macOS version in development — get notified on GitHub",
-      "windowsLink": "Get the Windows installer"
+      "windowsLink": "Get the Windows installer",
+      "downloadNow": "Download now",
+      "explore": "Explore the features"
     },
     "demo": {
       "title": "C and assembly move together",
@@ -116,6 +118,18 @@
       "issues": "Open an issue",
       "guide": "User guide",
       "mac": "Get notified for macOS"
+    },
+    "release": {
+      "summary": "Our first public preview. The Free Edition, free for individuals and organizations alike, starts with the features analysis needs most.",
+      "items": [
+        "Built-in C decompiler with assembly, graph and data views",
+        "Function and data navigation with project notes",
+        "Instruction patching with export to a separate file",
+        "Korean, English and Japanese interface",
+        "Runs without installing Ghidra or Java"
+      ],
+      "cta": "Release notes",
+      "label": "Latest release"
     }
   },
   "Nav": {
