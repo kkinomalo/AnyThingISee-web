@@ -11,6 +11,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
+import { alternates, SITE_URL } from "@/lib/seo";
 import "../globals.css";
 
 export const viewport: Viewport = {
@@ -30,8 +31,10 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
   return {
+    metadataBase: new URL(SITE_URL),
     title: { default: t("title"), template: `%s · AnyThingISee` },
     description: t("description"),
+    alternates: alternates(locale),
   };
 }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { alternates } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Check, ExternalArrow } from "@/components/icons";
 import { routing, type Locale } from "@/i18n/routing";
@@ -18,7 +19,7 @@ const components = [
 export async function generateMetadata({ params }: PageProps<"/[locale]/license">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "License" });
-  return { title: t("title"), description: t("metaDescription") };
+  return { title: t("title"), description: t("metaDescription"), alternates: alternates(locale, "/license") };
 }
 
 export default async function LicensePage({ params }: PageProps<"/[locale]/license">) {

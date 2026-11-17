@@ -328,5 +328,10 @@
       "full": "Read the full notices"
     },
     "notice": "This page is a summary for convenience; the full text is legally binding."
+  },
+  "Settings": {
+    "open": "Settings",
+    "title": "Settings",
+    "language": "Language"
   }
 }

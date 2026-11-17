@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { alternates } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight } from "@/components/icons";
 import { ReleaseBadges } from "@/components/release-meta";
@@ -8,7 +9,7 @@ import { getReleases } from "@/lib/github";
 export async function generateMetadata({ params }: PageProps<"/[locale]/releases">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Releases" });
-  return { title: t("title"), description: t("metaDescription") };
+  return { title: t("title"), description: t("metaDescription"), alternates: alternates(locale, "/releases") };
 }
 
 export default async function ReleasesPage({ params }: PageProps<"/[locale]/releases">) {

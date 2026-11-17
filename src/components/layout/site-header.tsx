@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { ChevronDown, Close, Download, GitHub, Menu } from "@/components/icons";
 import { NavLink } from "@/components/layout/nav-link";
+import { SettingsMenu } from "@/components/layout/settings-menu";
 import { Link, usePathname } from "@/i18n/navigation";
 import { external, licenseItems, navGroups, type NavItem } from "@/lib/links";
 
@@ -162,7 +163,9 @@ export function SiteHeader() {
             >
               <GitHub />
             </a>
-            {/* #14 설정(언어·화면 모드) 버튼 자리 */}
+            <div className="hidden lg:block">
+              <SettingsMenu />
+            </div>
             <Link
               href="/download"
               className="hidden items-center gap-2 rounded-lg bg-cta px-6 py-3 text-[15px] font-semibold text-cta-foreground hover:opacity-90 sm:flex"
@@ -214,6 +217,9 @@ export function SiteHeader() {
               </ul>
             </section>
           ))}
+          <section className="border-b border-border py-4">
+            <SettingsMenu variant="inline" />
+          </section>
           <Link
             href="/download"
             className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-cta px-6 py-3 font-semibold text-cta-foreground"
