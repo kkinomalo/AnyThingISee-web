@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
-import { CodeDemo } from "@/components/home/code-demo";
 import { DownloadCta } from "@/components/home/download-cta";
 import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
+import { Screenshot } from "@/components/home/screenshot";
 import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
 import { downloadPath } from "@/lib/downloads";
@@ -10,12 +10,17 @@ import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
 import { external } from "@/lib/links";
 import releaseBand from "../../../public/images/release-band.jpg";
+import cEn from "../../../public/screens/c-en.webp";
+import cKo from "../../../public/screens/c-ko.webp";
+import graphEn from "../../../public/screens/graph-en.webp";
+import graphKo from "../../../public/screens/graph-ko.webp";
+import startEn from "../../../public/screens/start-en.webp";
 
 type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
 
 // 시안 #28: 카드 · 어두운 블록 없이 여백 · 선 · 번호 · 큰 글자로 구성
-// 순서: 히어로(+코드 데모) → 기능 → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
+// 순서: 히어로(+앱 화면) → 기능 → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -36,6 +41,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const steps = t.raw("flow.steps") as Item[];
   const faqs = t.raw("faq.items") as Faq[];
   const releaseItems = t.raw("release.items") as string[];
+  // 앱 화면: 한국어 사이트는 한글 화면, 나머지는 영어 화면 (시작 화면은 영어만 있음)
+  const ko = locale === "ko";
+  const shot = { zoomLabel: t("screens.zoom"), closeLabel: t("screens.close") };
 
   const cta = installer && (
     <DownloadCta
@@ -51,7 +59,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* 히어로: 헤더가 겹쳐 올라가는 큰 박스 + 아래 릴리스 띠 (#32) */}
       <div className="-mt-[70px] px-1.5 sm:-mt-[74px] sm:px-2.5 lg:-mt-[80px]">
         <section className="dot-grid mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-border">
-          <div className="mx-auto max-w-[1200px] px-5 pb-16 pt-[120px] sm:px-8 lg:pb-24 lg:pt-[184px]">
+          <div className="mx-auto max-w-[1200px] px-5 pb-14 pt-[120px] sm:px-8 lg:pb-20 lg:pt-[184px]">
             <h1 className="max-w-[17em]">
               {t.rich("hero.title", {
                 u: (chunks) => <span className="underline decoration-[0.06em] underline-offset-[0.12em]">{chunks}</span>,
@@ -76,6 +84,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 {t("hero.warning")}
               </Link>
             </p>
+            <Screenshot
+              src={ko ? cKo : cEn}
+              alt={t("screens.cAlt")}
+              sizes="(min-width: 1200px) 1136px, 94vw"
+              priority
+              className="mt-14 lg:mt-20"
+              {...shot}
+            />
           </div>
 
           {/* 릴리스 띠 */}
@@ -123,16 +139,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </div>
 
     <div className="mx-auto w-full max-w-[1200px] px-6">
-      <section className="pt-24">
-        <div>
-          <h2 className="sr-only">{t("demo.title")}</h2>
-          <CodeDemo />
-          <p className="mt-3 text-sm text-muted">
-            {t("demo.body")} {t("demo.note")}
-          </p>
-        </div>
-      </section>
-
       {/* 기능: 가운데 큰 제목 + 3×2 격자 (#34) */}
       <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-40">
         <h2 id="features-title" className="mx-auto max-w-[22em] text-center">
@@ -152,6 +158,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </li>
           ))}
         </ul>
+        <figure className="mt-20">
+          <Screenshot src={ko ? graphKo : graphEn} alt={t("screens.graphAlt")} sizes="(min-width: 1200px) 1152px, 94vw" {...shot} />
+          <figcaption className="mt-4 text-center text-muted">{t("screens.graphCaption")}</figcaption>
+        </figure>
       </section>
 
       {/* 처음 쓰는 순서: 가로 단계 */}
@@ -169,6 +179,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             );
           })}
         </ol>
+        <figure className="mx-auto mt-16 max-w-[820px]">
+          <Screenshot src={startEn} alt={t("screens.startAlt")} sizes="(min-width: 860px) 820px, 94vw" {...shot} />
+          <figcaption className="mt-4 text-center text-muted">{t("screens.startCaption")}</figcaption>
+        </figure>
       </section>
 
       {/* 성능 비교 (데이터 공개 전) */}

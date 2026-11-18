@@ -19,15 +19,6 @@
       "explore": "Explore the features",
       "goDownload": "Go to download"
     },
-    "demo": {
-      "title": "C and assembly move together",
-      "body": "Hover over or click a C line to highlight the assembly that does the same work. Use Tab to move with the keyboard.",
-      "c": "C pseudocode",
-      "asm": "Assembly",
-      "live": "C line {line} → {count} assembly lines",
-      "note": "An illustration of how views are linked, not real analysis output.",
-      "label": "Example of C pseudocode linked to assembly"
-    },
     "features": {
       "title": "<u>W</u>hat makes AnyThingISee the ultimate tool?",
       "items": [
@@ -142,6 +133,15 @@
       ],
       "cta": "Release notes",
       "label": "Latest release"
+    },
+    "screens": {
+      "zoom": "View larger",
+      "close": "Close",
+      "cAlt": "AnyThingISee showing the assembly and C pseudocode of the match_capture function side by side, with the C recovery map above and cross-references in the inspector",
+      "graphAlt": "Flow graph of the match_capture function, with taken branches, not-taken branches, unconditional jumps and fall-through drawn in different line styles and colors",
+      "graphCaption": "Flow graph — taken, not-taken and unconditional edges are told apart by line style and color.",
+      "startAlt": "AnyThingISee start screen on first launch, with Open file and Open sample buttons",
+      "startCaption": "First launch — open a file or drop it on the window to start analyzing."
     }
   },
   "Nav": {
