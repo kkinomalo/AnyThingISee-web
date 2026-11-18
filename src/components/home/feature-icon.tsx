@@ -36,6 +36,48 @@ const paths = {
       <circle cx="12" cy="15.5" r="1.2" fill="currentColor" />
     </>
   ),
+  // 상자 (설치)
+  package: (
+    <>
+      <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z" />
+      <path d="m4 7.5 8 4.5 8-4.5M12 12v9" />
+    </>
+  ),
+  // 모니터 (내 PC)
+  monitor: (
+    <>
+      <rect x="3" y="4" width="18" height="12" rx="2" />
+      <path d="M8 20h8M12 16v4" />
+    </>
+  ),
+  // 방패 (원본 보호)
+  shield: (
+    <>
+      <path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.2 7.5 9.5 4.3-1.3 7.5-4.9 7.5-9.5V6z" />
+      <path d="m9 12 2 2 4-4" />
+    </>
+  ),
+  // 돋보기 + 체크 (근거)
+  evidence: (
+    <>
+      <circle cx="10.5" cy="10.5" r="7" />
+      <path d="m20 20-4-4M7.5 10.5l2 2 4-4" />
+    </>
+  ),
+  // 선물 (무료)
+  gift: (
+    <>
+      <rect x="3.5" y="8" width="17" height="4" rx="1" />
+      <path d="M5 12v8h14v-8M12 8v12M12 8S10.5 3.5 8 4.5 9 8 12 8zM12 8s1.5-4.5 4-3.5S15 8 12 8z" />
+    </>
+  ),
+  // 지구본 (언어)
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </>
+  ),
 };
 
 export type FeatureIconName = keyof typeof paths;
