@@ -306,7 +306,9 @@
     "sha": "SHA-256",
     "github": "View on GitHub",
     "back": "All releases",
-    "empty": "No releases yet."
+    "empty": "No releases yet.",
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "License": {
     "title": "License",
