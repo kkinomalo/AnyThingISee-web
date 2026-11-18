@@ -139,9 +139,51 @@
       "close": "Close",
       "cAlt": "AnyThingISee showing the assembly and C pseudocode of the match_capture function side by side, with the C recovery map above and cross-references in the inspector",
       "graphAlt": "Flow graph of the match_capture function, with taken branches, not-taken branches, unconditional jumps and fall-through drawn in different line styles and colors",
-      "graphCaption": "Flow graph — taken, not-taken and unconditional edges are told apart by line style and color.",
-      "startAlt": "AnyThingISee start screen on first launch, with Open file and Open sample buttons",
-      "startCaption": "First launch — open a file or drop it on the window to start analyzing."
+      "startAlt": "AnyThingISee start screen on first launch, with Open file and Open sample buttons"
+    },
+    "demo": {
+      "title": "C and assembly move together",
+      "body": "Hover over or click a C line to highlight the assembly that does the same work. Use Tab to move with the keyboard.",
+      "c": "C pseudocode",
+      "asm": "Assembly",
+      "live": "C line {line} → {count} assembly lines",
+      "note": "An illustration of how views are linked, not real analysis output.",
+      "label": "Example of C pseudocode linked to assembly"
+    },
+    "tour": {
+      "title": "See it for yourself",
+      "items": [
+        {
+          "label": "C pseudocode",
+          "title": "Read assembly and C line by line",
+          "body": "Pick a function to open its assembly and C pseudocode side by side. The instruction addresses behind the selected C line show up right away.",
+          "points": [
+            "The C recovery map shows which instructions are linked to C and which aren't",
+            "Unrecovered spans are marked, so you review what not to trust first",
+            "The inspector shows function discovery evidence and incoming and outgoing references"
+          ]
+        },
+        {
+          "label": "Flow graph",
+          "title": "Follow branches as a graph",
+          "body": "Each function is split into basic blocks and drawn as a control-flow graph. Select a block and the inspector shows references for that address.",
+          "points": [
+            "Taken, not-taken, unconditional and fall-through edges differ by line style and color",
+            "Every block shows its start address and kind (branch, jump)",
+            "Jump between assembly, C pseudocode and bytes at the same address"
+          ]
+        },
+        {
+          "label": "Start screen",
+          "title": "Install and start right away",
+          "body": "No setup required: open a file or drop it on the window to start analyzing. New here? Explore with the sample file.",
+          "points": [
+            "Open file Ctrl+O, command palette Ctrl+K",
+            "Open sample to try the features instantly",
+            "Opening a file for analysis never runs the target program"
+          ]
+        }
+      ]
     }
   },
   "Nav": {

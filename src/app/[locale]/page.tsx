@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
+import { CodeDemo } from "@/components/home/code-demo";
 import { DownloadCta } from "@/components/home/download-cta";
 import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
 import { Screenshot } from "@/components/home/screenshot";
@@ -20,7 +21,7 @@ type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
 
 // 시안 #28: 카드 · 어두운 블록 없이 여백 · 선 · 번호 · 큰 글자로 구성
-// 순서: 히어로(+앱 화면) → 기능 → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
+// 순서: 히어로 → 실제 화면(지그재그) → 기능(+코드 데모) → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -44,6 +45,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   // 앱 화면: 한국어 사이트는 한글 화면, 나머지는 영어 화면 (시작 화면은 영어만 있음)
   const ko = locale === "ko";
   const shot = { zoomLabel: t("screens.zoom"), closeLabel: t("screens.close") };
+  const tour = t.raw("tour.items") as { label: string; title: string; body: string; points: string[] }[];
+  const tourShots = [ko ? cKo : cEn, ko ? graphKo : graphEn, startEn];
+  const tourAlts = [t("screens.cAlt"), t("screens.graphAlt"), t("screens.startAlt")];
 
   const cta = installer && (
     <DownloadCta
@@ -59,7 +63,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* 히어로: 헤더가 겹쳐 올라가는 큰 박스 + 아래 릴리스 띠 (#32) */}
       <div className="-mt-[70px] px-1.5 sm:-mt-[74px] sm:px-2.5 lg:-mt-[80px]">
         <section className="dot-grid mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-border">
-          <div className="mx-auto max-w-[1200px] px-5 pb-14 pt-[120px] sm:px-8 lg:pb-20 lg:pt-[184px]">
+          <div className="mx-auto max-w-[1200px] px-5 pb-16 pt-[120px] sm:px-8 lg:pb-24 lg:pt-[184px]">
             <h1 className="max-w-[17em]">
               {t.rich("hero.title", {
                 u: (chunks) => <span className="underline decoration-[0.06em] underline-offset-[0.12em]">{chunks}</span>,
@@ -84,14 +88,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 {t("hero.warning")}
               </Link>
             </p>
-            <Screenshot
-              src={ko ? cKo : cEn}
-              alt={t("screens.cAlt")}
-              sizes="(min-width: 1200px) 1136px, 94vw"
-              priority
-              className="mt-14 lg:mt-20"
-              {...shot}
-            />
           </div>
 
           {/* 릴리스 띠 */}
@@ -139,8 +135,42 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </div>
 
     <div className="mx-auto w-full max-w-[1200px] px-6">
+      {/* 실제 화면: 사진 · 글을 번갈아 (지그재그) */}
+      <section aria-labelledby="tour-title" className="pt-28 lg:pt-36">
+        <h2 id="tour-title" className="sr-only">
+          {t("tour.title")}
+        </h2>
+        <div className="space-y-24 lg:space-y-32">
+          {tour.map((item, i) => (
+            <article
+              key={item.label}
+              className="grid items-center gap-x-14 gap-y-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]"
+            >
+              <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                <Screenshot src={tourShots[i]} alt={tourAlts[i]} sizes="(min-width: 1200px) 660px, 94vw" priority={i === 0} {...shot} />
+              </div>
+              <div>
+                <p className="font-mono text-sm text-accent">
+                  {String(i + 1).padStart(2, "0")} · {item.label}
+                </p>
+                <h3 className="mt-3 text-[clamp(1.5rem,1.3rem+0.8vw,2rem)] leading-tight">{item.title}</h3>
+                <p className="mt-4 text-muted">{item.body}</p>
+                <ul className="mt-6 space-y-2.5">
+                  {item.points.map((pt) => (
+                    <li key={pt} className="flex gap-3">
+                      <Check width={20} height={20} className="mt-[3px] shrink-0 text-accent" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* 기능: 가운데 큰 제목 + 3×2 격자 (#34) */}
-      <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-40">
+      <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-32 lg:pt-40">
         <h2 id="features-title" className="mx-auto max-w-[22em] text-center">
           {t.rich("features.title", {
             u: (chunks) => <span className="underline decoration-[3px] underline-offset-[6px]">{chunks}</span>,
@@ -158,10 +188,16 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </li>
           ))}
         </ul>
-        <figure className="mt-20">
-          <Screenshot src={ko ? graphKo : graphEn} alt={t("screens.graphAlt")} sizes="(min-width: 1200px) 1152px, 94vw" {...shot} />
-          <figcaption className="mt-4 text-center text-muted">{t("screens.graphCaption")}</figcaption>
-        </figure>
+
+        {/* 직접 눌러 보는 C ↔ 어셈블리 연결 예시 */}
+        <div className="mt-24">
+          <h3 className="text-[clamp(1.5rem,1.3rem+0.8vw,2rem)]">{t("demo.title")}</h3>
+          <p className="mt-3 max-w-2xl text-muted">{t("demo.body")}</p>
+          <div className="mt-8">
+            <CodeDemo />
+          </div>
+          <p className="mt-3 text-sm text-muted">{t("demo.note")}</p>
+        </div>
       </section>
 
       {/* 처음 쓰는 순서: 가로 단계 */}
@@ -179,10 +215,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             );
           })}
         </ol>
-        <figure className="mx-auto mt-16 max-w-[820px]">
-          <Screenshot src={startEn} alt={t("screens.startAlt")} sizes="(min-width: 860px) 820px, 94vw" {...shot} />
-          <figcaption className="mt-4 text-center text-muted">{t("screens.startCaption")}</figcaption>
-        </figure>
       </section>
 
       {/* 성능 비교 (데이터 공개 전) */}
