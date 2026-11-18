@@ -306,7 +306,9 @@
     "sha": "SHA-256",
     "github": "GitHub에서 보기",
     "back": "전체 릴리스",
-    "empty": "아직 공개된 릴리스가 없습니다."
+    "empty": "아직 공개된 릴리스가 없습니다.",
+    "copy": "복사",
+    "copied": "복사됨"
   },
   "License": {
     "title": "사용권",

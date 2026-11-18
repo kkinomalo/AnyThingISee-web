@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { CodeDemo } from "@/components/home/code-demo";
 import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
+import { GlowGrid } from "@/components/home/glow-grid";
 import { Screenshot } from "@/components/home/screenshot";
 import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
@@ -131,10 +132,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 i % 2 === 1 ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]" : "lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]"
               }`}
             >
-              <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+              <div className={`reveal-shot ${i % 2 === 1 ? "lg:order-2" : ""}`}>
                 <Screenshot src={tourShots[i]} alt={tourAlts[i]} sizes="(min-width: 1200px) 660px, 94vw" priority={i === 0} {...shot} />
               </div>
-              <div>
+              <div className="reveal-text">
                 <p className="font-mono text-sm text-accent">
                   {String(i + 1).padStart(2, "0")} · {item.label}
                 </p>
@@ -161,9 +162,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             u: (chunks) => <span className="underline decoration-[3px] underline-offset-[6px]">{chunks}</span>,
           })}
         </h2>
-        <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <GlowGrid className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
-            <li key={f.title} className="rounded-lg border border-border bg-surface p-8">
+            <li key={f.title} className="glow-card rounded-lg border border-border bg-surface p-8">
               <span className="flex size-14 items-center justify-center rounded-md bg-tint text-on-tint">
                 <FeatureIcon name={f.icon} width={28} height={28} />
               </span>
@@ -172,7 +173,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <p className="mt-3 text-muted">{f.body}</p>
             </li>
           ))}
-        </ul>
+        </GlowGrid>
 
         {/* 직접 눌러 보는 C ↔ 어셈블리 연결 예시 */}
         <div className="mt-24">

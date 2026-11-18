@@ -7,6 +7,7 @@ import { Markdown } from "@/components/markdown";
 import { ReleaseBadges } from "@/components/release-meta";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { CopyButton } from "@/components/copy-button";
 import { downloadPath } from "@/lib/downloads";
 import { cleanReleaseBody } from "@/lib/release-body";
 import { formatBytes } from "@/lib/format";
@@ -54,15 +55,26 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
           <ul className="space-y-4">
             {release.assets.map((a) => (
               <li key={a.name} className="space-y-1.5">
-                <a href={downloadPath(release.tag, a.name, locale)} download className="flex items-start gap-2 break-all font-mono text-sm font-semibold underline underline-offset-4">
-                  <Download width={16} height={16} className="mt-0.5 shrink-0" />
-                  {a.name}
+                {/* 파일명은 한 줄로 (넘치면 말줄임, 전체 이름은 title) */}
+                <a
+                  href={downloadPath(release.tag, a.name, locale)}
+                  download
+                  title={a.name}
+                  className="flex min-w-0 items-center gap-2 font-mono text-[13px] font-semibold"
+                >
+                  <Download width={16} height={16} className="shrink-0" />
+                  <span className="truncate underline underline-offset-4">{a.name}</span>
                 </a>
                 <p className="font-mono text-xs text-muted">{formatBytes(a.size)}</p>
                 {a.sha256 && (
-                  <p className="break-all font-mono text-xs text-muted">
-                    {t("sha")}: {a.sha256}
-                  </p>
+                  <div className="flex items-start gap-3">
+                    <p className="min-w-0 flex-1 break-all font-mono text-xs leading-relaxed text-muted">
+                      <span className="sr-only">{t("sha")}: </span>
+                      <span aria-hidden>{t("sha")} </span>
+                      {a.sha256}
+                    </p>
+                    <CopyButton text={a.sha256} label={t("copy")} done={t("copied")} />
+                  </div>
                 )}
               </li>
             ))}
