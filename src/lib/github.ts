@@ -5,9 +5,9 @@ import { fallbackRelease } from "./release";
 
 const API = "https://api.github.com/repos/kkinomalo/AnyThingISee-releases/releases?per_page=30";
 
-async function fetchReleases(): Promise<Release[]> {
+// 캐시 함수 안에서 오류를 던지면 빌드(프리렌더)가 멈추므로, 실패는 null로 돌려주고 짧게만 캐시한다
+async function fetchReleases(): Promise<Release[] | null> {
   "use cache";
-  cacheLife("hours");
   cacheTag("releases");
 
   const headers: Record<string, string> = {
@@ -17,9 +17,17 @@ async function fetchReleases(): Promise<Release[]> {
   };
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
-  const res = await fetch(API, { headers });
-  if (!res.ok) throw new Error(`GitHub releases ${res.status}`);
-  return parseReleases(await res.json());
+  try {
+    const res = await fetch(API, { headers });
+    if (!res.ok) throw new Error(`GitHub releases ${res.status}`);
+    const releases = parseReleases(await res.json());
+    cacheLife("hours");
+    return releases;
+  } catch (error) {
+    console.warn("[github] 릴리스 조회 실패, 기본값 사용:", error instanceof Error ? error.message : error);
+    cacheLife("minutes");
+    return null;
+  }
 }
 
 /** 마지막으로 알려진 릴리스 — API가 실패해도 페이지가 깨지지 않게 */
@@ -42,12 +50,8 @@ export const fallback: Release = {
 };
 
 export async function getReleases(): Promise<{ releases: Release[]; live: boolean }> {
-  try {
-    const releases = await fetchReleases();
-    if (releases.length > 0) return { releases, live: true };
-  } catch (error) {
-    console.error("[github] 릴리스 조회 실패, 기본값 사용", error);
-  }
+  const releases = await fetchReleases();
+  if (releases && releases.length > 0) return { releases, live: true };
   return { releases: [fallback], live: false };
 }
 

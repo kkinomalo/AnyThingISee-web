@@ -20,3 +20,6 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
+        env:
+          # 공유 러너 IP는 GitHub API 익명 한도(403)에 자주 걸린다
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
