@@ -5,17 +5,9 @@
   },
   "Home": {
     "hero": {
-      "eyebrow": "Windows 向けローカル逆アセンブラー・逆コンパイラー",
       "title": "逆アセンブル、逆コンパイル、パッチまで <u>AnyThingISee</u> ひとつで",
       "body": "AnyThingISee は Windows ですぐに使えるローカルのバイナリ解析ツールです。x64 PE・ELF ファイルの C 疑似コードとアセンブリを行ごとに対応させて読み、名前・メモ・命令パッチまでひとつの画面で完結します。Ghidra のネイティブ逆コンパイラーコアを内蔵しているため Ghidra や Java のインストールは不要で、ファイルが PC の外に出ることはありません。",
-      "download": "Windows 版を無料ダウンロード",
-      "meta": "Windows 10/11 x64 · {size} · {version}",
       "warning": "インストール時に警告が出ますか？ · SHA-256 を確認",
-      "badge": "{version} · {date}",
-      "notes": "リリースノート",
-      "mac": "macOS 版は開発中 — GitHub で通知を受け取る",
-      "windowsLink": "Windows 版インストーラーを入手",
-      "downloadNow": "今すぐダウンロード",
       "explore": "機能を見る",
       "goDownload": "ダウンロードページへ"
     },
@@ -114,13 +106,6 @@
           "a": "GitHub Issues に製品バージョン、Windows のバージョン、再現手順、エラー内容を書いてください。非公開のバイナリや個人情報は添付しないでください。"
         }
       ]
-    },
-    "download": {
-      "title": "さっそく最初のファイルを開いてみましょう",
-      "body": "インストーラーひとつで始められます。個人・法人とも無料です。",
-      "issues": "Issue を作成",
-      "guide": "使い方",
-      "mac": "macOS 版の通知を受け取る"
     },
     "release": {
       "summary": "初の公開プレビューです。個人・法人ともに無料で使える Free Edition に、解析に欠かせない機能から収録しました。",

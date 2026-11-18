@@ -8,6 +8,7 @@ import { ReleaseBadges } from "@/components/release-meta";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { downloadPath } from "@/lib/downloads";
+import { cleanReleaseBody } from "@/lib/release-body";
 import { formatBytes } from "@/lib/format";
 import { getReleases } from "@/lib/github";
 
@@ -45,7 +46,7 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
 
       <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_22rem]">
         <article className="min-w-0">
-          <Markdown>{release.body}</Markdown>
+          <Markdown>{cleanReleaseBody(release.body, { title: release.title, locale })}</Markdown>
         </article>
 
         <aside className="rule-top h-fit space-y-4 pt-5 lg:sticky lg:top-24">

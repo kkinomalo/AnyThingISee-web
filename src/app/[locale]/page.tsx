@@ -1,15 +1,11 @@
 import Image from "next/image";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { CodeDemo } from "@/components/home/code-demo";
-import { DownloadCta } from "@/components/home/download-cta";
 import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
 import { Screenshot } from "@/components/home/screenshot";
 import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
-import { downloadPath } from "@/lib/downloads";
-import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
-import { external } from "@/lib/links";
 import releaseBand from "../../../public/images/release-band.jpg";
 import cEn from "../../../public/screens/c-en.webp";
 import cKo from "../../../public/screens/c-ko.webp";
@@ -29,14 +25,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const format = await getFormatter();
 
   const release = await getLatestRelease();
-  const installer = release.installer;
   const date = release.publishedAt
     ? format.dateTime(new Date(release.publishedAt), { dateStyle: "medium" })
     : "";
-  const meta = t("hero.meta", {
-    size: installer ? formatBytes(installer.size) : "",
-    version: release.version,
-  });
 
   const features = t.raw("features.items") as (Item & { icon: FeatureIconName; lead: string })[];
   const steps = t.raw("flow.steps") as Item[];
@@ -49,14 +40,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const tourShots = [ko ? cKo : cEn, ko ? graphKo : graphEn, startEn];
   const tourAlts = [t("screens.cAlt"), t("screens.graphAlt"), t("screens.startAlt")];
 
-  const cta = installer && (
-    <DownloadCta
-      href={downloadPath(release.tag, installer.name, locale)}
-      label={t("hero.download")}
-      macLabel={t("hero.mac")}
-      windowsLinkLabel={t("hero.windowsLink")}
-    />
-  );
 
   return (
     <>
@@ -144,7 +127,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           {tour.map((item, i) => (
             <article
               key={item.label}
-              className="grid items-center gap-x-14 gap-y-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]"
+              className={`grid items-center gap-x-14 gap-y-8 ${
+                i % 2 === 1 ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]" : "lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]"
+              }`}
             >
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                 <Screenshot src={tourShots[i]} alt={tourAlts[i]} sizes="(min-width: 1200px) 660px, 94vw" priority={i === 0} {...shot} />
@@ -245,27 +230,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </details>
           ))}
         </div>
-      </section>
-
-      {/* 다운로드: 큰 문장 */}
-      <section className="flex flex-col items-center pb-8 pt-44 text-center">
-        <h2 className="max-w-[12em] text-[clamp(2.25rem,1.4rem+3.4vw,4rem)] leading-[1.1] tracking-[-0.03em]">
-          {t("download.title")}
-        </h2>
-        <p className="mt-5 text-muted">{t("download.body")}</p>
-        <div className="mt-9">{cta}</div>
-        <p className="mt-3.5 font-mono text-sm text-muted">{meta}</p>
-        <p className="mt-7 flex flex-wrap justify-center gap-x-7 gap-y-3 text-[15px]">
-          <a href={external.issues} target="_blank" rel="noopener noreferrer" className="text-link">
-            {t("download.issues")} ↗
-          </a>
-          <a href={external.guide} target="_blank" rel="noopener noreferrer" className="text-link">
-            {t("download.guide")} ↗
-          </a>
-          <a href={`${external.repo}/releases`} target="_blank" rel="noopener noreferrer" className="text-link">
-            {t("download.mac")} ↗
-          </a>
-        </p>
       </section>
     </div>
     </>
