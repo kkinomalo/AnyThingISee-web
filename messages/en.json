@@ -23,40 +23,40 @@
       "title": "<u>W</u>hat makes AnyThingISee the ultimate tool?",
       "items": [
         {
-          "icon": "decompile",
-          "title": "Decompile",
-          "lead": "Turn machine code into readable C pseudocode.",
-          "body": "The built-in Ghidra native decompiler core produces C as soon as you pick a function. Select a C line and the assembly at the linked addresses lights up."
+          "icon": "package",
+          "title": "Light install",
+          "lead": "One installer, 4.7 MB",
+          "body": "The Ghidra native decompiler core is built in, so there's no Ghidra or Java to install. All you need on Windows is .NET Framework 4.6.2 and WebView2."
         },
         {
-          "icon": "disassemble",
-          "title": "Disassemble",
-          "lead": "Lay out x64 PE and ELF as readable assembly.",
-          "body": "Move between assembly, flow graphs and data views for the same function and see branches and loops at a glance."
+          "icon": "monitor",
+          "title": "Stays on your PC",
+          "lead": "Your files are never sent anywhere",
+          "body": "All analysis happens on your own machine, so you can open binaries you can't share with anyone else."
         },
         {
-          "icon": "navigate",
-          "title": "Navigate",
-          "lead": "Jump between functions and data in one click.",
-          "body": "Double-click a function name in the C view to go to it, or click a data name to land on the linked file bytes."
+          "icon": "shield",
+          "title": "Originals untouched",
+          "lead": "Opening doesn't run it, patching doesn't overwrite it",
+          "body": "Opening a file for analysis never runs the target program. Patches are saved to a separate file, leaving the original as is."
         },
         {
-          "icon": "patch",
-          "title": "Patch",
-          "lead": "Edit instructions and export a separate file.",
-          "body": "Open the patch dialog from an instruction or a C line, review the change and save the result. The original file stays untouched."
+          "icon": "evidence",
+          "title": "Results with evidence",
+          "lead": "Know what to trust and what to check",
+          "body": "Every function shows the evidence it was found by, and instructions not recovered into C are marked, so you review the uncertain parts first."
         },
         {
-          "icon": "project",
-          "title": "Projects",
-          "lead": "Keep names and notes in a project.",
-          "body": "Rename variables and functions with a double-click or F2, leave notes, and pick up where you left off next time."
+          "icon": "gift",
+          "title": "Free, even for work",
+          "lead": "Free for individuals and organizations",
+          "body": "Use the Free Edition at no cost, including for work and commercial purposes. The current version will never be made paid retroactively."
         },
         {
-          "icon": "local",
-          "title": "Runs locally",
-          "lead": "One installer, everything stays on your PC.",
-          "body": "No separate Ghidra or Java install, and your files never leave your machine. Opening a file for analysis never runs the target program."
+          "icon": "globe",
+          "title": "In your language",
+          "lead": "Korean · English · Japanese",
+          "body": "The interface comes in three languages. The command palette (Ctrl+K) and shortcuts let you run anything without digging through menus."
         }
       ]
     },
