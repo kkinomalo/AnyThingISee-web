@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
-import { redirect } from "@/i18n/navigation";
+import { Link, redirect } from "@/i18n/navigation";
+import { getAdmin } from "@/lib/admin";
 import { createClient } from "@/lib/supabase/server";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/account">): Promise<Metadata> {
@@ -28,6 +29,7 @@ export default async function AccountPage({ params }: PageProps<"/[locale]/accou
 
 async function AccountBody({ locale }: { locale: string }) {
   const t = await getTranslations("Account");
+  const a = await getTranslations("Admin");
   const format = await getFormatter();
   const supabase = await createClient();
   const user = supabase ? (await supabase.auth.getUser()).data.user : null;
@@ -58,6 +60,11 @@ async function AccountBody({ locale }: { locale: string }) {
         ))}
       </dl>
       <p className="mt-8 text-muted">{t("soon")}</p>
+      {(await getAdmin()) && (
+        <Link href="/admin" className="text-link mt-4 inline-block">
+          {a("link")} →
+        </Link>
+      )}
       <form action={signOut} className="mt-10">
         <button type="submit" className="rounded-lg border border-border bg-surface px-5 py-3 font-semibold hover:bg-ink/5">
           {t("signOut")}

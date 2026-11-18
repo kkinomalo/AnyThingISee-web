@@ -7,6 +7,7 @@ import { Markdown } from "@/components/markdown";
 import { ReleaseBadges } from "@/components/release-meta";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { downloadPath } from "@/lib/downloads";
 import { formatBytes } from "@/lib/format";
 import { getReleases } from "@/lib/github";
 
@@ -52,7 +53,7 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
           <ul className="space-y-4">
             {release.assets.map((a) => (
               <li key={a.name} className="space-y-1.5">
-                <a href={a.url} download className="flex items-start gap-2 break-all font-mono text-sm font-semibold underline underline-offset-4">
+                <a href={downloadPath(release.tag, a.name, locale)} download className="flex items-start gap-2 break-all font-mono text-sm font-semibold underline underline-offset-4">
                   <Download width={16} height={16} className="mt-0.5 shrink-0" />
                   {a.name}
                 </a>

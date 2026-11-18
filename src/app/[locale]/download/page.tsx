@@ -5,6 +5,7 @@ import { CopyButton } from "@/components/copy-button";
 import { DownloadButton } from "@/components/download-button";
 import { ArrowRight, ExternalArrow } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
+import { downloadPath } from "@/lib/downloads";
 import { formatBytes } from "@/lib/format";
 import { getReleases } from "@/lib/github";
 
@@ -48,7 +49,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
 
       {installer && (
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <DownloadButton label={t("button")} href={installer.url} />
+          <DownloadButton label={t("button")} href={downloadPath(latest.tag, installer.name, locale)} />
           <span className="font-mono text-xs text-muted">
             {t("meta", { file: installer.name, size: formatBytes(installer.size) })}
           </span>
@@ -59,7 +60,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
       <ul className="rule-top mt-12 sm:hidden">
         {installer && (
           <li className="space-y-2 border-b border-border py-5">
-            <a href={installer.url} download translate="no" className="text-link block break-all font-mono text-sm">
+            <a href={downloadPath(latest.tag, installer.name, locale)} download translate="no" className="text-link block break-all font-mono text-sm">
               {installer.name}
             </a>
             <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
@@ -91,7 +92,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
             {installer && (
               <tr className="border-b border-border">
                 <td className="py-4 pr-6">
-                  <a href={installer.url} download translate="no" className="text-link break-all font-mono text-sm">
+                  <a href={downloadPath(latest.tag, installer.name, locale)} download translate="no" className="text-link break-all font-mono text-sm">
                     {installer.name}
                   </a>
                 </td>
@@ -196,7 +197,7 @@ export default async function DownloadPage({ params }: PageProps<"/[locale]/down
                   <span className="font-semibold">{r.version}</span>
                   <span className="flex items-center gap-4 text-sm">
                     {r.installer && (
-                      <a href={r.installer.url} download className="underline underline-offset-4">
+                      <a href={downloadPath(r.tag, r.installer.name, locale)} download className="underline underline-offset-4">
                         {r.installer.name}
                       </a>
                     )}
