@@ -3,6 +3,7 @@ import { getFormatter, getTranslations, setRequestLocale } from "next-intl/serve
 import { CodeDemo } from "@/components/home/code-demo";
 import { DownloadCta } from "@/components/home/download-cta";
 import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
+import { Screenshot } from "@/components/home/screenshot";
 import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
 import { downloadPath } from "@/lib/downloads";
@@ -10,12 +11,17 @@ import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
 import { external } from "@/lib/links";
 import releaseBand from "../../../public/images/release-band.jpg";
+import cEn from "../../../public/screens/c-en.webp";
+import cKo from "../../../public/screens/c-ko.webp";
+import graphEn from "../../../public/screens/graph-en.webp";
+import graphKo from "../../../public/screens/graph-ko.webp";
+import startEn from "../../../public/screens/start-en.webp";
 
 type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
 
 // 시안 #28: 카드 · 어두운 블록 없이 여백 · 선 · 번호 · 큰 글자로 구성
-// 순서: 히어로(+코드 데모) → 기능 → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
+// 순서: 히어로 → 실제 화면(지그재그) → 기능(+코드 데모) → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -36,6 +42,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const steps = t.raw("flow.steps") as Item[];
   const faqs = t.raw("faq.items") as Faq[];
   const releaseItems = t.raw("release.items") as string[];
+  // 앱 화면: 한국어 사이트는 한글 화면, 나머지는 영어 화면 (시작 화면은 영어만 있음)
+  const ko = locale === "ko";
+  const shot = { zoomLabel: t("screens.zoom"), closeLabel: t("screens.close") };
+  const tour = t.raw("tour.items") as { label: string; title: string; body: string; points: string[] }[];
+  const tourShots = [ko ? cKo : cEn, ko ? graphKo : graphEn, startEn];
+  const tourAlts = [t("screens.cAlt"), t("screens.graphAlt"), t("screens.startAlt")];
 
   const cta = installer && (
     <DownloadCta
@@ -123,18 +135,42 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </div>
 
     <div className="mx-auto w-full max-w-[1200px] px-6">
-      <section className="pt-24">
-        <div>
-          <h2 className="sr-only">{t("demo.title")}</h2>
-          <CodeDemo />
-          <p className="mt-3 text-sm text-muted">
-            {t("demo.body")} {t("demo.note")}
-          </p>
+      {/* 실제 화면: 사진 · 글을 번갈아 (지그재그) */}
+      <section aria-labelledby="tour-title" className="pt-28 lg:pt-36">
+        <h2 id="tour-title" className="sr-only">
+          {t("tour.title")}
+        </h2>
+        <div className="space-y-24 lg:space-y-32">
+          {tour.map((item, i) => (
+            <article
+              key={item.label}
+              className="grid items-center gap-x-14 gap-y-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]"
+            >
+              <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                <Screenshot src={tourShots[i]} alt={tourAlts[i]} sizes="(min-width: 1200px) 660px, 94vw" priority={i === 0} {...shot} />
+              </div>
+              <div>
+                <p className="font-mono text-sm text-accent">
+                  {String(i + 1).padStart(2, "0")} · {item.label}
+                </p>
+                <h3 className="mt-3 text-[clamp(1.5rem,1.3rem+0.8vw,2rem)] leading-tight">{item.title}</h3>
+                <p className="mt-4 text-muted">{item.body}</p>
+                <ul className="mt-6 space-y-2.5">
+                  {item.points.map((pt) => (
+                    <li key={pt} className="flex gap-3">
+                      <Check width={20} height={20} className="mt-[3px] shrink-0 text-accent" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
       {/* 기능: 가운데 큰 제목 + 3×2 격자 (#34) */}
-      <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-40">
+      <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-32 lg:pt-40">
         <h2 id="features-title" className="mx-auto max-w-[22em] text-center">
           {t.rich("features.title", {
             u: (chunks) => <span className="underline decoration-[3px] underline-offset-[6px]">{chunks}</span>,
@@ -152,6 +188,16 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </li>
           ))}
         </ul>
+
+        {/* 직접 눌러 보는 C ↔ 어셈블리 연결 예시 */}
+        <div className="mt-24">
+          <h3 className="text-[clamp(1.5rem,1.3rem+0.8vw,2rem)]">{t("demo.title")}</h3>
+          <p className="mt-3 max-w-2xl text-muted">{t("demo.body")}</p>
+          <div className="mt-8">
+            <CodeDemo />
+          </div>
+          <p className="mt-3 text-sm text-muted">{t("demo.note")}</p>
+        </div>
       </section>
 
       {/* 처음 쓰는 순서: 가로 단계 */}
