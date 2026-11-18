@@ -5,6 +5,7 @@ import { DownloadCta } from "@/components/home/download-cta";
 import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
 import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
+import { downloadPath } from "@/lib/downloads";
 import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
 import { external } from "@/lib/links";
@@ -38,7 +39,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   const cta = installer && (
     <DownloadCta
-      href={installer.url}
+      href={downloadPath(release.tag, installer.name, locale)}
       label={t("hero.download")}
       macLabel={t("hero.mac")}
       windowsLinkLabel={t("hero.windowsLink")}
