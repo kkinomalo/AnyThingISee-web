@@ -11,6 +11,7 @@ const links: NavItem[] = [
   { key: "license", href: "/license" },
   { key: "thirdParty", href: external.thirdParty, external: true },
   { key: "issues", href: external.issues, external: true },
+  { key: "contact", href: "/contact" },
 ];
 
 // 시안 #28: 한 줄 푸터 — 이름 · 소개 · 링크 / 저작권

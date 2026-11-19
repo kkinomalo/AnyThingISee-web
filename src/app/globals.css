@@ -12,6 +12,8 @@
   --bg: #f7f3e8;
   --surface: #fffdf7;
   --border: #e3dccb;
+  /* 섹션 띠 (#66): 상아색보다 한 톤 진한 모래색. muted 5.7:1 · faint 4.6:1 */
+  --band: #efe8d8;
   /* 30 */
   --ink: #1f1b16;
   --muted: #5f574a;
@@ -36,6 +38,7 @@
 @theme inline {
   --color-background: var(--bg);
   --color-surface: var(--surface);
+  --color-band: var(--band);
   --color-border: var(--border);
   --color-foreground: var(--ink);
   --color-ink: var(--ink);
@@ -283,4 +286,10 @@ html {
     .step-2 > * { animation-range: entry 40% cover 44%; }
     .step-3 > * { animation-range: entry 55% cover 51%; }
   }
+}
+
+/* 문의 박스 hex 덤프 무늬 (#66): 가장자리만 보이고 가운데는 비운다 */
+.hex-dump {
+  color: rgb(31 27 22 / 0.09);
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, transparent 35%, #000 85%);
 }
