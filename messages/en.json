@@ -464,8 +464,20 @@
     "other": "Other",
     "empty": "No data yet",
     "compare": "Site vs GitHub",
-    "compareBody": "Site button {site} · GitHub download_count {github} · difference {diff} (estimated direct GitHub downloads)",
     "privacy": "Raw IPs and user agents are never stored. Bots and link previews are excluded. Times are in KST.",
-    "link": "Download statistics (admin)"
+    "link": "Download statistics (admin)",
+    "noPrevious": "No data for the previous period",
+    "collecting": "collecting",
+    "todayMark": "Today",
+    "tip": "{date}{today} · Site {site} · GitHub {github}",
+    "tipBaseline": "baseline",
+    "tipNone": "-",
+    "chartNote": "Site and GitHub increases share the same scale. Days with 0 are drawn as a faint line.",
+    "baselineNote": "GitHub increases are calculated from the day after the first snapshot (baseline).",
+    "unknownNote": "Requests without a country mostly come from local development or preview deployments. Vercel provides the country in production.",
+    "compareLead": "Of all GitHub downloads, how many went through the site button and how many came directly from GitHub (estimated).",
+    "compareAria": "Site {site}, direct from GitHub {direct}",
+    "viaSite": "Site button",
+    "viaGithub": "Directly from GitHub (est.)"
   }
 }

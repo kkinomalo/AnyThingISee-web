@@ -464,8 +464,20 @@
     "other": "기타",
     "empty": "아직 기록이 없습니다",
     "compare": "사이트 집계 vs GitHub",
-    "compareBody": "사이트 버튼 {site} · GitHub download_count {github} · 차이 {diff} (GitHub에서 직접 받은 수 추정)",
     "privacy": "IP · User-Agent 원문은 저장하지 않습니다. 봇 · 미리보기 요청은 제외됩니다. 시간은 한국 시간 기준입니다.",
-    "link": "다운로드 통계 (어드민)"
+    "link": "다운로드 통계 (어드민)",
+    "noPrevious": "이전 기간 데이터 없음",
+    "collecting": "수집 중",
+    "todayMark": "오늘",
+    "tip": "{date}{today} · 사이트 {site} · GitHub {github}",
+    "tipBaseline": "기준일",
+    "tipNone": "-",
+    "chartNote": "사이트와 GitHub 증가분은 같은 눈금입니다. 0인 날은 옅은 선으로 표시합니다.",
+    "baselineNote": "GitHub는 첫 기록일(기준일)부터 다음 날의 증가분이 계산됩니다.",
+    "unknownNote": "국가를 알 수 없는 요청은 대부분 로컬 개발 환경 · 프리뷰 배포에서 온 것입니다. 운영 배포에서는 Vercel이 국가를 알려 줍니다.",
+    "compareLead": "GitHub 전체 다운로드 수 중 사이트 버튼을 거친 수와 GitHub에서 직접 받은 수(추정)입니다.",
+    "compareAria": "사이트 {site}, GitHub 직접 {direct}",
+    "viaSite": "사이트 버튼",
+    "viaGithub": "GitHub에서 직접 (추정)"
   }
 }

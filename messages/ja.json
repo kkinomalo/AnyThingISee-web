@@ -464,8 +464,20 @@
     "other": "その他",
     "empty": "まだ記録がありません",
     "compare": "サイト集計 vs GitHub",
-    "compareBody": "サイトのボタン {site} · GitHub download_count {github} · 差 {diff}（GitHub から直接取得した数の推定）",
     "privacy": "IP・User-Agent の原文は保存しません。ボット・プレビューのリクエストは除外します。時刻は韓国時間です。",
-    "link": "ダウンロード統計（管理）"
+    "link": "ダウンロード統計（管理）",
+    "noPrevious": "前の期間のデータなし",
+    "collecting": "収集中",
+    "todayMark": "今日",
+    "tip": "{date}{today} · サイト {site} · GitHub {github}",
+    "tipBaseline": "基準日",
+    "tipNone": "-",
+    "chartNote": "サイトと GitHub 増加分は同じ目盛りです。0 の日は薄い線で表示します。",
+    "baselineNote": "GitHub は最初の記録日（基準日）の翌日から増加分を計算します。",
+    "unknownNote": "国が不明なリクエストの多くはローカル開発環境・プレビュー環境からのものです。本番環境では Vercel が国を提供します。",
+    "compareLead": "GitHub の総ダウンロード数のうち、サイトのボタン経由と GitHub から直接（推定）の内訳です。",
+    "compareAria": "サイト {site}、GitHub から直接 {direct}",
+    "viaSite": "サイトのボタン",
+    "viaGithub": "GitHub から直接（推定）"
   }
 }
