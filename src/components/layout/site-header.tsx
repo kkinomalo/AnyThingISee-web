@@ -6,6 +6,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { ChevronDown, Close, ExternalArrow, GitHub, Menu } from "@/components/icons";
 import { NavLink } from "@/components/layout/nav-link";
 import { SettingsMenu } from "@/components/layout/settings-menu";
+import { useSignedIn } from "@/hooks/use-signed-in";
 import { Link, usePathname } from "@/i18n/navigation";
 import { external, licenseItems, navGroups, type NavItem } from "@/lib/links";
 
@@ -21,6 +22,8 @@ export function SiteHeader() {
   const barRef = useRef<HTMLDivElement>(null);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   const baseId = useId();
+  // 로그인 전 '로그인', 후 '내 계정' (#75)
+  const signedIn = useSignedIn();
 
   const closeAll = useCallback(() => {
     setOpenGroup(null);
@@ -161,10 +164,10 @@ export function SiteHeader() {
               <SettingsMenu />
             </div>
             <Link
-              href="/account"
+              href={signedIn ? "/account" : "/login"}
               className="ml-2 hidden rounded-lg bg-cta-dark px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-cta-soft sm:block"
             >
-              {t("account")}
+              {signedIn ? t("account") : t("login")}
             </Link>
             <button
               ref={mobileButtonRef}
@@ -219,10 +222,10 @@ export function SiteHeader() {
               {t("download")}
             </Link>
             <Link
-              href="/account"
+              href={signedIn ? "/account" : "/login"}
               className="block rounded-lg bg-cta-dark px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-cta-soft"
             >
-              {t("account")}
+              {signedIn ? t("account") : t("login")}
             </Link>
           </div>
         </div>
