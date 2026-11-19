@@ -490,7 +490,8 @@
     "viaSite": "Site button",
     "viaGithub": "Directly from GitHub (est.)",
     "messages": "Messages",
-    "messagesLead": "{n} recent messages · click an email to reply."
+    "messagesLead": "{n} recent messages · click an email to reply.",
+    "loading": "Loading…"
   },
   "Contact": {
     "title": "Contact",

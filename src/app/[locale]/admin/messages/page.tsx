@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminLoading } from "@/components/admin/admin-loading";
 import { getAdmin } from "@/lib/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 
@@ -15,7 +16,7 @@ export default async function AdminMessagesPage({ params }: PageProps<"/[locale]
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <Suspense>
+    <Suspense fallback={<AdminLoading label={(await getTranslations({ locale, namespace: "Admin" }))("loading")} />}>
       <Body locale={locale} />
     </Suspense>
   );
