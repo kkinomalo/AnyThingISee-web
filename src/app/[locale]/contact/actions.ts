@@ -1,12 +1,15 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
+import { after } from "next/server";
 import { headers } from "next/headers";
 import { parseContact, RATE_MAX, RATE_WINDOW_MS, type ContactState } from "@/lib/contact";
+import { notifyContact } from "@/lib/notify";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { visitorHash } from "@/lib/visitor";
 
-// 문의 저장 (#66): 검증 → 숨은 칸(봇) → 반복 제출 제한 → service role로 저장
+// 문의 저장 (#66): 검증 → 숨은 칸(봇) → 반복 제출 제한 → service role로 저장 → 메일 알림 (#68)
 export async function sendContact(_prev: ContactState, form: FormData): Promise<ContactState> {
   const parsed = parseContact(form);
   if (!parsed.ok) {
@@ -44,5 +47,11 @@ export async function sendContact(_prev: ContactState, form: FormData): Promise<
     console.error("[contact] 저장 실패", error.message);
     return { status: "error" };
   }
+
+  // 저장이 끝나면 응답을 먼저 보내고, 메일 알림은 뒤에서 (실패해도 문의는 어드민에 남아 있음)
+  const topicLabel = (await getTranslations({ locale: "ko", namespace: "Contact" }))(`topics.${data.topic}`);
+  after(() =>
+    notifyContact({ topicLabel, name: data.name, email: data.email, message: data.message, locale: String(form.get("locale") ?? "") || null }),
+  );
   return { status: "sent" };
 }
