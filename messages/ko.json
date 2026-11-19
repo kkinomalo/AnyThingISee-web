@@ -308,7 +308,9 @@
     "back": "전체 릴리스",
     "empty": "아직 공개된 릴리스가 없습니다.",
     "copy": "복사",
-    "copied": "복사됨"
+    "copied": "복사됨",
+    "translated": "이 페이지는 GitHub 릴리스 원문을 번역한 것입니다.",
+    "original": "원문 보기"
   },
   "License": {
     "title": "사용권",

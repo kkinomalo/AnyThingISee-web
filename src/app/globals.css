@@ -82,6 +82,13 @@
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
+  /* 마지막 줄에 단어 하나만 남지 않게 (예: "주세요.") */
+  p,
+  li,
+  dd,
+  figcaption {
+    text-wrap: pretty;
+  }
   h3 {
     font-size: 1.25rem;
     font-weight: 600;
@@ -188,34 +195,51 @@ html {
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(64px);
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-@keyframes reveal-shot {
+@keyframes reveal-shot-left {
   from {
     opacity: 0;
-    transform: translateY(48px) scale(0.96);
+    transform: perspective(1400px) translateX(-120px) rotateY(14deg) scale(0.86);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
     transform: none;
+    filter: none;
+  }
+}
+@keyframes reveal-shot-right {
+  from {
+    opacity: 0;
+    transform: perspective(1400px) translateX(120px) rotateY(-14deg) scale(0.86);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal-shot {
-      animation: reveal-shot linear both;
+      animation: reveal-shot-left cubic-bezier(0.2, 0.7, 0.2, 1) both;
       animation-timeline: view();
-      animation-range: entry 5% cover 35%;
+      animation-range: entry 0% cover 45%;
+    }
+    .reveal-shot.from-right {
+      animation-name: reveal-shot-right;
     }
     .reveal-text {
-      animation: reveal-up linear both;
+      animation: reveal-up cubic-bezier(0.2, 0.7, 0.2, 1) both;
       animation-timeline: view();
-      animation-range: entry 15% cover 40%;
+      animation-range: entry 20% cover 50%;
     }
   }
 }

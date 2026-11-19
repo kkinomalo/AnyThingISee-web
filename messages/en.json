@@ -296,7 +296,7 @@
   },
   "Releases": {
     "title": "Release notes",
-    "lead": "Changes and known limitations by version. The text matches the GitHub release.",
+    "lead": "Changes and known limitations by version, translated from the GitHub release notes.",
     "metaDescription": "Changes and known limitations for each AnyThingISee version.",
     "prerelease": "Preview",
     "latest": "Latest",
@@ -308,7 +308,9 @@
     "back": "All releases",
     "empty": "No releases yet.",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "translated": "This page is a translation of the original GitHub release notes (in Korean).",
+    "original": "View original"
   },
   "License": {
     "title": "License",
