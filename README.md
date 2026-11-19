@@ -2,6 +2,8 @@
 
 [AnyThingISee(ATIS)](https://github.com/kkinomalo/AnyThingISee-releases) 소개·다운로드 사이트입니다. 배포 주소: https://kkinomalo.com
 
+https://kkinomalo.vercel.app
+
 ## 구성
 - 메인: 서비스 소개 (기능, 사용 흐름, 지원 환경)
 - 성능 비교: 다른 디스어셈블러·디컴파일러와 측정 결과 비교
