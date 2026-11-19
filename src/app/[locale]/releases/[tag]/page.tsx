@@ -10,6 +10,7 @@ import { routing } from "@/i18n/routing";
 import { CopyButton } from "@/components/copy-button";
 import { downloadPath } from "@/lib/downloads";
 import { cleanReleaseBody } from "@/lib/release-body";
+import { translatedNote } from "@/lib/release-notes";
 import { formatBytes } from "@/lib/format";
 import { getReleases } from "@/lib/github";
 
@@ -33,6 +34,8 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
   const index = releases.findIndex((r) => r.tag === tag);
   if (index === -1) notFound();
   const release = releases[index];
+  // 영어 · 일본어는 사이트에 둔 번역본 (GitHub 원문은 한국어)
+  const translation = locale === "ko" ? null : translatedNote(release.tag, locale);
 
   return (
     <div className="mx-auto w-full max-w-[1200px] px-6 pt-12">
@@ -47,7 +50,19 @@ export default async function ReleasePage({ params }: PageProps<"/[locale]/relea
 
       <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_22rem]">
         <article className="min-w-0">
-          <Markdown>{cleanReleaseBody(release.body, { title: release.title, locale })}</Markdown>
+          {translation ? (
+            <>
+              <Markdown>{translation}</Markdown>
+              <p className="mt-8 text-sm text-muted">
+                {t("translated")}{" "}
+                <a href={release.htmlUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent">
+                  {t("original")} ↗
+                </a>
+              </p>
+            </>
+          ) : (
+            <Markdown>{cleanReleaseBody(release.body, { title: release.title, locale })}</Markdown>
+          )}
         </article>
 
         <aside className="rule-top h-fit space-y-4 pt-5 lg:sticky lg:top-24">

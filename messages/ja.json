@@ -296,7 +296,7 @@
   },
   "Releases": {
     "title": "リリースノート",
-    "lead": "バージョンごとの変更点と既知の制限です。本文は GitHub のリリースと同じです。",
+    "lead": "バージョンごとの変更点と既知の制限です。GitHub リリースの原文を翻訳しています。",
     "metaDescription": "AnyThingISee のバージョンごとの変更点と既知の制限。",
     "prerelease": "Preview",
     "latest": "最新",
@@ -308,7 +308,9 @@
     "back": "すべてのリリース",
     "empty": "公開済みのリリースはまだありません。",
     "copy": "コピー",
-    "copied": "コピー済み"
+    "copied": "コピー済み",
+    "translated": "このページは GitHub リリースの原文（韓国語）を翻訳したものです。",
+    "original": "原文を見る"
   },
   "License": {
     "title": "利用規約",

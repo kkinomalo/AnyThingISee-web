@@ -120,7 +120,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
     <div className="mx-auto w-full max-w-[1200px] px-6">
       {/* 실제 화면: 사진 · 글을 번갈아 (지그재그) */}
-      <section aria-labelledby="tour-title" className="pt-28 lg:pt-36">
+      <section aria-labelledby="tour-title" className="overflow-x-clip pt-28 lg:pt-36">
         <h2 id="tour-title" className="sr-only">
           {t("tour.title")}
         </h2>
@@ -132,7 +132,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 i % 2 === 1 ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]" : "lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]"
               }`}
             >
-              <div className={`reveal-shot ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+              <div className={`reveal-shot ${i % 2 === 1 ? "from-right lg:order-2" : ""}`}>
                 <Screenshot src={tourShots[i]} alt={tourAlts[i]} sizes="(min-width: 1200px) 660px, 94vw" priority={i === 0} {...shot} />
               </div>
               <div className="reveal-text">
