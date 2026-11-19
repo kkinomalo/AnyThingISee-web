@@ -1,20 +1,16 @@
 import "server-only";
 import type { User } from "@supabase/supabase-js";
+import { isAdminUser } from "./admin-check";
 import { createAdminClient } from "./supabase/admin";
 import { createClient } from "./supabase/server";
 import type { EventRow, SnapshotRow } from "./stats";
 
-/** ADMIN_EMAILS(쉼표 구분)에 있는 로그인 사용자만. 아니면 null */
+/** 어드민(DB 역할 또는 ADMIN_EMAILS)인 로그인 사용자. 아니면 null */
 export async function getAdmin(): Promise<User | null> {
   const supabase = await createClient();
   if (!supabase) return null;
   const { data } = await supabase.auth.getUser();
-  const email = data.user?.email?.toLowerCase();
-  const allowed = (process.env.ADMIN_EMAILS ?? "")
-    .split(",")
-    .map((e) => e.trim().toLowerCase())
-    .filter(Boolean);
-  return email && data.user?.email_confirmed_at && allowed.includes(email) ? data.user : null;
+  return isAdminUser(data.user) ? data.user : null;
 }
 
 /** 다운로드 기록 전체 (1000행씩 나눠 읽음, 최대 100,000행) */
