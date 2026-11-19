@@ -7,6 +7,9 @@ import { supabaseEnv } from "./lib/supabase/env";
 
 const intl = createMiddleware(routing);
 const ADMIN_PATH = new RegExp(`^/(${routing.locales.join("|")})/admin(/|$)`);
+// 로그인 정보를 쓰는 페이지에서만 Supabase 세션을 갱신한다 (#73).
+// 메인 · 다운로드 같은 정적 페이지로 이동할 때는 Supabase를 부르지 않아 로그인 상태여도 빠르다
+const AUTH_PATH = new RegExp(`^/(${routing.locales.join("|")})/(account|admin|contact|login)(/|$)`);
 
 export default async function proxy(request: NextRequest) {
   const adminMatch = request.nextUrl.pathname.match(ADMIN_PATH);
@@ -23,8 +26,8 @@ export default async function proxy(request: NextRequest) {
 
   const response = intl(request);
 
-  // 로그인 쿠키가 있을 때만 Supabase 세션을 갱신한다 (방문자 대부분은 네트워크 호출 없음)
-  if (env && hasSession) {
+  // 로그인 쿠키가 있고, 로그인 정보를 쓰는 페이지일 때만 세션을 갱신한다
+  if (env && hasSession && AUTH_PATH.test(request.nextUrl.pathname)) {
     const supabase = createServerClient(env.url, env.key, {
       cookies: {
         getAll: () => request.cookies.getAll(),
