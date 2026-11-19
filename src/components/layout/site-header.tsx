@@ -162,7 +162,7 @@ export function SiteHeader() {
             </div>
             <Link
               href="/account"
-              className="ml-2 hidden rounded-lg bg-cta-dark px-6 py-3 text-[16px] font-semibold text-white hover:bg-cta-dark-hover sm:block"
+              className="ml-2 hidden rounded-lg border border-border bg-surface px-5 py-2.5 text-[15px] font-semibold text-ink hover:bg-ink/5 sm:block"
             >
               {t("account")}
             </Link>
@@ -191,7 +191,7 @@ export function SiteHeader() {
         >
           {[...navGroups, { key: "license", items: licenseItems }].map((group) => (
             <section key={group.key} className="border-b border-border py-3 first:pt-0">
-              <h2 className="px-2 pb-1 text-[13px] font-semibold text-muted">{t(`groups.${group.key}`)}</h2>
+              <p className="px-2 pb-1 text-[13px] font-semibold text-muted">{t(`groups.${group.key}`)}</p>
               <ul>
                 {group.items.map((item) => (
                   <li key={item.key}>
@@ -220,7 +220,7 @@ export function SiteHeader() {
             </Link>
             <Link
               href="/account"
-              className="block rounded-lg bg-cta-dark px-6 py-3.5 text-center font-semibold text-white"
+              className="block rounded-lg border border-border px-6 py-3.5 text-center font-semibold"
             >
               {t("account")}
             </Link>
