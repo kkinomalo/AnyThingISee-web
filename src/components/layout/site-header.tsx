@@ -162,7 +162,7 @@ export function SiteHeader() {
             </div>
             <Link
               href="/account"
-              className="ml-2 hidden rounded-lg border border-border bg-surface px-5 py-2.5 text-[15px] font-semibold text-ink hover:bg-ink/5 sm:block"
+              className="ml-2 hidden rounded-lg bg-cta-dark px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-cta-soft sm:block"
             >
               {t("account")}
             </Link>
@@ -220,7 +220,7 @@ export function SiteHeader() {
             </Link>
             <Link
               href="/account"
-              className="block rounded-lg border border-border px-6 py-3.5 text-center font-semibold"
+              className="block rounded-lg bg-cta-dark px-6 py-3.5 text-center font-semibold text-white transition-colors hover:bg-cta-soft"
             >
               {t("account")}
             </Link>
