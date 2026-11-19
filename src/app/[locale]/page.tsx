@@ -9,10 +9,13 @@ import { Link } from "@/i18n/navigation";
 import { getLatestRelease } from "@/lib/github";
 import releaseBand from "../../../public/images/release-band.jpg";
 import cEn from "../../../public/screens/c-en.webp";
+import cJa from "../../../public/screens/c-ja.webp";
 import cKo from "../../../public/screens/c-ko.webp";
 import graphEn from "../../../public/screens/graph-en.webp";
+import graphJa from "../../../public/screens/graph-ja.webp";
 import graphKo from "../../../public/screens/graph-ko.webp";
 import startEn from "../../../public/screens/start-en.webp";
+import startJa from "../../../public/screens/start-ja.webp";
 
 type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
@@ -34,11 +37,16 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const steps = t.raw("flow.steps") as Item[];
   const faqs = t.raw("faq.items") as Faq[];
   const releaseItems = t.raw("release.items") as string[];
-  // 앱 화면: 한국어 사이트는 한글 화면, 나머지는 영어 화면 (시작 화면은 영어만 있음)
-  const ko = locale === "ko";
+  // 앱 화면: ko · ja는 각 언어 화면, 그 외는 영어 화면
   const shot = { zoomLabel: t("screens.zoom"), closeLabel: t("screens.close") };
   const tour = t.raw("tour.items") as { label: string; title: string; body: string; points: string[] }[];
-  const tourShots = [ko ? cKo : cEn, ko ? graphKo : graphEn, startEn];
+  // 언어별 앱 화면 (한국어 시작 화면은 아직 없어 영어판 사용)
+  const shots = {
+    ko: [cKo, graphKo, startEn],
+    ja: [cJa, graphJa, startJa],
+    en: [cEn, graphEn, startEn],
+  };
+  const tourShots = shots[locale as keyof typeof shots] ?? shots.en;
   const tourAlts = [t("screens.cAlt"), t("screens.graphAlt"), t("screens.startAlt")];
 
 
@@ -193,9 +201,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           {steps.map((s, i) => {
             const last = i === steps.length - 1;
             return (
-              <li key={s.title} className={`border-t-2 pt-5 ${last ? "border-accent" : "border-ink"}`}>
+              <li key={s.title} className={`flow-step step-${i} pt-5 ${last ? "text-accent" : "text-ink"}`}>
                 <span className={`font-mono text-sm ${last ? "text-accent" : "text-muted"}`}>STEP {i + 1}</span>
-                <h3 className="mt-2.5">{s.title}</h3>
+                <h3 className="mt-2.5 text-ink">{s.title}</h3>
                 <p className="mt-2 text-muted">{s.body}</p>
               </li>
             );

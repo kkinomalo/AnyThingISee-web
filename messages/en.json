@@ -57,7 +57,7 @@
       "steps": [
         {
           "title": "Open a file",
-          "body": "Choose a file or drop it onto the window. Opening a file never runs it."
+          "body": "Choose a file or drop it onto the window."
         },
         {
           "title": "Pick a function",
