@@ -232,7 +232,8 @@
         "desc": "라이선스 · 제휴 등 궁금한 점을 남겨 주세요."
       }
     },
-    "account": "내 계정"
+    "account": "내 계정",
+    "login": "로그인"
   },
   "Footer": {
     "tagline": "Windows용 로컬 디스어셈블러·디컴파일러",

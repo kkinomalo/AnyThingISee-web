@@ -232,7 +232,8 @@
         "desc": "Licensing, partnerships and other questions."
       }
     },
-    "account": "My account"
+    "account": "My account",
+    "login": "Sign in"
   },
   "Footer": {
     "tagline": "A local disassembler and decompiler for Windows",
