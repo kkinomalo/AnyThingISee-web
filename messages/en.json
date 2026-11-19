@@ -169,6 +169,12 @@
           ]
         }
       ]
+    },
+    "ask": {
+      "title": "Still have questions?",
+      "body": "Licensing, partnerships or bug reports—we'd love to hear from you.",
+      "contact": "Contact us",
+      "issue": "Report a bug"
     }
   },
   "Nav": {
@@ -220,6 +226,10 @@
       "thirdParty": {
         "title": "Third-party notices",
         "desc": "Licenses for bundled components such as Ghidra."
+      },
+      "contact": {
+        "title": "Contact",
+        "desc": "Licensing, partnerships and other questions."
       }
     },
     "account": "My account"
@@ -478,6 +488,45 @@
     "compareLead": "Of all GitHub downloads, how many went through the site button and how many came directly from GitHub (estimated).",
     "compareAria": "Site {site}, direct from GitHub {direct}",
     "viaSite": "Site button",
-    "viaGithub": "Directly from GitHub (est.)"
+    "viaGithub": "Directly from GitHub (est.)",
+    "messages": "Messages",
+    "messagesLead": "{n} recent messages · click an email to reply."
+  },
+  "Contact": {
+    "title": "Contact",
+    "lead": "Questions about licensing, partnerships or anything else? Leave a message and we'll reply to your email.",
+    "before": "Before you write",
+    "shortcuts": {
+      "bug": {
+        "title": "Report a bug",
+        "body": "Open a GitHub issue with steps to reproduce—it's the fastest way to get it checked. Please don't attach private binaries."
+      },
+      "guide": {
+        "title": "Getting started",
+        "body": "How to install, open a file and export patches, all in one place."
+      }
+    },
+    "formTitle": "Send a message",
+    "topic": "Topic",
+    "topics": {
+      "general": "General",
+      "license": "License & purchase",
+      "partnership": "Partnership",
+      "other": "Other"
+    },
+    "name": "Name",
+    "optional": "optional",
+    "email": "Email",
+    "message": "Message",
+    "messagePlaceholder": "Tell us what you'd like to know.",
+    "emailError": "Please enter a valid email address.",
+    "messageError": "Please write at least 10 characters.",
+    "submit": "Send",
+    "sending": "Sending…",
+    "sentTitle": "Message sent",
+    "sentBody": "We'll reply to the email you entered. Thank you.",
+    "limited": "Too many messages in a short time. Please try again later.",
+    "error": "Couldn't send. Please try again later or use GitHub Issues.",
+    "privacy": "Your message and email are used only to reply to you."
   }
 }

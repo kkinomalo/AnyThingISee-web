@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
-import { Link, redirect } from "@/i18n/navigation";
+import { AdminHeader } from "@/components/admin/admin-header";
+import { Link } from "@/i18n/navigation";
 import { getAdmin, loadEvents, loadSnapshots, requestTime } from "@/lib/admin";
 import { getReleases } from "@/lib/github";
 import { RANGES, summarize, type Count, type Range } from "@/lib/stats";
-import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = { title: "Admin", robots: { index: false, follow: false } };
 
@@ -64,33 +63,9 @@ async function AdminBody({
   const compareTotal = s.allSite + githubDirect;
   const unknownShare = s.total ? (s.countries.find((c) => c.key === "-")?.count ?? 0) / s.total : 0;
 
-  async function signOut() {
-    "use server";
-    const client = await createClient();
-    await client?.auth.signOut();
-    redirect({ href: "/", locale });
-  }
-
   return (
     <div className="min-h-dvh bg-background">
-      {/* 어드민 전용 상단 바 */}
-      <header className="border-b border-border bg-surface">
-        <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-6 px-6">
-          <Link href="/" className="flex items-center gap-2.5 font-bold">
-            <Image src="/brand/logo.svg" alt="" width={28} height={28} />
-            <span translate="no">AnyThingISee</span>
-          </Link>
-          <span className="text-muted">/ {t("title")}</span>
-          <div className="ml-auto flex items-center gap-5 text-sm">
-            <span className="hidden text-muted sm:inline">{admin.email}</span>
-            <form action={signOut}>
-              <button type="submit" className="underline underline-offset-4 hover:text-accent">
-                {t("signOut")}
-              </button>
-            </form>
-          </div>
-        </div>
-      </header>
+      <AdminHeader email={admin.email} locale={locale} current="stats" />
 
       <div className="mx-auto max-w-[1200px] px-6 pb-20 pt-12">
         <h1 className="text-[clamp(2rem,1.6rem+1.6vw,2.75rem)]">{t("heading")}</h1>

@@ -4,10 +4,11 @@ import { CodeDemo } from "@/components/home/code-demo";
 import { FeatureIcon, type FeatureIconName } from "@/components/home/feature-icon";
 import { GlowGrid } from "@/components/home/glow-grid";
 import { Screenshot } from "@/components/home/screenshot";
-import { ArrowRight, Check } from "@/components/icons";
+import { ArrowRight, Check, ExternalArrow } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
 import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
+import { external } from "@/lib/links";
 import releaseBand from "../../../public/images/release-band.jpg";
 import cEn from "../../../public/screens/c-en.webp";
 import cJa from "../../../public/screens/c-ja.webp";
@@ -19,6 +20,13 @@ import startEn from "../../../public/screens/start-en.webp";
 import startJa from "../../../public/screens/start-ja.webp";
 
 type Item = { title: string; body: string };
+
+// 문의 박스 배경 무늬: 주소 + 16바이트 hex 덤프 (고정값, 실제 파일 아님)
+const HEX_DUMP = Array.from({ length: 22 }, (_, row) => {
+  const addr = (0x140001000 + row * 16).toString(16).toUpperCase();
+  const bytes = Array.from({ length: 16 }, (_, i) => ((row * 37 + i * 91 + ((row * i) % 7) * 13) & 0xff).toString(16).padStart(2, "0").toUpperCase());
+  return `${addr}  ${bytes.slice(0, 8).join(" ")}  ${bytes.slice(8).join(" ")}   `.repeat(3);
+}).join("\n");
 type Faq = { q: string; a: string };
 
 // 시안 #28: 카드 · 어두운 블록 없이 여백 · 선 · 번호 · 큰 글자로 구성
@@ -175,8 +183,13 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
+    </div>
+
+    {/* 섹션 배경 띠 (#66): 상아색 사이에 한 톤 진한 모래색 전체 폭 띠 */}
+    <div className="mt-32 border-y border-border bg-band lg:mt-40">
+    <div className="mx-auto w-full max-w-[1200px] px-6">
       {/* 왜 AnyThingISee인가: 핵심 2개는 크게, 나머지 4개는 짧은 목록 (#63) */}
-      <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-32 lg:pt-40">
+      <section id="features" aria-labelledby="features-title" className="scroll-mt-24 py-24 lg:py-32">
         <h2 id="features-title">{t("features.title")}</h2>
         <GlowGrid className="mt-12 grid gap-5 md:grid-cols-2">
           {keyFeatures.map((f) => (
@@ -212,6 +225,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <p className="mt-3 text-sm text-muted">{t("demo.note")}</p>
         </div>
       </section>
+    </div>
+    </div>
+
+    <div className="mx-auto w-full max-w-[1200px] px-6">
 
       {/* 처음 쓰는 순서: 가로 단계 */}
       <section aria-labelledby="flow-title" className="pt-40">
@@ -245,6 +262,35 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <p className="max-w-2xl pb-6 text-muted">{f.a}</p>
             </details>
           ))}
+        </div>
+      </section>
+
+      {/* 아직 궁금한 게 있나요? (#66): 물결선 대신 옅은 hex 덤프 무늬, 가운데는 비워 글자가 읽히게 */}
+      <section aria-labelledby="ask-title" className="relative mt-32 overflow-hidden rounded-2xl border border-border bg-surface px-6 py-16 text-center shadow-float sm:py-20">
+        <pre aria-hidden className="hex-dump pointer-events-none absolute inset-0 m-0 select-none overflow-hidden whitespace-pre font-mono text-[12px] leading-[22px]">
+          {HEX_DUMP}
+        </pre>
+        <div className="relative">
+          <h2 id="ask-title">{t("ask.title")}</h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted">{t("ask.body")}</p>
+          <div className="mt-9 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-cta-dark px-6 py-3.5 font-semibold text-white transition-colors hover:bg-cta-dark-hover"
+            >
+              {t("ask.contact")}
+              <ArrowRight width={18} height={18} />
+            </Link>
+            <a
+              href={external.issues}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-ink/20 bg-surface px-6 py-3.5 font-semibold hover:bg-ink/5"
+            >
+              {t("ask.issue")}
+              <ExternalArrow width={16} height={16} />
+            </a>
+          </div>
         </div>
       </section>
     </div>

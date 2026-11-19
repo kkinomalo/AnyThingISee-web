@@ -33,6 +33,7 @@ export const navGroups: NavGroup[] = [
       { key: "releases", href: "/releases" },
       { key: "guide", href: external.guide, external: true },
       { key: "issues", href: external.issues, external: true },
+      { key: "contact", href: "/contact" },
     ],
   },
 ];

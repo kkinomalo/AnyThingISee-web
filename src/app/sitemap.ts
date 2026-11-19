@@ -3,7 +3,7 @@ import { routing } from "@/i18n/routing";
 import { getReleases } from "@/lib/github";
 import { SITE_URL } from "@/lib/seo";
 
-const PAGES = ["", "/download", "/compare", "/releases", "/license"];
+const PAGES = ["", "/download", "/compare", "/releases", "/license", "/contact"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { releases } = await getReleases();
