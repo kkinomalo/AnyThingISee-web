@@ -22,7 +22,7 @@ export default async function LoginPage({ params }: PageProps<"/[locale]/login">
     <div className="grid min-h-dvh lg:grid-cols-2">
       <div className="relative hidden overflow-hidden lg:block">
         <Image src={releaseBand} alt="" fill priority sizes="50vw" placeholder="blur" className="object-cover" />
-        <Link href="/" className="absolute left-8 top-8 flex items-center gap-2.5 rounded-lg bg-white/90 px-3 py-2 font-bold">
+        <Link href="/" className="absolute left-8 top-8 flex items-center gap-2.5 text-lg font-bold text-white [text-shadow:0_1px_3px_rgb(0_0_0/0.35)]">
           <Image src="/brand/logo.svg" alt="" width={28} height={28} />
           <span translate="no">AnyThingISee</span>
         </Link>

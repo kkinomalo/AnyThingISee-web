@@ -26,6 +26,8 @@
   /* 검정에 가까운 갈색 CTA (다운로드 · 내 계정) */
   --cta-dark: #2b1d13;
   --cta-dark-hover: #45301f;
+  /* 헤더 '내 계정' 호버: 진한 갈색이 밝아지는 쪽 (흰 글자 대비 6.2:1) */
+  --cta-soft: #7a5a40;
   /* 코드 강조: 강조색 12% 바탕 + 진한 강조 글자 (5.78:1) */
   --tint: #eddfcf;
   --on-tint: #8a3e10;
@@ -50,6 +52,7 @@
   --color-on-accent: var(--on-accent);
   --color-cta-dark: var(--cta-dark);
   --color-cta-dark-hover: var(--cta-dark-hover);
+  --color-cta-soft: var(--cta-soft);
   --color-tint: var(--tint);
   --color-on-tint: var(--on-tint);
   --color-faint: var(--faint);
