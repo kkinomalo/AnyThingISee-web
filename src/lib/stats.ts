@@ -32,6 +32,26 @@ export function rangeStart(range: Range, now: number) {
 }
 
 export type Count = { key: string; count: number };
+export type ChartDay = {
+  date: string;
+  site: number;
+  /** GitHub download_count 전날 대비 증가분. 스냅샷이 없거나 기준일이면 null */
+  github: number | null;
+  /** 첫 스냅샷 날 (증가분 계산 불가) */
+  baseline: boolean;
+  today: boolean;
+  monday: boolean;
+};
+
+/** 차트 y축 위쪽 값: 1 · 2 · 5 × 10ⁿ 중 최댓값 이상인 가장 작은 수 (최소 1) */
+export function niceMax(value: number) {
+  if (value <= 1) return 1;
+  const p = 10 ** Math.floor(Math.log10(value));
+  for (const m of [1, 2, 5, 10]) if (m * p >= value) return m * p;
+  return 10 * p;
+}
+
+const unknownLast = (rows: Count[]) => [...rows.filter((r) => r.key !== "-"), ...rows.filter((r) => r.key === "-")];
 const tally = (rows: EventRow[], pick: (r: EventRow) => string | null, fallback: string): Count[] => {
   const map = new Map<string, number>();
   for (const r of rows) {
@@ -81,11 +101,22 @@ export function summarize({
 
   // 차트: 범위가 today · 7d면 14일, 그 외 30일
   const chartDays = range === "today" || range === "7d" ? 14 : 30;
-  const ghByDay = githubIncrements(version ? snapshots.filter((s) => s.tag === version) : snapshots);
-  const chart = Array.from({ length: chartDays }, (_, i) => {
+  const scopedSnapshots = version ? snapshots.filter((s) => s.tag === version) : snapshots;
+  const ghByDay = githubIncrements(scopedSnapshots);
+  // 첫 스냅샷 날은 비교할 전날이 없어 증가분을 낼 수 없다 → '기준일' (누적값을 증가분으로 쓰지 않음)
+  const baseline = scopedSnapshots.map((s) => s.captured_on).sort()[0] ?? null;
+  const chart: ChartDay[] = Array.from({ length: chartDays }, (_, i) => {
     const d = kstDate(now - (chartDays - 1 - i) * DAY);
-    return { date: d, site: byDay.get(d) ?? 0, github: ghByDay.get(d) ?? null, today: d === today };
+    return {
+      date: d,
+      site: byDay.get(d) ?? 0,
+      github: ghByDay.get(d) ?? null,
+      baseline: d === baseline,
+      today: d === today,
+      monday: new Date(`${d}T00:00:00Z`).getUTCDay() === 1,
+    };
   });
+  const hasGithub = chart.some((d) => d.github !== null);
 
   return {
     total: inRange.length,
@@ -97,10 +128,13 @@ export function summarize({
     githubTotal,
     allSite: scoped.length,
     chart,
+    hasGithub,
+    chartMax: niceMax(Math.max(0, ...chart.map((d) => Math.max(d.site, d.github ?? 0)))),
     versions: tally(inRange, (e) => e.tag, "-"),
     os: tally(inRange, (e) => e.os, "other"),
     locales: tally(inRange, (e) => e.locale, "-"),
-    countries: tally(inRange, (e) => e.country, "-"),
+    // 국가 정보가 없는 요청('-')은 순위와 상관없이 맨 아래
+    countries: unknownLast(tally(inRange, (e) => e.country, "-")),
     referrers: tally(inRange, (e) => e.referrer_host, ""),
   };
 }
