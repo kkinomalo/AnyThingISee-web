@@ -490,7 +490,8 @@
     "viaSite": "사이트 버튼",
     "viaGithub": "GitHub에서 직접 (추정)",
     "messages": "문의",
-    "messagesLead": "최근 문의 {n}건 · 이메일을 누르면 메일 앱으로 답장합니다."
+    "messagesLead": "최근 문의 {n}건 · 이메일을 누르면 메일 앱으로 답장합니다.",
+    "loading": "불러오는 중…"
   },
   "Contact": {
     "title": "문의하기",

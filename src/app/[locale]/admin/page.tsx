@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminLoading } from "@/components/admin/admin-loading";
 import { Link } from "@/i18n/navigation";
 import { getAdmin, loadEvents, loadSnapshots, requestTime } from "@/lib/admin";
 import { getReleases } from "@/lib/github";
@@ -15,7 +16,7 @@ export default async function AdminPage({ params, searchParams }: PageProps<"/[l
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <Suspense>
+    <Suspense fallback={<AdminLoading label={(await getTranslations({ locale, namespace: "Admin" }))("loading")} />}>
       <AdminBody locale={locale} searchParams={searchParams} />
     </Suspense>
   );

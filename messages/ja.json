@@ -490,7 +490,8 @@
     "viaSite": "サイトのボタン",
     "viaGithub": "GitHub から直接（推定）",
     "messages": "お問い合わせ",
-    "messagesLead": "最近のお問い合わせ {n} 件 · メールアドレスを押すとメールで返信できます。"
+    "messagesLead": "最近のお問い合わせ {n} 件 · メールアドレスを押すとメールで返信できます。",
+    "loading": "読み込み中…"
   },
   "Contact": {
     "title": "お問い合わせ",
