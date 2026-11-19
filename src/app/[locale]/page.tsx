@@ -22,7 +22,7 @@ type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
 
 // 시안 #28: 카드 · 어두운 블록 없이 여백 · 선 · 번호 · 큰 글자로 구성
-// 순서: 히어로(+제품 화면) → 실제 화면(지그재그) → 왜 AnyThingISee인가(+코드 데모) → 처음 쓰는 순서 → FAQ
+// 순서: 히어로 → 실제 화면(지그재그) → 왜 AnyThingISee인가(+코드 데모) → 처음 쓰는 순서 → FAQ
 // 리뷰 반영 #63 — 되돌리기 기준 태그: before-review-63
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -91,16 +91,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 {t("hero.warning")}
               </Link>
             </p>
-            {/* 제품 화면: 첫 화면에서 바로 보이게 */}
-            <Screenshot
-              src={tourShots[0]}
-              alt={tourAlts[0]}
-              sizes="(min-width: 1200px) 1136px, 94vw"
-              quality={90}
-              priority
-              className="mt-12 lg:mt-16"
-              {...shot}
-            />
           </div>
 
           {/* 릴리스 띠 */}
