@@ -9,10 +9,11 @@
       "body": "AnyThingISee is a local binary analysis tool that runs right on Windows. Read C pseudocode and assembly side by side, line by line, for x64 PE and ELF files, and handle names, notes and instruction patches in one view. The Ghidra native decompiler core is built in, so there's no Ghidra or Java to install, and your files never leave your PC.",
       "warning": "Seeing a warning on install? · Check SHA-256",
       "explore": "Explore the features",
-      "goDownload": "Go to download"
+      "goDownload": "Go to download",
+      "meta": "Windows 10/11 x64 · {size} · {version}"
     },
     "features": {
-      "title": "<u>W</u>hat makes AnyThingISee the ultimate tool?",
+      "title": "Why AnyThingISee",
       "items": [
         {
           "icon": "package",
@@ -73,11 +74,6 @@
         }
       ]
     },
-    "compare": {
-      "title": "Benchmarks are <em>in progress</em>",
-      "body": "We'll measure against Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions and publish the environment, versions, dates and sample binaries alongside the results.",
-      "cta": "See the method"
-    },
     "faq": {
       "title": "FAQ",
       "items": [
@@ -100,6 +96,10 @@
         {
           "q": "Does it run on Mac?",
           "a": "Only Windows 10/11 x64 is supported today. A macOS (Apple Silicon) version is in development."
+        },
+        {
+          "q": "Have you compared it with other tools?",
+          "a": "We are measuring it against Ghidra, IDA Free, Binary Ninja Free and Cutter under the same conditions. Results will be published on the comparison page together with the environment, versions, date and sample binaries."
         },
         {
           "q": "Where do I report problems?",

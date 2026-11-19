@@ -6,6 +6,7 @@ import { GlowGrid } from "@/components/home/glow-grid";
 import { Screenshot } from "@/components/home/screenshot";
 import { ArrowRight, Check } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
+import { formatBytes } from "@/lib/format";
 import { getLatestRelease } from "@/lib/github";
 import releaseBand from "../../../public/images/release-band.jpg";
 import cEn from "../../../public/screens/c-en.webp";
@@ -21,7 +22,8 @@ type Item = { title: string; body: string };
 type Faq = { q: string; a: string };
 
 // 시안 #28: 카드 · 어두운 블록 없이 여백 · 선 · 번호 · 큰 글자로 구성
-// 순서: 히어로 → 실제 화면(지그재그) → 기능(+코드 데모) → 처음 쓰는 순서 → 성능 비교 → FAQ → 다운로드
+// 순서: 히어로(+제품 화면) → 실제 화면(지그재그) → 왜 AnyThingISee인가(+코드 데모) → 처음 쓰는 순서 → FAQ
+// 리뷰 반영 #63 — 되돌리기 기준 태그: before-review-63
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -37,6 +39,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const steps = t.raw("flow.steps") as Item[];
   const faqs = t.raw("faq.items") as Faq[];
   const releaseItems = t.raw("release.items") as string[];
+  const installer = release.installer;
+  const meta = t("hero.meta", { size: installer ? formatBytes(installer.size) : "", version: release.version });
+  // 핵심 차별점 2개는 크게, 나머지는 짧은 목록
+  const KEY = ["monitor", "evidence"];
+  const keyFeatures = features.filter((f) => KEY.includes(f.icon));
+  const otherFeatures = features.filter((f) => !KEY.includes(f.icon));
   // 앱 화면: ko · ja는 각 언어 화면, 그 외는 영어 화면
   const shot = { zoomLabel: t("screens.zoom"), closeLabel: t("screens.close") };
   const tour = t.raw("tour.items") as { label: string; title: string; body: string; points: string[] }[];
@@ -75,11 +83,24 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 <ArrowRight width={18} height={18} />
               </a>
             </div>
-            <p className="mt-6 text-sm text-muted">
+            {/* 버튼을 누르기 전에 알아야 할 정보 */}
+            <p className="mt-5 text-sm text-muted">
+              <span className="font-mono">{meta}</span>
+              <span aria-hidden className="mx-2">·</span>
               <Link href="/download#verify" className="underline underline-offset-4 hover:text-accent">
                 {t("hero.warning")}
               </Link>
             </p>
+            {/* 제품 화면: 첫 화면에서 바로 보이게 */}
+            <Screenshot
+              src={tourShots[0]}
+              alt={tourAlts[0]}
+              sizes="(min-width: 1200px) 1136px, 94vw"
+              quality={90}
+              priority
+              className="mt-12 lg:mt-16"
+              {...shot}
+            />
           </div>
 
           {/* 릴리스 띠 */}
@@ -89,6 +110,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               alt=""
               fill
               sizes="(min-width: 1440px) 1440px, 100vw"
+              quality={90}
               placeholder="blur"
               className="-z-20 object-cover object-[50%_44%] brightness-[0.88]"
             />
@@ -141,7 +163,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               }`}
             >
               <div className={`reveal-shot ${i % 2 === 1 ? "from-right lg:order-2" : ""}`}>
-                <Screenshot src={tourShots[i]} alt={tourAlts[i]} sizes="(min-width: 1200px) 660px, 94vw" priority={i === 0} {...shot} />
+                <Screenshot src={tourShots[i]} alt={tourAlts[i]} sizes="(min-width: 1200px) 660px, 94vw" quality={90} {...shot} />
               </div>
               <div className="reveal-text">
                 <p className="font-mono text-sm text-accent">
@@ -163,25 +185,32 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </section>
 
-      {/* 기능: 가운데 큰 제목 + 3×2 격자 (#34) */}
+      {/* 왜 AnyThingISee인가: 핵심 2개는 크게, 나머지 4개는 짧은 목록 (#63) */}
       <section id="features" aria-labelledby="features-title" className="scroll-mt-24 pt-32 lg:pt-40">
-        <h2 id="features-title" className="mx-auto max-w-[22em] text-center">
-          {t.rich("features.title", {
-            u: (chunks) => <span className="underline decoration-[3px] underline-offset-[6px]">{chunks}</span>,
-          })}
-        </h2>
-        <GlowGrid className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((f) => (
-            <li key={f.title} className="glow-card rounded-lg border border-border bg-surface p-8">
+        <h2 id="features-title">{t("features.title")}</h2>
+        <GlowGrid className="mt-12 grid gap-5 md:grid-cols-2">
+          {keyFeatures.map((f) => (
+            <li key={f.title} className="glow-card rounded-lg border border-border bg-surface p-8 lg:p-10">
               <span className="flex size-14 items-center justify-center rounded-md bg-tint text-on-tint">
                 <FeatureIcon name={f.icon} width={28} height={28} />
               </span>
-              <h3 className="mt-8 text-2xl">{f.title}</h3>
-              <p className="mt-4 font-semibold">{f.lead}</p>
+              <h3 className="mt-8 text-[clamp(1.5rem,1.3rem+0.8vw,2rem)] leading-tight">{f.title}</h3>
+              <p className="mt-3 text-lg font-semibold">{f.lead}</p>
               <p className="mt-3 text-muted">{f.body}</p>
             </li>
           ))}
         </GlowGrid>
+        <ul className="rule-top mt-12 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
+          {otherFeatures.map((f) => (
+            <li key={f.title} className="flex gap-3 border-b border-border py-5 lg:border-b-0">
+              <FeatureIcon name={f.icon} width={22} height={22} className="mt-0.5 shrink-0 text-accent" />
+              <div>
+                <h3 className="text-base font-semibold">{f.title}</h3>
+                <p className="mt-1 text-sm text-muted">{f.lead}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
 
         {/* 직접 눌러 보는 C ↔ 어셈블리 연결 예시 */}
         <div className="mt-24">
@@ -209,18 +238,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             );
           })}
         </ol>
-      </section>
-
-      {/* 성능 비교 (데이터 공개 전) */}
-      <section className="rule-top mt-40 grid gap-x-20 gap-y-6 pt-10 lg:grid-cols-2">
-        <h2>{t.rich("compare.title", { em: (chunks) => <span className="text-accent">{chunks}</span> })}</h2>
-        <div>
-          <p className="text-muted">{t("compare.body")}</p>
-          <Link href="/compare" className="text-link mt-4 inline-flex items-center gap-1.5">
-            {t("compare.cta")}
-            <ArrowRight width={16} height={16} />
-          </Link>
-        </div>
       </section>
 
       {/* FAQ: 2단, 선만 */}

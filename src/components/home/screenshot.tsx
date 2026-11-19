@@ -10,6 +10,7 @@ export function Screenshot({
   alt,
   sizes,
   priority = false,
+  quality,
   zoomLabel,
   closeLabel,
   className = "",
@@ -18,6 +19,7 @@ export function Screenshot({
   alt: string;
   sizes: string;
   priority?: boolean;
+  quality?: number;
   zoomLabel: string;
   closeLabel: string;
   className?: string;
@@ -38,7 +40,7 @@ export function Screenshot({
         aria-label={`${zoomLabel}: ${alt}`}
         className={`block w-full cursor-zoom-in overflow-hidden rounded-xl border border-border bg-surface shadow-[0_1px_2px_rgb(31_27_22/0.06),0_24px_48px_-12px_rgb(31_27_22/0.18)] ${className}`}
       >
-        <Image src={src} alt={alt} sizes={sizes} priority={priority} placeholder="blur" className="h-auto w-full" />
+        <Image src={src} alt={alt} sizes={sizes} priority={priority} quality={quality} placeholder="blur" className="h-auto w-full" />
       </button>
 
       <dialog
@@ -56,7 +58,7 @@ export function Screenshot({
           <Close />
         </button>
         {opened && (
-          <Image src={src} alt="" sizes="2000px" loading="eager" className="-mt-14 h-auto w-[min(2000px,96vw)] max-w-none" />
+          <Image src={src} alt="" sizes="2000px" quality={90} loading="eager" className="-mt-14 h-auto w-[min(2000px,96vw)] max-w-none" />
         )}
       </dialog>
     </>

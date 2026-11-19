@@ -9,10 +9,11 @@
       "body": "AnyThingISee は Windows ですぐに使えるローカルのバイナリ解析ツールです。x64 PE・ELF ファイルの C 疑似コードとアセンブリを行ごとに対応させて読み、名前・メモ・命令パッチまでひとつの画面で完結します。Ghidra のネイティブ逆コンパイラーコアを内蔵しているため Ghidra や Java のインストールは不要で、ファイルが PC の外に出ることはありません。",
       "warning": "インストール時に警告が出ますか？ · SHA-256 を確認",
       "explore": "機能を見る",
-      "goDownload": "ダウンロードページへ"
+      "goDownload": "ダウンロードページへ",
+      "meta": "Windows 10/11 x64 · {size} · {version}"
     },
     "features": {
-      "title": "AnyThingISee を最高のツールにする要素は<u>何でしょうか？</u>",
+      "title": "AnyThingISee を選ぶ理由",
       "items": [
         {
           "icon": "package",
@@ -73,11 +74,6 @@
         }
       ]
     },
-    "compare": {
-      "title": "性能比較は<em>準備中</em>です",
-      "body": "Ghidra、IDA Free、Binary Ninja Free、Cutter と同じ条件で測定し、測定環境・バージョン・測定日・サンプルバイナリをあわせて公開します。",
-      "cta": "測定方法を見る"
-    },
     "faq": {
       "title": "よくある質問",
       "items": [
@@ -100,6 +96,10 @@
         {
           "q": "Mac でも使えますか？",
           "a": "現在は Windows 10/11 x64 のみ対応しています。macOS（Apple Silicon）版は開発中です。"
+        },
+        {
+          "q": "ほかのツールと性能を比較しましたか？",
+          "a": "Ghidra・IDA Free・Binary Ninja Free・Cutter と同じ条件で測定しています。結果は測定環境・バージョン・測定日・サンプルバイナリとあわせて性能比較ページで公開する予定です。"
         },
         {
           "q": "不具合はどこに報告しますか？",
