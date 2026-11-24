@@ -17,6 +17,7 @@ import graphEn from "../../../public/screens/graph-en.webp";
 import graphJa from "../../../public/screens/graph-ja.webp";
 import graphKo from "../../../public/screens/graph-ko.webp";
 import startEn from "../../../public/screens/start-en.webp";
+import startKo from "../../../public/screens/start-ko.webp";
 import startJa from "../../../public/screens/start-ja.webp";
 
 type Item = { title: string; body: string };
@@ -56,9 +57,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   // 앱 화면: ko · ja는 각 언어 화면, 그 외는 영어 화면
   const shot = { zoomLabel: t("screens.zoom"), closeLabel: t("screens.close") };
   const tour = t.raw("tour.items") as { label: string; title: string; body: string; points: string[] }[];
-  // 언어별 앱 화면 (한국어 시작 화면은 아직 없어 영어판 사용)
+  // 언어별 앱 화면
   const shots = {
-    ko: [cKo, graphKo, startEn],
+    ko: [cKo, graphKo, startKo],
     ja: [cJa, graphJa, startJa],
     en: [cEn, graphEn, startEn],
   };
